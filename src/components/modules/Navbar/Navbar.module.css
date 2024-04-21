@@ -1,0 +1,162 @@
+
+.nav {
+  position: absolute;
+  width: 100%;
+  z-index: 300;
+  
+}
+
+.nav main {
+  background-color: #fff;
+  height: 90px;
+  width: 90%;
+  margin: 40px auto;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row-reverse;
+ 
+}
+
+.nav_list{
+    display: flex;
+    flex-direction: row-reverse;
+    gap:35px;
+}
+
+.hamberger_menu{
+  display: none;
+}
+
+.logo{
+  object-fit:cover;
+  margin-top: 5px;
+  padding-top: 2px;
+  height: 44px;
+}
+
+.nav_icons{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav_basket , .nav_wishlist{
+  position: relative;
+}
+
+.nav_icon{
+  font-size: 1.5rem;
+}
+
+.nav_badge{
+  position: absolute;
+  left:-8px;
+  top:-12px;
+  padding: .6px 5px;
+  background-color: #000;
+  color:#fff;
+  border-radius: 50%;
+  font-size: .7rem;
+}
+
+.dropdown{
+  position: relative;
+  display: inline-block;
+}
+
+
+.dropdown_title{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dropdown_content{
+  width: 200px;
+  text-align: right;
+  position: absolute;
+  top: 23px;
+  right:0;
+  z-index: 10;
+  box-sizing: content-box;
+  padding:30px 20px;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow:0 4px 18px 1px rgba(199, 198, 198, 0.468);
+  background-color:#fff;
+  display: none;
+
+}
+
+.dropdown_content a {
+   color:#959597;
+   font-size: .95rem;
+   white-space:nowrap;
+   transition: all 250ms ease;
+}
+
+.dropdown_content a:hover{
+  color: #353434;
+
+}
+
+.dropdown:hover .dropdown_content{
+  display: flex !important;
+  animation: drowp-fade 250ms ease-in-out;
+  
+}
+
+
+@keyframes drowp-fade {
+  0% {
+    opacity: 0; transform: translateY(-10px);
+
+  }
+
+  100%{
+    opacity: 1; transform: translateY(0);
+  }
+}
+
+@media only screen and (max-width:1200px) {
+  .nav_list{
+    display: none;
+  }
+  
+  .hamberger_menu{
+    display: block;
+    font-size: 2rem;
+    order: -1;
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-width:500px) {
+.logo{
+  height:40px;
+  width: 170px;
+}
+
+.nav main{
+ width: 100%;
+ padding: 10px 15px;
+ margin: 0;
+}
+
+.nav_icon{
+  font-size: 1.4rem;
+}
+.nav_icons{
+  gap: 15px;
+}
+
+}
+
+@media only screen and (max-width:300px) {
+  .logo{
+    width:130px ;
+  }
+
+}
