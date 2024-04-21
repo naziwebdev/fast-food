@@ -17,10 +17,10 @@ export default function Banner() {
   return (
     <div className={styles.slider_wrapper}>
       <Swiper
-        // loop={true}
-        // navigation={true}
-        // autoplay={{ delay: 3000 }}
-        // modules={[Navigation, Autoplay]}
+        loop={true}
+        navigation={true}
+        autoplay={{ delay: 3000 }}
+        modules={[Navigation, Autoplay]}
         className={styles.slider}
       >
         <SwiperSlide className={styles.slider_item}>
