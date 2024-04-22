@@ -1,3 +1,4 @@
+"use client";
 import styles from "./Navbar.module.css";
 import Link from "next/link";
 import Image from "next/image";
@@ -5,11 +6,30 @@ import { IoIosArrowDown } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa";
 import { SlBasket } from "react-icons/sl";
 import { GiHamburgerMenu } from "react-icons/gi";
-
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
+  const [fixNavbar, setFixNavbar] = useState(false);
+
+  useEffect(() => {
+    const fixNavbarToTop = (event) => {
+      event.preventDefault();
+      const currentScrollY = window.pageYOffset;
+
+      if (currentScrollY > 105) {
+        setFixNavbar(true);
+      } else {
+        setFixNavbar(false);
+      }
+    };
+
+    window.addEventListener("scroll", fixNavbarToTop);
+
+    return () => window.removeEventListener("scroll", fixNavbarToTop);
+  }, []);
+
   return (
-    <nav className={styles.nav}>
+    <nav className={`${fixNavbar ? styles.nav_fixed : styles.nav}`}>
       <main>
         <div>
           <Link href="/">
@@ -59,7 +79,7 @@ export default function Navbar() {
             </div>
           </div>
         </ul>
-        <GiHamburgerMenu className={styles.hamberger_menu}/>
+        <GiHamburgerMenu className={styles.hamberger_menu} />
         <div className={styles.nav_icons}>
           <Link href="/cart" className={styles.nav_basket}>
             <SlBasket className={styles.nav_icon} />
@@ -74,5 +94,3 @@ export default function Navbar() {
     </nav>
   );
 }
-
-

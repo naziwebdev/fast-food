@@ -6,7 +6,25 @@
   
 }
 
-.nav main {
+.nav_fixed{
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  animation: fadeInDownBig 0.4s ease;
+}
+.nav_fixed main{
+width: 100%;
+  height: 70px;
+  background-color: #fff;
+  padding:40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav main{
   background-color: #fff;
   height: 90px;
   width: 90%;
@@ -106,6 +124,15 @@
 }
 
 
+@keyframes fadeInDownBig {
+  0% {
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    transform: none;
+  }
+}
+
 @keyframes drowp-fade {
   0% {
     opacity: 0; transform: translateY(-10px);
@@ -116,6 +143,9 @@
     opacity: 1; transform: translateY(0);
   }
 }
+
+
+
 
 @media only screen and (max-width:1200px) {
   .nav_list{
@@ -140,6 +170,10 @@
  width: 100%;
  padding: 10px 15px;
  margin: 0;
+}
+
+.nav_fixed main{
+  padding: 10px 15px;
 }
 
 .nav_icon{
