@@ -1,0 +1,137 @@
+.article {
+  position: relative;
+  /* width: 440px;*/
+  height: 450px; 
+  width: 100%;
+  cursor: pointer;
+}
+
+.article:hover .article_img {
+  transform: scale(1.05);
+}
+
+.article:hover .article_content {
+  background-color: rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+.article_img {
+  transition: all 500ms ease-in;
+  width: 100%;
+  height: 100%;
+}
+
+.article_content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  transition: all 500ms ease-in;
+}
+
+.article_date {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #4e4d4d;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.article_details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 .1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(
+    to bottom,
+    transparent 5%,
+    rgba(0, 0, 0, 0.35) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+.article_tag {
+  background-color: #ff4500;
+  color: #fff;
+  padding: 0.2rem 1rem;
+  font-size: 1.1rem;
+  border-radius: 2px;
+}
+
+.article_title {
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.article_info,
+.article_author {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.article_author {
+  color: #dadada;
+  font-size: 1.07rem;
+}
+
+.article_icon {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.article_actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.article_comment {
+  position: relative;
+  padding-right: 2px;
+}
+
+.article_badge {
+  position: absolute;
+  top: -12px;
+  left: -5px;
+  background-color: #ff4500;
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 0 0.2rem;
+  border-radius: 50%;
+}
+.article_icon2 {
+  color: #dadada;
+  font-size: 1.2rem;
+}
+
+.article_icon3 {
+  color: #dadada;
+  font-size: 2.2rem;
+  padding-bottom: 10px;
+}
+
+
+@media only screen and (max-width:500px) {
+
+  .article_title{
+    font-size: 1.3rem;
+  }
+  
+}
