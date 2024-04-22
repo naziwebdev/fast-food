@@ -75,7 +75,7 @@ export default function Banner() {
             این معامله را از دست ندهید
           </h4>
         </SwiperSlide>
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <Image
             className={styles.banner_img}
             src="/images/banner-6.jpg"
@@ -83,7 +83,7 @@ export default function Banner() {
             width={5000}
             height={5000}
           />
-        </SwiperSlide>
+        </SwiperSlide> */}
         <SwiperSlide>
           <Image
             className={styles.banner_img}

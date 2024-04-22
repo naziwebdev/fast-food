@@ -20,11 +20,13 @@
   margin: 0;
   box-sizing: border-box;
   font-family: shabnam;
+
 }
 
 body {
   background-color: #fff;
   position: relative;
+  overflow-x: hidden;
 }
 
 a {
