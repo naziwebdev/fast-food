@@ -6,11 +6,12 @@ const connectTodb = async () => {
       return true;
     }
 
-    await mongoose.connect(process.env.DB_URL);
+
+    await mongoose.connect("mongodb://127.0.0.1:27017/fastfood");
     console.log("mongoDB connect successfully");
   } catch (err) {
     console.log("mongoose faild to connect !", err);
   }
 };
 
-export default connectTodb;
+module.exports = connectTodb

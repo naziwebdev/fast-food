@@ -15,6 +15,7 @@ export const generateAccessToken = (data) => {
   const accessToken = sign({ ...data }, process.env.ACCESS_TOKEN_SECRET_KEY, {
     expiresIn: "60s",
   });
+  return accessToken
 };
 
 export const generateRefreshToken = (data) => {
