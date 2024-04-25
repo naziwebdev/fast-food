@@ -1,0 +1,40 @@
+.auth{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   overflow: hidden;
+   background-color: #fae8ff;
+}
+
+.auth_bg{
+    width: 50%;
+    height:100dvh;
+}
+
+.auth_img{
+    width: 100%;
+    height: 100%;
+}
+
+.auth_form{
+    flex:1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media only screen and (max-width:850px) {
+    .auth_bg{
+       display: none;
+    }
+
+    .auth{
+    height: 100dvh;
+    background-image: url('/images/login.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+
+    
+}

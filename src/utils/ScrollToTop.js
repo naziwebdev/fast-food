@@ -1,5 +1,5 @@
 "use client";
-import styles from "../styles/ScrollToTop.module.css";
+import styles from "@/styles/ScrollToTop.module.css";
 import { useEffect, useState } from "react";
 import { RiArrowUpSLine } from "react-icons/ri";
 
@@ -12,7 +12,7 @@ export default function ScrollToTop() {
 
       const currentScroll = window.scrollY;
 
-      if (currentScroll > 150) {
+      if (currentScroll > 350) {
         setIsVisible(true);
       } else {
         setIsVisible(false);

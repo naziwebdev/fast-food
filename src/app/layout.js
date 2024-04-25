@@ -18,8 +18,9 @@ export default function RootLayout({ children }) {
     <html lang="fa" dir="rtl">
       <body className={inter.className}>
         <AosInit />
+         <ScrollToTop/>
         {children}
-        <ScrollToTop/>
+       
       </body>
     </html>
   );

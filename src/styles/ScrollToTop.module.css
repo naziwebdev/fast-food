@@ -16,8 +16,7 @@
 }
 
 .toUpBtn_hidden{
-    visibility:hidden;
-    opacity: 0;
+ display: none;
 }
 
 .toUpBtn_icon{
