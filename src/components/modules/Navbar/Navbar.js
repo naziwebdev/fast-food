@@ -61,10 +61,10 @@ export default function Navbar() {
           <li>
             <Link href="/rules">قوانین</Link>
           </li>
-          {/* <li>
+          <li>
             <Link href="/login-register">ورود / عضویت</Link>
-          </li> */}
-          <div className={styles.dropdown}>
+          </li>
+          {/* <div className={styles.dropdown}>
             <div className={styles.dropdown_title}>
               <IoIosArrowDown className={styles.dropdown_icon} />
               <Link href="/p-user">حساب کاربری</Link>
@@ -77,7 +77,7 @@ export default function Navbar() {
               <Link href="/p-user/wishlist"> علاقه مندی ها</Link>
               <Link href="/p-user/account-details"> جزییات اکانت</Link>
             </div>
-          </div>
+          </div> */}
         </ul>
         <GiHamburgerMenu className={styles.hamberger_menu} />
         <div className={styles.nav_icons}>

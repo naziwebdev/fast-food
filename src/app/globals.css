@@ -45,4 +45,26 @@ ul{
   color: #fff;
 
 }
+
 /*swiper*/
+/*swal*/
+.swal-footer{
+  text-align: center;
+}
+
+.swal-button{
+  background-color:#fbcfe8;
+}
+
+.swal-button:not([disabled]):hover{
+  background-color:#fbcfe8;
+}
+
+.swal-button--cancel{
+  background-color: #d4d4d8;
+}
+
+.swal-button--cancel:not([disabled]):hover{
+  background-color: #d4d4d8;
+}
+/*swal*/

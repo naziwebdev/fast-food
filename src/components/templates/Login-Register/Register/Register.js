@@ -2,14 +2,71 @@ import styles from "./Register.module.css";
 import Sms from "../Sms/Sms";
 import Link from "next/link";
 import { useState } from "react";
+import swal from "sweetalert";
+import registerValidator from "@/validations/backend/register";
 
 export default function Register({ show }) {
   const [isRegisterWithPass, setIsRegisterWithPass] = useState(false);
   const [isRegisterWithOtp, setIsRegisterWithOtp] = useState(false);
+  const [validateErrors, setValidateErrors] = useState(null);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+
+  const registerHandler = async () => {
+    const user = {
+      name,
+      email,
+      phone,
+      password,
+    };
+
+    try {
+      const isValid = await registerValidator.validate(user);
+    } catch (err) {
+
+      setValidateErrors(err);
+      
+    }
+
+    const res = await fetch("/api/auth/signup", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+
+    if (res.status === 201) {
+      (await res).json();
+
+      swal({
+        title: "ثبت نام با موفقیت انجام شد",
+        icon: "success",
+        buttons: "بستن",
+      });
+    } else {
+      swal({
+        title: validateErrors ? validateErrors :"ثبت نام با شکست مواجه شد",
+        icon: "error",
+        buttons: "تلاش دوباره",
+      })
+      console.log(await res);
+    }
+  };
+
+
 
   const registerWithPassHandler = (event) => {
     event.preventDefault();
-    setIsRegisterWithPass(true);
+
+    if (isRegisterWithPass) {
+      registerHandler();
+    } else {
+      setIsRegisterWithPass(true);
+    }
   };
   const registerWithOtpHandler = (event) => {
     event.preventDefault();
@@ -20,19 +77,31 @@ export default function Register({ show }) {
     <div className={styles.form_wrapper}>
       {!isRegisterWithOtp ? (
         <form className={styles.form}>
-          <input type="text" placeholder="نام" className={styles.input} />
           <input
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            type="text"
+            placeholder="نام"
+            className={styles.input}
+          />
+          <input
+            value={phone}
+            onChange={(event) => setPhone(event.target.value)}
             className={styles.input}
             type="text"
             placeholder="شماره موبایل *"
           />
           <input
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
             type="email"
             placeholder=" ایمیل (دلخواه)"
             className={styles.input}
           />
           {isRegisterWithPass && (
             <input
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
               type="password"
               placeholder="رمز عبور"
               className={styles.input}

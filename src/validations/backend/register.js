@@ -6,8 +6,7 @@ const registerValidator = yup.object().shape({
     .required("نام الزامی می‌باشد")
     .min(3, "نام حداقل باید ۳ کارکتر باشد"),
   email: yup
-    .string()
-    .matches(/^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$/),
+    .string().email('ایمیل را به درستی وارد کنید'),
   phone: yup
     .string()
     .required("شماره تلفن خود را وارد نمایید")
