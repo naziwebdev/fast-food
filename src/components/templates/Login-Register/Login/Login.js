@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Sms from "../Sms/Sms";
 import Link from "next/link";
 
-const Login = () => {
+const Login = ({show}) => {
   return (
     <div className={styles.form_wrapper}>
       <form className={styles.form}>
@@ -25,7 +25,8 @@ const Login = () => {
         </Link>
         <button className={styles.login_btn}>ورود با کد یکبار مصرف</button>
         <span className={styles.register_text}>آیا حساب کاربری ندارید ؟</span>
-        <button className={styles.register_btn}>ثبت نام</button>
+        <button className={styles.register_btn}
+        onClick={()=>show()}>ثبت نام</button>
       </form>
       <Link href="/" className={styles.back_home}>
         لغو
