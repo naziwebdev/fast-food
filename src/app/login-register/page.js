@@ -17,7 +17,8 @@ export default function page() {
       </div>
 
       <div className={styles.auth_form}>
-        <Login />‍
+        {/* <Login />‍ */}
+        <Register/>
       </div>
     </div>
   );
