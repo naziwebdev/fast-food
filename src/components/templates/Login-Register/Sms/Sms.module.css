@@ -1,0 +1,51 @@
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #fff;
+    gap: 1rem;
+    width: 100%;
+    border-radius: 7px;
+    box-shadow: 0 1px 8px 1px rgba(98, 97, 97, 0.13);
+  }
+  
+  .input {
+    padding: 0.8rem;
+    outline: none;
+    border: 1px solid #333;
+    
+  }
+  
+  .input::placeholder {
+    color: #777;
+  }
+  
+ 
+  .form_text{
+    color: #777;
+
+  }
+  
+  
+  .login_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: #fbcfe8;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+ 
+.resend_btn{
+    border: none;
+    outline: none;
+    background-color: unset;
+    color: #777;
+    text-decoration: underline;
+}
