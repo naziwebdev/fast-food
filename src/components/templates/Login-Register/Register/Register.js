@@ -8,7 +8,7 @@ import registerValidator from "@/validations/backend/register";
 export default function Register({ show }) {
   const [isRegisterWithPass, setIsRegisterWithPass] = useState(false);
   const [isRegisterWithOtp, setIsRegisterWithOtp] = useState(false);
-  const [validateErrors, setValidateErrors] = useState(null);
+  
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -24,11 +24,13 @@ export default function Register({ show }) {
     };
 
     try {
-      const isValid = await registerValidator.validate(user);
+     await registerValidator.validate(user);
     } catch (err) {
-
-      setValidateErrors(err);
-      
+      return swal({
+        title: err,
+        icon: "error",
+        buttons: "تلاش دوباره",
+      });
     }
 
     const res = await fetch("/api/auth/signup", {
@@ -49,15 +51,13 @@ export default function Register({ show }) {
       });
     } else {
       swal({
-        title: validateErrors ? validateErrors :"ثبت نام با شکست مواجه شد",
+        title: "ثبت نام با شکست مواجه شد",
         icon: "error",
         buttons: "تلاش دوباره",
-      })
+      });
       console.log(await res);
     }
   };
-
-
 
   const registerWithPassHandler = (event) => {
     event.preventDefault();

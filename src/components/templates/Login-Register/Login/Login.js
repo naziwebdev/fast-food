@@ -4,12 +4,56 @@ import styles from "./Login.module.css";
 import React, { useState } from "react";
 import Sms from "../Sms/Sms";
 import Link from "next/link";
+import loginValidation from "@/validations/backend/login";
 
 const Login = ({ show }) => {
   const [isLoginWithOtp, setIsLoginWithOtp] = useState(false);
+  const [identifier, setIdentifier] = useState("");
+  const [password, setPassword] = useState("");
 
   const loginWithOtpHandler = (event) => {
     setIsLoginWithOtp(true);
+  };
+
+  const loginHandler = async (event) => {
+    event.preventDefault();
+
+    const user = { identifier, password };
+
+    try {
+      await loginValidation.validate(user);
+    } catch (err) {
+      return swal({
+        title: err,
+        icon: "error",
+        buttons: "تلاش دوباره",
+      });
+    }
+
+    const res = await fetch("/api/auth/signin", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+
+    if (res.status === 200) {
+      (await res).json();
+
+      swal({
+        title: " لاگین با موفقیت انجام شد",
+        icon: "success",
+        buttons: "بستن",
+      });
+    } else {
+      swal({
+        title: " لاگین با شکست مواجه شد",
+        icon: "error",
+        buttons: "تلاش دوباره",
+      });
+      console.log(await res);
+    }
   };
 
   return (
@@ -20,13 +64,23 @@ const Login = ({ show }) => {
             type="text"
             placeholder="ایمیل / شماره موبایل"
             className={styles.input}
+            value={identifier}
+            onChange={(event) => setIdentifier(event.target.value)}
           />
-          <input type="text" placeholder="رمز عبور" className={styles.input} />
+          <input
+            type="text"
+            placeholder="رمز عبور"
+            className={styles.input}
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
           <div className={styles.checkbox_wrapper}>
             <input type="checkbox" className={styles.checkbox} />
             <span className={styles.checkbox_text}>مرا به یاد داشته باش</span>
           </div>
-          <button className={styles.login_btn}>ورود</button>
+          <button className={styles.login_btn} onClick={loginHandler}>
+            ورود
+          </button>
           <Link href={"/forget-password"} className={styles.forgot_pass}>
             رمز عبور را فراموش کرده اید؟
           </Link>
