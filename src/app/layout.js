@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import AosInit from "@/utils/aos";
 import ScrollToTop from "@/utils/ScrollToTop";
+import Footer from "@/components/modules/Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +21,11 @@ export default function RootLayout({ children }) {
         <AosInit />
          <ScrollToTop/>
         {children}
+        <Footer/>
        
       </body>
     </html>
   );
 }
+
+

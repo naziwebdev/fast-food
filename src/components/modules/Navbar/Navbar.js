@@ -15,7 +15,7 @@ export default function Navbar({ isLogin }) {
   useEffect(() => {
     const fixNavbarToTop = (event) => {
       event.preventDefault();
-      const currentScrollY = window.pageYOffset;
+      const currentScrollY = window.scrollY;
 
       if (currentScrollY > 105) {
         setFixNavbar(true);

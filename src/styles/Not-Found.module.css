@@ -1,0 +1,94 @@
+.notFound_wrapper {
+  padding: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.notFound_img {
+  width: 70%;
+  height: 450px;
+}
+
+.notFound_text {
+  color: #777;
+  font-size: 1.2rem;
+}
+
+.notFound_search {
+  width: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .65rem;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+}
+
+.notFound_input {
+  width: 95%;
+  border: none;
+  outline: none;
+}
+
+.notFound_icon {
+  font-size: 1.5rem;
+  color:deeppink;
+}
+
+.notFound_input::placeholder{
+    font-size: 1.01rem;
+    color: #777;
+}
+
+@media only screen and (max-width:800px) {
+
+  .notFound_search{
+    width: 60%;
+  }
+
+  .notFound_text{
+    font-size: 1rem;
+  }
+
+  
+}
+
+@media only screen and (max-width:550px) {
+
+  .notFound_wrapper{
+    padding: 2.5rem;
+  }
+
+.notFound_img{
+  width: 90%;
+}
+
+  .notFound_search{
+    width: 100%;
+  }
+
+  .notFound_text{
+    font-size: .8rem;
+    text-align: center;
+  }
+
+  .notFound_title{
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .notFound_input::placeholder{
+    font-size: .8rem;
+
+}
+}
+
+@media only screen and (max-width:350px) {
+
+  .notFound_img{
+    width: 100%;
+  }
+}

@@ -34,7 +34,6 @@ export const verifyAccessToken = (token) => {
     const payload = verify(token, process.env.ACCESS_TOKEN_SECRET_KEY);
     return payload;
   } catch (error) {
-    console.log("Verify Access Token Error ->", error);
     return false;
   }
 };
