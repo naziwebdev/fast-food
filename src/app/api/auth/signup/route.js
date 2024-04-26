@@ -10,7 +10,7 @@ export async function POST(req) {
     const body = await req.json();
 
     const { name, email, phone, password } = body;
-    console.log(email, phone);
+ 
     await registerValidator.validate(body).catch((err) => {
       err.statusCode = 400;
       throw err;
@@ -18,7 +18,7 @@ export async function POST(req) {
 
     const existUser = await UserModel.findOne({phone});
 
-    console.log(existUser);
+   
     if (existUser) {
       return Response.json(
         {
