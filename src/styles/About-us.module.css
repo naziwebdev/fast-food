@@ -1,3 +1,45 @@
 .about_wrapper{
     padding: 4rem;
 }
+
+
+.about_content{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+   
+}
+
+.about_text{
+    line-height:36px;
+    text-align: justify;
+    color:#333;
+}
+
+.about_img{
+    align-self: center;
+    margin: 0 auto;
+    width: 70%;
+    height: 500px;
+}
+
+
+@media only screen and (max-width:800px) {
+
+    .about_img{
+        width: 100%;
+    }
+    
+}
+
+@media only screen and (max-width:500px) {
+
+    .about_wrapper{
+        padding:2rem;
+    }
+
+    .about_img{
+        height: 400px;
+    }
+    
+}
