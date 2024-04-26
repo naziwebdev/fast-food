@@ -8,8 +8,9 @@ import { SlBasket } from "react-icons/sl";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState, useEffect } from "react";
 
-export default function Navbar() {
+export default function Navbar({ isLogin }) {
   const [fixNavbar, setFixNavbar] = useState(false);
+
 
   useEffect(() => {
     const fixNavbarToTop = (event) => {
@@ -61,23 +62,26 @@ export default function Navbar() {
           <li>
             <Link href="/rules">قوانین</Link>
           </li>
-          <li>
-            <Link href="/login-register">ورود / عضویت</Link>
-          </li>
-          {/* <div className={styles.dropdown}>
-            <div className={styles.dropdown_title}>
-              <IoIosArrowDown className={styles.dropdown_icon} />
-              <Link href="/p-user">حساب کاربری</Link>
-            </div>
+          {!isLogin ? (
+            <li>
+              <Link href="/login-register">ورود / عضویت</Link>
+            </li>
+          ) : (
+            <div className={styles.dropdown}>
+              <div className={styles.dropdown_title}>
+                <IoIosArrowDown className={styles.dropdown_icon} />
+                <Link href="/p-user">حساب کاربری</Link>
+              </div>
 
-            <div className={styles.dropdown_content}>
-              <Link href="/p-user/orders">سفارشات </Link>
-              <Link href="/p-user/tickets"> تیکت های پشتیبانی</Link>
-              <Link href="/p-user/comments">کامنت ها </Link>
-              <Link href="/p-user/wishlist"> علاقه مندی ها</Link>
-              <Link href="/p-user/account-details"> جزییات اکانت</Link>
+              <div className={styles.dropdown_content}>
+                <Link href="/p-user/orders">سفارشات </Link>
+                <Link href="/p-user/tickets"> تیکت های پشتیبانی</Link>
+                <Link href="/p-user/comments">کامنت ها </Link>
+                <Link href="/p-user/wishlist"> علاقه مندی ها</Link>
+                <Link href="/p-user/account-details"> جزییات اکانت</Link>
+              </div>
             </div>
-          </div> */}
+          )}
         </ul>
         <GiHamburgerMenu className={styles.hamberger_menu} />
         <div className={styles.nav_icons}>

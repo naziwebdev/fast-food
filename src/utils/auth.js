@@ -1,5 +1,8 @@
 import { hash, compare } from "bcrypt";
 import { sign, verify } from "jsonwebtoken";
+import connectTodb from "@/configs/db";
+import Usermodel from "@/models/user";
+import { cookies } from "next/headers";
 
 export const hashPassword = async (password) => {
   const hashedPassword = await hash(password, 12);
@@ -15,7 +18,7 @@ export const generateAccessToken = (data) => {
   const accessToken = sign({ ...data }, process.env.ACCESS_TOKEN_SECRET_KEY, {
     expiresIn: "60s",
   });
-  return accessToken
+  return accessToken;
 };
 
 export const generateRefreshToken = (data) => {
@@ -31,7 +34,19 @@ export const verifyAccessToken = (token) => {
     const payload = verify(token, process.env.ACCESS_TOKEN_SECRET_KEY);
     return payload;
   } catch (error) {
-    console.log("Verify Access Token Error ->", err);
+    console.log("Verify Access Token Error ->", error);
     return false;
   }
+};
+
+export const authUser = async () => {
+  connectTodb();
+
+  const token = cookies().get("token");
+
+  const tokenPayload = verifyAccessToken(token.value);
+
+  const user = await Usermodel.findOne({ name: tokenPayload.userName});
+
+  return user;
 };
