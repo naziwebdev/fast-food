@@ -46,6 +46,12 @@ ul{
 
 }
 
+.mySwiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+
+
 /*swiper*/
 /*swal*/
 .swal-footer{

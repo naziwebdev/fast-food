@@ -42,10 +42,15 @@ export const authUser = async () => {
   connectTodb();
 
   const token = cookies().get("token");
+  let user = null;
 
-  const tokenPayload = verifyAccessToken(token.value);
+  if (token) {
+    const tokenPayload = verifyAccessToken(token.value);
 
-  const user = await Usermodel.findOne({ name: tokenPayload.userName});
+    if (tokenPayload) {
+      user = await Usermodel.findOne({ name: tokenPayload.userName });
+    }
+  }
 
   return user;
 };

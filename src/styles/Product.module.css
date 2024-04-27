@@ -1,0 +1,12 @@
+.product_container{
+    padding: 4rem;
+}
+
+.Product_main{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10rem;
+     gap: 1.5rem;
+
+}

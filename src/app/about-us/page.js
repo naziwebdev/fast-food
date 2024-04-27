@@ -4,6 +4,7 @@ import { authUser } from "@/utils/auth";
 import styles from "@/styles/About-us.module.css";
 import BreadCrumb from "@/components/modules/BreadCrumb/BreadCrumb";
 import Image from "next/image";
+import Footer from "@/components/modules/Footer/Footer";
 
 export default async function AboutUs() {
   const user = await authUser();
@@ -55,6 +56,7 @@ export default async function AboutUs() {
         />  
         </div>   
       </div>
+      <Footer/>
     </>
   );
 }

@@ -1,0 +1,27 @@
+
+.slide{
+    width: 180px;
+    height: 120px;
+    opacity: 0.4;
+    border-radius: 10px;
+}
+
+.mySwiper2{
+    width: 100%;
+}
+.gallery_img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 10px;
+}
+
+
+.mySwiper{
+    width:100%;
+    margin-top: 1rem;
+}
+
+.gallery{
+    width: 30%;
+}

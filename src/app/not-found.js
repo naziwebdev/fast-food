@@ -4,6 +4,7 @@ import { authUser } from "@/utils/auth";
 import Image from "next/image";
 import styles from "@/styles/Not-Found.module.css";
 import { BsSearchHeart } from "react-icons/bs";
+import Footer from "@/components/modules/Footer/Footer";
 
 
 export default async function NotFound() {
@@ -36,6 +37,7 @@ export default async function NotFound() {
         <BsSearchHeart className={styles.notFound_icon} />
       </div>
       </div>
+      <Footer/>
     </>
   );
 }
