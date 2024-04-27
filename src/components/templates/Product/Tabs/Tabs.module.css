@@ -1,0 +1,66 @@
+.tab_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 8rem;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  background-color: unset;
+  color: #555;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding-bottom: 1rem;
+  width: 16rem;
+  border-bottom: 2px solid #d6d3d1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn_icon {
+  color: #555;
+  font-size: 1.2rem;
+}
+
+.btn2 {
+  border-bottom: 4px solid #e879f9;
+}
+
+.btn_icon2 {
+  color: #d946ef;
+}
+
+.tabs_content {
+  padding: 2rem;
+  width: 100%;
+}
+
+@media only screen and (max-width: 850px) {
+  .btn {
+    width: 10rem;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .btns {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .btn {
+    width: 7rem;
+  }
+
+  .tabs_content {
+    padding:2rem 0;
+  }
+}
