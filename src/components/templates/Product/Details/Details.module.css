@@ -134,3 +134,94 @@ font-size: 1.1rem;
     color: #d946ef;
     font-size: 1.1rem;
 }
+
+@media only screen and (max-width:600px) {
+    .details_title{
+        font-size: 2rem;
+    }
+
+    .details_price{
+        font-size:1.3rem ;
+    }
+
+    .details_price2{
+        font-size: 2rem;
+    }
+
+    .addBtn{
+        width: 250px;
+    }
+ }
+
+
+ @media only screen and (max-width:480px) {
+    .details_title{
+        font-size: 1.5rem;
+    }
+
+    .details_price{
+        font-size:1rem ;
+    }
+
+    .details_price2{
+        font-size:1.5rem;
+    }
+
+    .addBtn{
+        width: 180px;
+        font-size: 1rem;
+    }
+
+    .review{
+        font-size: 1rem;
+        gap: 1rem;
+    }
+
+    .buy{
+        gap: 1rem;
+    }
+ }
+ @media only screen and (max-width:360px) {
+    .details_title{
+        font-size: 1.2rem;
+    }
+
+    .details_price{
+        font-size:1rem ;
+    }
+
+    .details_price2{
+        font-size:1.2rem;
+    }
+
+    .addBtn{
+        width: 130px;
+        text-align: center;
+        font-size: .9rem;
+        padding: 0 10px;
+    }
+
+    .review{
+        flex-wrap: wrap;
+        font-size: 1rem;
+        gap: 1rem;
+    }
+
+
+
+    .details_text2{
+ 
+        font-size: .95rem;
+     
+    }
+    
+    .details_text3{
+   
+    font-size: .95rem;
+    }
+
+    .plusBtn, .minusBtn{
+        width: 35px;
+        height: 35px;
+    }
+ }
