@@ -4,6 +4,7 @@ import Footer from "@/components/modules/Footer/Footer";
 import { authUser } from "@/utils/auth";
 import Gallery from "@/components/templates/Product/Gallery/Gallery";
 import Details from "@/components/templates/Product/Details/Details";
+import BreadCrumb from "@/components/modules/BreadCrumb/BreadCrumb";
 
 export default async function Product() {
   const user = await authUser();
@@ -11,6 +12,7 @@ export default async function Product() {
   return (
     <div>
       <Navbar isLogin={user ? true : false} />
+      <BreadCrumb route={'جزییات محصول'}/>
       <div data-aos="fade-up" className={styles.product_container}>
         <div className={styles.Product_main}>
             <Gallery/>

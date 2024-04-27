@@ -18,7 +18,7 @@ export default function Gallery() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   return (
-    <div className={styles.gallery}>
+    <div data-aos="zoom-in-left"  className={styles.gallery}>
       <Swiper
         style={{
           "--swiper-navigation-color": "#fff",
@@ -63,6 +63,14 @@ export default function Gallery() {
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
         className={`${styles.mySwiper} mySwiper `}
+        breakpoints={{
+          100:{
+            spaceBetween:10
+          },
+          400:{
+            spaceBetween:30
+          }
+        }}
       >
         <SwiperSlide className={styles.slide}>
           <Image

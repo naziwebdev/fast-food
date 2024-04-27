@@ -23,5 +23,34 @@
 }
 
 .gallery{
-    width: 30%;
+    width: 40%;
+    border: 4px double #ffd40d;
+    border-radius: 40px;
+    padding: 2rem;
+    box-shadow: 0 2px 14px 1px rgba(48, 48, 48, 0.247);
+}
+
+
+
+
+@media only screen and (max-width:1200px) {
+   .gallery{
+    width: 70%;
+   }
+}
+
+@media only screen and (max-width:680px) {
+   .gallery{
+    width: 100%;
+   }
+}
+
+@media only screen and (max-width:480px) {
+   .gallery{
+    padding: 1rem;
+   }
+
+   .slide{
+    height: 100px;
+}
 }
