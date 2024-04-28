@@ -12,12 +12,12 @@ export default function Latest() {
         </Link>
       </div>
        <div data-aos="fade-up" className={styles.card_container}>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>  
+        <ProductCard isfull={false}/>
+        <ProductCard isfull={false}/>
+        <ProductCard isfull={false}/>
+        <ProductCard isfull={false}/>
+        <ProductCard isfull={false}/>
+        <ProductCard isfull={false}/>  
        </div>
         
     </div>

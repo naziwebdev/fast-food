@@ -5,9 +5,9 @@ import { FaRegHeart } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { SlBasket } from "react-icons/sl";
 
-export default function ProductCard() {
+export default function ProductCard({isfull}) {
   return (
-    <div className={styles.card}>
+    <div className={`${styles.card} ${isfull && styles.full_card} `} >
       <div className={styles.card_head}>
         <Image
           src="/images/p-4.jpg"

@@ -6,6 +6,7 @@ import Gallery from "@/components/templates/Product/Gallery/Gallery";
 import Details from "@/components/templates/Product/Details/Details";
 import BreadCrumb from "@/components/modules/BreadCrumb/BreadCrumb";
 import Tabs from "@/components/templates/Product/Tabs/Tabs";
+import MoreProducts from "@/components/templates/Product/MoreProducts/MoreProducts";
 
 export default async function Product({ params }) {
   const user = await authUser();
@@ -21,6 +22,7 @@ export default async function Product({ params }) {
           <Details />
         </div>
         <Tabs />
+        <MoreProducts/>
       </div>
       <Footer />
     </div>
