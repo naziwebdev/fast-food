@@ -1,7 +1,7 @@
 import styles from "./CommentCard.module.css";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import Image from "next/image";
-export default function CommentCard() {
+export default function CommentCard({ comment }) {
   return (
     <div className={styles.comment}>
       <div className={styles.comment_wrapper}>
@@ -13,25 +13,31 @@ export default function CommentCard() {
             width={200}
             height={200}
           />
-          <p className={styles.comment_username}>ساسان راد</p>
-          <span className={styles.comment_date}>1403/2/9</span>
+          <p className={styles.comment_username}>{comment.username}</p>
+          <span className={styles.comment_date}>
+          {new Date(comment?.date).toLocaleDateString("fa-IR", {
+                year: "numeric",
+                month: "numeric",
+                day: "numeric",
+                calendar: "persian",
+              })}
+          </span>
         </div>
         <div className={styles.comment_score}>
-          {Array(5)
-            .fill(0)
-            .map(() => (
-              <FaStar className={styles.comment_icon} key={crypto.randomUUID()} />
-            ))}
-          {/* {Array(5 - 1)
-            .fill(0)
-            .map(() => (
-              <FaRegStar key={crypto.randomUUID()} />
-            ))} */}
+          {new Array(comment.score).fill(0).map(() => (
+            <FaStar className={styles.comment_icon} key={crypto.randomUUID()} />
+          ))}
+          {new Array(5 - comment.score).fill(0).map(() => (
+            <FaRegStar
+              className={styles.comment_icon}
+              key={crypto.randomUUID()}
+            />
+          ))}
         </div>
       </div>
       <div className={styles.comment_body}>
-        <h4 className={styles.comment_title}>عالی </h4>
-        <p className={styles.comment_text}>خیلی خوب بود ممنون</p>
+        <h4 className={styles.comment_title}>{comment.title}</h4>
+        <p className={styles.comment_text}>{comment.body}</p>
       </div>
     </div>
   );

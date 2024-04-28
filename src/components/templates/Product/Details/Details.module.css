@@ -13,6 +13,10 @@
     color: #18b118; 
 }
 
+.review_text_red{
+    color: red; 
+}
+
 .review_icons{
     display: flex;
     gap: 5px;

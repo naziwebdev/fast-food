@@ -1,13 +1,12 @@
 import styles from "./Comments.module.css";
 import CommentCard from "@/components/modules/CommentCard/CommentCard";
-export default function Comments() {
+export default function Comments({product}) {
   return (
     <div className={styles.comments}>
       <div className={styles.comment_container}>
-        <CommentCard />
-        <CommentCard />
-        <CommentCard />
-        <CommentCard />
+        {product.comments.map((comment) => (
+          <CommentCard key={comment._id} comment={comment} />
+        ))}
       </div>
       <form className={styles.comment_form}>
         <input
