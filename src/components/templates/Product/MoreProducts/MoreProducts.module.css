@@ -15,8 +15,10 @@
   }
 
   .related_title{
-    font-size: 1.8rem;
-    color:#777;
+    font-size: 1.5rem;
+    color:#555;
+    padding:0 2rem;
+    padding-top: 2rem;
    }
   
    .related_link{
@@ -41,6 +43,6 @@
      }
   
      .related_title{
-        font-size: 1.5rem;
+        font-size: 1.3rem;
      }
    }
