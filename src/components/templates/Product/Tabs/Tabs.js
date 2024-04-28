@@ -46,7 +46,7 @@ export default function Tabs() {
             <FaRegCommentDots  className={`${styles.btn_icon} ${
               btnActive === "btn3" && styles.btn_icon2
             }`}/>
-            کامنت ها
+            کامنت ها (۰)
           </button>
         </div>
         <div className={styles.tabs_content}>
