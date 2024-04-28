@@ -8,10 +8,12 @@ import Footer from "@/components/modules/Footer/Footer";
 
 export default async function AboutUs() {
   const user = await authUser();
+
+  let route = [{ id: 1, title: "درباره ما", href: "/about-us" }];
   return (
     <>
       <Navbar isLogin={user ? true : false} />
-      <BreadCrumb route={"درباره ما"} />
+      <BreadCrumb route={route} />
       <div className={styles.about_wrapper}>
         <div className={styles.about_content}>
           <h1 className={styles.about_title}>درباره فست فود دلیشز</h1>
@@ -43,20 +45,19 @@ export default async function AboutUs() {
           <p className={styles.about_text}>
             از دیگر افتخارات مجموعه «فست فود ست» اخذ مدرک دیپلم دانش فست فود از
             انجمن فست فود تخصصی اروپا در فروردین ماه سال 95 است. (SCAE Coffee
-            Diploma)
-            امید داریم با کسب دانش روز دنیا در این صنعت ارتقا کیفیت و تنوع محصول
-            در حد استانداردهای جهانی را در آینده‌ای نزدیک شاهد باشیم.
+            Diploma) امید داریم با کسب دانش روز دنیا در این صنعت ارتقا کیفیت و
+            تنوع محصول در حد استانداردهای جهانی را در آینده‌ای نزدیک شاهد باشیم.
           </p>
-           <Image
-          src="/images/item-2.png"
-          alt="fast-food"
-          width={800}
-          height={800}
-          className={styles.about_img}
-        />  
-        </div>   
+          <Image
+            src="/images/item-2.png"
+            alt="fast-food"
+            width={800}
+            height={800}
+            className={styles.about_img}
+          />
+        </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

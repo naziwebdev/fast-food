@@ -7,23 +7,22 @@ import Details from "@/components/templates/Product/Details/Details";
 import BreadCrumb from "@/components/modules/BreadCrumb/BreadCrumb";
 import Tabs from "@/components/templates/Product/Tabs/Tabs";
 
-
-export default async function Product() {
+export default async function Product({ params }) {
   const user = await authUser();
 
+  let route = [{ id: 1, title: "جزییات محصول", href: `/product/${params.id}` }];
   return (
     <div>
       <Navbar isLogin={user ? true : false} />
-      <BreadCrumb route={'جزییات محصول'}/>
+      <BreadCrumb route={route} />
       <div data-aos="fade-up" className={styles.product_container}>
         <div className={styles.Product_main}>
-            <Gallery/>
-            <Details/>
+          <Gallery />
+          <Details />
         </div>
-        <Tabs/>
-
+        <Tabs />
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
