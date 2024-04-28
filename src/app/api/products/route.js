@@ -18,7 +18,7 @@ export async function POST(req) {
       size,
     } = await req.json();
 
-    console.log("ok");
+
 
     await productValidation
       .validate({

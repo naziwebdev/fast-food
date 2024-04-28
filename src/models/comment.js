@@ -19,12 +19,10 @@ const schema = new mongoose.Schema(
       required: true,
     },
     date: {
-      type: Date,
-      required: true,
-      default: () => now.Date(),
-      immutable:false
+      type:Date,
+      default:new Date(),
+      immutable: false,
     },
-
     productID: {
       type: mongoose.Types.ObjectId,
       ref: "Product",
