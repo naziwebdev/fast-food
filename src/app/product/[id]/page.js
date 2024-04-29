@@ -8,12 +8,20 @@ import BreadCrumb from "@/components/modules/BreadCrumb/BreadCrumb";
 import Tabs from "@/components/templates/Product/Tabs/Tabs";
 import MoreProducts from "@/components/templates/Product/MoreProducts/MoreProducts";
 import connectTodb from "@/configs/db";
-import productModel from '@/models/product'
+import productModel from "@/models/product";
 
 export default async function Product({ params }) {
   const user = await authUser();
-  connectTodb()
-  const product = await productModel.findOne({_id:params.id}).populate('comments')
+  connectTodb();
+  const product = await productModel
+    .findOne({ _id: params.id })
+    .populate("comments");
+
+  const word = product.title.slice(0, 5);
+
+  const relatedProduct = await productModel.find({
+    title: { $regex: word, $options: "i" },
+  });
 
   let route = [{ id: 1, title: "جزییات محصول", href: `/product/${params.id}` }];
   return (
@@ -23,10 +31,10 @@ export default async function Product({ params }) {
       <div data-aos="fade-up" className={styles.product_container}>
         <div className={styles.Product_main}>
           <Gallery />
-          <Details product={JSON.parse(JSON.stringify(product))}/>
+          <Details product={JSON.parse(JSON.stringify(product))} />
         </div>
-        <Tabs product={JSON.parse(JSON.stringify(product))}/>
-        <MoreProducts/>
+        <Tabs product={JSON.parse(JSON.stringify(product))} />
+        <MoreProducts product={JSON.parse(JSON.stringify(relatedProduct))} />
       </div>
       <Footer />
     </div>

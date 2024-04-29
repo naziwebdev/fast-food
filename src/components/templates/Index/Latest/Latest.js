@@ -2,7 +2,15 @@ import styles from './Latest.module.css'
 import ProductCard from '@/components/modules/ProductCard/ProductCard'
 import { FaChevronLeft } from "react-icons/fa6";
 import Link from 'next/link';
-export default function Latest() {
+import connectTodb from '@/configs/db';
+import productModel from '@/models/product'
+
+export default async function Latest() {
+
+connectTodb()
+const products = await productModel.find({},'-__v').lean()
+const mainProduct = JSON.parse(JSON.stringify(products))
+
   return (
     <div className={styles.Latest_wrapper}>
       <div className={styles.title_wrapper}>
@@ -12,12 +20,10 @@ export default function Latest() {
         </Link>
       </div>
        <div data-aos="fade-up" className={styles.card_container}>
-        <ProductCard isfull={false}/>
-        <ProductCard isfull={false}/>
-        <ProductCard isfull={false}/>
-        <ProductCard isfull={false}/>
-        <ProductCard isfull={false}/>
-        <ProductCard isfull={false}/>  
+
+        {mainProduct.map(item => (
+          <ProductCard key={item._id} isfull={false} product={item}/>
+        ))}
        </div>
         
     </div>

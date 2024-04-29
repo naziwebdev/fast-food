@@ -7,7 +7,8 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 
-export default function MoreProducts() {
+export default function MoreProducts({product}) {
+
   return (
     <div className={styles.related_wrapper}>
       <div className={styles.title_wrapper}>
@@ -39,24 +40,12 @@ export default function MoreProducts() {
           }}
           className={styles.related_slider}
         >
-          <SwiperSlide>
-            <ProductCard isfull={true} />
+
+          {product?.map(item => (
+            <SwiperSlide key={item._id}>
+            <ProductCard isfull={true} product={item}/>
           </SwiperSlide>
-          <SwiperSlide>
-            <ProductCard isfull={true} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductCard isfull={true} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductCard isfull={true} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductCard isfull={true} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ProductCard isfull={true} />
-          </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </div>
