@@ -40,7 +40,7 @@ export default function ProductCard({ isfull, product }) {
         </div>
       </div>
       <p className={styles.card_price}>
-        {product?.price.toLocaleString("fa-IR")} {" "} تومان
+        {product?.price?.toLocaleString("fa-IR")} {" "} تومان
       </p>
     </div>
   );

@@ -49,6 +49,7 @@ const Login = ({ show }) => {
         if (value) {
           setIdentifier("");
           setPassword("");
+
         }
       });
     } else {
