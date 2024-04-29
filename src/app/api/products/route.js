@@ -1,6 +1,6 @@
 import productModel from "@/models/product";
 import connectTodb from "@/configs/db";
-import productValidation from "@/validations/backend/detailsProduct";
+import productValidation from "@/validations/detailsProduct";
 
 export async function POST(req) {
   try {

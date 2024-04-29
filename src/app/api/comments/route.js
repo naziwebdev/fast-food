@@ -1,6 +1,6 @@
 import commentsModel from "@/models/comment";
 import connectTodb from "@/configs/db";
-import commentValidation from "@/validations/backend/comment";
+import commentValidation from "@/validations/comment";
 import productModel from "@/models/product";
 
 export async function POST(req) {

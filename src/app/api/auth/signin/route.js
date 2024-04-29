@@ -5,7 +5,7 @@ import {
   generateAccessToken,
   generateRefreshToken,
 } from "@/utils/auth";
-import loginValidation from "@/validations/backend/login";
+import loginValidation from "@/validations/login";
 
 export async function POST(req) {
   try {

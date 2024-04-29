@@ -1,5 +1,5 @@
 import connectTodb from "@/configs/db";
-import registerValidator from "@/validations/backend/register";
+import registerValidator from "@/validations/register";
 import UserModel from "@/models/user";
 import { hashPassword, generateAccessToken } from "@/utils/auth";
 

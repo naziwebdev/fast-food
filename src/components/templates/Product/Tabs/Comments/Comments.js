@@ -4,7 +4,7 @@ import styles from "./Comments.module.css";
 import CommentCard from "@/components/modules/CommentCard/CommentCard";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { useState } from "react";
-import commentValidation from "@/validations/backend/comment";
+import commentValidation from "@/validations/comment";
 import swal from "sweetalert";
 
 export default function Comments({ productID, comments }) {

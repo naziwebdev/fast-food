@@ -3,7 +3,7 @@ import Sms from "../Sms/Sms";
 import Link from "next/link";
 import { useState } from "react";
 import swal from "sweetalert";
-import registerValidator from "@/validations/backend/register";
+import registerValidator from "@/validations/register";
 
 export default function Register({ show }) {
   const [isRegisterWithPass, setIsRegisterWithPass] = useState(false);

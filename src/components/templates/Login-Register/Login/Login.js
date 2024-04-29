@@ -4,7 +4,7 @@ import styles from "./Login.module.css";
 import React, { useState } from "react";
 import Sms from "../Sms/Sms";
 import Link from "next/link";
-import loginValidation from "@/validations/backend/login";
+import loginValidation from "@/validations/login";
 
 const Login = ({ show }) => {
   const [isLoginWithOtp, setIsLoginWithOtp] = useState(false);
