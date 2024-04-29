@@ -10,7 +10,7 @@ export async function POST(req) {
     const { username, email, title, body, productID, score } = await req.json();
 
 
-console.log('ok')
+
 // {
 //     "username":"arman",
 //     "email":"arman@gmail.com",
@@ -42,6 +42,7 @@ console.log('ok')
       title,
       body,
       productID,
+      isAccept:0,
       score,
     });
 

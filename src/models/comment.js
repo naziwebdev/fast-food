@@ -27,6 +27,11 @@ const schema = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       ref: "Product",
     },
+    isAccept:{
+      type:Number,
+      required:true,
+      default:0
+    },
     score: {
       type: Number,
       required: true,

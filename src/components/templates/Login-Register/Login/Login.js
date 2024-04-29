@@ -45,6 +45,11 @@ const Login = ({ show }) => {
         title: " لاگین با موفقیت انجام شد",
         icon: "success",
         buttons: "بستن",
+      }).then((value) => {
+        if (value) {
+          setIdentifier("");
+          setPassword("");
+        }
       });
     } else {
       swal({

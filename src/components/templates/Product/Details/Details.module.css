@@ -110,6 +110,8 @@ font-size: 1.1rem;
     background-color: #f0abfc;
     color: #fff;
     cursor: pointer;
+    border: none;
+    outline: none;
 }
 
 .favorite{

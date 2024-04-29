@@ -1,33 +1,163 @@
+"use client";
+
 import styles from "./Comments.module.css";
 import CommentCard from "@/components/modules/CommentCard/CommentCard";
-export default function Comments({product}) {
+import { FaStar, FaRegStar } from "react-icons/fa";
+import { useState } from "react";
+import commentValidation from "@/validations/backend/comment";
+import swal from "sweetalert";
+
+export default function Comments({ productID, comments }) {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [body, setBody] = useState("");
+  const [title, setTitle] = useState("");
+  const [score, setScore] = useState(0);
+
+  const starRatingHandler = (rate) => {
+    setScore(rate);
+  };
+
+  const addCommentHandler = async (event) => {
+    event.preventDefault();
+
+    const comment = {
+      username,
+      email,
+      title,
+      body,
+      productID,
+      score,
+    };
+
+    try {
+      await commentValidation.validate(comment);
+    } catch (err) {
+      return swal({
+        title: err,
+        icon: "error",
+        buttons: "تلاش دوباره",
+      });
+    }
+
+    const res = await fetch("/api/comments", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(comment),
+    });
+
+    if (res.status === 201) {
+      (await res).json();
+
+      swal({
+        title: " کامنت با موفقیت ثبت شد",
+        icon: "success",
+        buttons: "بستن",
+      }).then((value) => {
+        if (value) {
+          setUsername("");
+          setEmail("");
+          setTitle("");
+          setBody("");
+          setScore(0);
+        }
+      });
+    } else {
+      swal({
+        title: "ثبت کامنت با شکست مواجه شد",
+        icon: "error",
+        buttons: "تلاش دوباره",
+      });
+      console.log(await res);
+    }
+  };
+
   return (
     <div className={styles.comments}>
       <div className={styles.comment_container}>
-        {product.comments.map((comment) => (
-          <CommentCard key={comment._id} comment={comment} />
-        ))}
+        {comments.map(
+          (comment) =>
+            comment.isAccept != 0 && (
+              <CommentCard key={comment._id} comment={comment} />
+            )
+        )}
       </div>
       <form className={styles.comment_form}>
         <input
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
           type="text"
           className={styles.comment_input}
           placeholder="نام و نام خانوادگی"
         />
         <input
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
           type="email"
           className={styles.comment_input}
           placeholder=" ایمیل"
         />
         <input
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
           type="text"
           className={styles.comment_input}
           placeholder="عنوان نظر"
         />
+        <div className={styles.comment_score}>
+          <span>امتیاز دهید :</span>
+
+          {score === 0 ? (
+            <>
+              <FaRegStar
+                onClick={() => starRatingHandler(1)}
+                className={styles.comment_icon}
+              />
+              <FaRegStar
+                onClick={() => starRatingHandler(2)}
+                className={styles.comment_icon}
+              />
+              <FaRegStar
+                onClick={() => starRatingHandler(3)}
+                className={styles.comment_icon}
+              />
+              <FaRegStar
+                onClick={() => starRatingHandler(4)}
+                className={styles.comment_icon}
+              />
+              <FaRegStar
+                onClick={() => starRatingHandler(5)}
+                className={styles.comment_icon}
+              />
+            </>
+          ) : (
+            <>
+              {new Array(score).fill(0).map(() => (
+                <FaStar
+                  className={styles.comment_icon}
+                  key={crypto.randomUUID()}
+                />
+              ))}
+              {new Array(5 - score).fill(0).map(() => (
+                <FaRegStar
+                  className={styles.comment_icon}
+                  key={crypto.randomUUID()}
+                />
+              ))}
+            </>
+          )}
+        </div>
         <textarea
+          value={body}
+          onChange={(event) => setBody(event.target.value)}
           className={styles.comment_textarea}
           placeholder="نظر خود را بنویسید ..."
         ></textarea>
+        <button onClick={addCommentHandler} className={styles.addBtn}>
+          ثبت{" "}
+        </button>
       </form>
     </div>
   );

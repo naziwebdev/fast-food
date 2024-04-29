@@ -25,6 +25,16 @@
   color: #333;
 }
 
+.comment_score{
+  display: flex;
+  gap: 10px;
+}
+
+.comment_icon{
+  color: #ffd40d;
+  cursor: pointer;
+}
+
 .comment_textarea {
   resize: none;
   padding: 1rem;
@@ -36,6 +46,22 @@
 .comment_textarea::placeholder {
   color: #333;
 }
+
+.addBtn{
+  width: 150px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  border-radius: 7px;
+  background-color: #f0abfc;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
 
 @media only screen and (max-width: 1200px) {
   .comment_input {

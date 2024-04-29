@@ -48,7 +48,14 @@ export default function Register({ show }) {
         title: "ثبت نام با موفقیت انجام شد",
         icon: "success",
         buttons: "بستن",
-      });
+      }).then((value) => {
+        if (value) {
+          setName("");
+          setEmail("");
+          setPhone("");
+          setPassword("");
+        }
+      })
     } else {
       swal({
         title: "ثبت نام با شکست مواجه شد",

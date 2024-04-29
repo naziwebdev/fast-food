@@ -46,7 +46,7 @@ export default function Tabs({ product }) {
                 btnActive === "btn3" && styles.btn_icon2
               }`}
             />
-            کامنت ها ({product.comments.length})
+            کامنت ها ({product.comments.filter(item => item.isAccept !=0).length.toLocaleString("fa")})
           </button>
         </div>
         <div className={styles.tabs_content}>
@@ -56,7 +56,8 @@ export default function Tabs({ product }) {
             <Description product={JSON.parse(JSON.stringify(product))} />
           ) : (
             btnActive === "btn3" && (
-              <Comments product={JSON.parse(JSON.stringify(product))} />
+              <Comments productID={JSON.parse(JSON.stringify(product._id))}
+              comments={JSON.parse(JSON.stringify(product.comments))} />
             )
           )}
         </div>

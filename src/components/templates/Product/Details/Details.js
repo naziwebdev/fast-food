@@ -32,7 +32,7 @@ export default function Details({ product }) {
       
          }
         </div>
-        <p className={styles.review_count}>(تعداد کامنت {product.comments.length.toLocaleString("fa")})</p>
+        <p className={styles.review_count}>(تعداد کامنت {product.comments.filter(item => item.isAccept !=0).length.toLocaleString("fa")})</p>
       </div>
       <div className={styles.details_title}>{product.title}</div>
       <h4 className={styles.details_price}>
@@ -49,7 +49,7 @@ export default function Details({ product }) {
           <div className={styles.showCount}>1</div>
           <div className={styles.minusBtn}>-</div>
         </div>
-        <div className={styles.addBtn}>افزودن به سبد خرید</div>
+        <button className={styles.addBtn}>افزودن به سبد خرید</ button>
       </div>
       <di className={styles.favorite}>
         افزودن به علاقه مندی ها
