@@ -43,7 +43,7 @@ export default function MoreProducts({product}) {
 
           {product?.map(item => (
             <SwiperSlide key={item._id}>
-            <ProductCard isfull={true} product={item}/>
+            <ProductCard remove={false} isfull={true} product={item}/>
           </SwiperSlide>
           ))}
         </Swiper>

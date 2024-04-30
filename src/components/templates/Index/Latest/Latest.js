@@ -22,7 +22,7 @@ const mainProduct = JSON.parse(JSON.stringify(products))
        <div data-aos="fade-up" className={styles.card_container}>
 
         {mainProduct.map(item => (
-          <ProductCard key={item._id} isfull={false} product={item}/>
+          <ProductCard key={item._id} remove={false} isfull={false} product={item}/>
         ))}
        </div>
         

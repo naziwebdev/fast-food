@@ -19,14 +19,10 @@ export async function GET(req) {
           { name: payloadToken.userName },
           "-password -refreshToken -__v"
         );
-      } else {
-        return Response.json({ message: "token isnot valid" }, { status: 401 });
       }
-    } else {
-      return Response.json({ message: "not found token" }, { status: 401 });
     }
 
-    return Response.json(user, { status: 401 });
+    return Response.json(user);
   } catch (error) {
     return Response.json({ message: error }, { status: 500 });
   }

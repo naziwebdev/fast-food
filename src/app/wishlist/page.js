@@ -8,6 +8,8 @@ import wishlistModel from "@/models/wishlist";
 import { authUser } from "@/utils/auth";
 import { FaRegHeart } from "react-icons/fa";
 import Link from "next/link";
+import { RiDeleteBin5Fill } from "react-icons/ri";
+
 
 export default async function page() {
   const route = [{ id: 1, title: "علاقه مندی ها", href: "/wishlist" }];
@@ -31,7 +33,11 @@ export default async function page() {
       <div data-aos="fade-up" className={styles.wishlist_container}>
         {mainWishlist.length != 0 &&
           mainWishlist.map((item) => (
-            <ProductCard key={item._id} isfull={false} product={item.product} />
+            <div className={styles.product_wrapper}>
+                
+                <ProductCard key={item._id} remove={true} isfull={false} product={item.product} />
+            </div>
+          
           ))}
 
         {mainWishlist.length === 0 && (

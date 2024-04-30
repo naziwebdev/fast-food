@@ -1,12 +1,13 @@
 import styles from "./ProductCard.module.css";
 import Image from "next/image";
 import { FaRegStar, FaStar } from "react-icons/fa";
-import { FaRegHeart } from "react-icons/fa";
-import { FaSearch } from "react-icons/fa";
 import { SlBasket } from "react-icons/sl";
 import Link from "next/link";
+import FavoriteBtn from "@/components/modules/FavoriteBtn/FavoriteBtn";
+import RemoveFavoriteBtn from "../RemoveFavoriteBtn/RemoveFavoriteBtn";
 
-export default function ProductCard({ isfull, product }) {
+
+export default function ProductCard({ remove ,isfull, product }) {
 
   return (
     <div className={`${styles.card} ${isfull && styles.full_card} `}>
@@ -20,12 +21,13 @@ export default function ProductCard({ isfull, product }) {
         />
         <div className={styles.card_actions}>
           <div className={styles.card_actions_icons}>
-            <FaSearch />
-            <FaRegHeart />
+            {remove ? <RemoveFavoriteBtn/> :
+            <FavoriteBtn product={product._id} />
+  }
           </div>
           <div className={styles.card_addBtn}>
             <SlBasket className={styles.card_icon} />
-            <p className={styles.card_addText}>انتخاب گزینه ها</p>
+            <p className={styles.card_addText}>افزودن به سبد خرید</p>
           </div>
         </div>
       </div>

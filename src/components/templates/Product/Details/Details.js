@@ -1,6 +1,6 @@
 import styles from "./Details.module.css";
 import { FaRegStar, FaStar } from "react-icons/fa";
-import FavoriteBtn from "./FavoriteBtn";
+import FavoriteBtn from "@/components/modules/FavoriteBtn/FavoriteBtn";
 
 export default function Details({ product }) {
   return (
@@ -51,7 +51,10 @@ export default function Details({ product }) {
         </div>
         <button className={styles.addBtn}>افزودن به سبد خرید</ button>
       </div>
-      <FavoriteBtn/>
+      <div className={styles.favorite}>
+      افزودن به علاقه مندی ها
+      <FavoriteBtn product={product?._id}/>
+      </div>
       <div className={styles.tags}>
         <span className={styles.tag}> برچسب ها :</span>
         <p className={styles.details_text3}>
