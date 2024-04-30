@@ -1,0 +1,31 @@
+.info{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.info_text2{
+    color: #999;
+}
+
+.info_title{
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.info_content{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.info_text{
+    color: #555;
+    font-size: 1.1rem;
+}
+
+
+.info_icon{
+    font-size: 1.4rem;
+    color: #f0abfc;
+}
