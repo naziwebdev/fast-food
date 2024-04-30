@@ -1,0 +1,14 @@
+.favorite{
+    padding-top: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.05rem;
+}
+
+.favorite_icon{
+    order: -1;
+    color: #d946ef;
+    cursor: pointer;
+    font-size: 1.4rem;
+}

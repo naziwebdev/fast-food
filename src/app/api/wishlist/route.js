@@ -12,6 +12,12 @@ export async function POST(req) {
       throw error;
     });
 
+    const existBefore = await wishlistModel.findOne({user , product})
+
+    if(existBefore){
+      return Response.json({message:'this item exist already'},{status:409})
+    }
+
     const wishItem = await wishlistModel.create({ user, product });
 
     return Response.json(
