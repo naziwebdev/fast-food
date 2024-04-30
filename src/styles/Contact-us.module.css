@@ -5,16 +5,55 @@
   .contact_container{
     display: flex;
     justify-content: space-around;
-    align-items: center;
     gap: 1rem;
   
   }
   
+
+  .contact_container2{
+    margin-bottom: 7rem;
+    display: flex;
+    justify-content: space-around;
+    gap: 3rem;
+  }
+
+  .map_details{
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+  }
+
+  .map_subTitle{
+    color: #999;
+  }
   
+
+  .map_title{
+   font-size: .95rem;
+  ;
+  }
+
+  .map_text{
+    color: #555;
+  }
+
+
+  .map_link{
+    text-decoration: underline;
+    color: #333;
+  }
+
   @media only screen and (max-width: 850px) {
-    .contact_container{
+    .contact_container {
       flex-direction: column;
-      gap: 3rem;
+      gap: 4.5rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contact_container2{
+      flex-direction: column;
+      gap: 7rem;
       justify-content: center;
       align-items: center;
     }
