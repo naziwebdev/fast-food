@@ -1,0 +1,21 @@
+.contact_wrapper {
+    padding: 4rem;
+  }
+  
+  .contact_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  
+  
+  
+  @media only screen and (max-width: 500px) {
+    .contact_wrapper {
+      padding: 2rem;
+    }
+  }
+  
+  
+  
