@@ -14,6 +14,8 @@
     justify-content: space-between;
     align-items: center;
     color: #fff;
+    gap: .5rem;
+    flex-wrap: wrap;
 }
 
 .order_date{
@@ -26,3 +28,12 @@
     font-size: .8rem;
     border-radius: 10px;
 }
+
+@media only screen and (max-width:500px) {
+   .order_msg{
+    font-size: .9rem;
+   }
+   .order_date{
+    font-size: .8rem;
+   }
+   }

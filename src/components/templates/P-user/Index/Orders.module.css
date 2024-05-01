@@ -1,4 +1,4 @@
-.orders{
+.orders {
   padding: 1.5rem;
   background-color: #fff;
   border-radius: 10px;
@@ -12,6 +12,8 @@
   justify-content: space-between;
   padding-bottom: 15px;
   border-bottom: 1px solid #dadada;
+  gap: .8rem;
+  flex-wrap: wrap;
 }
 
 .orders_link {
@@ -25,6 +27,18 @@
 .orders_wrapper {
   margin-top: 15px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
   gap: 0.8rem;
 }
+
+@media only screen and (max-width:1010px) {
+  .orders{
+    width: 100%;
+  }
+ }
+
+@media only screen and (max-width:350px) {
+  .orders{
+  padding: 1rem;
+  }
+ }
