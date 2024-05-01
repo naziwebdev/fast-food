@@ -1,0 +1,28 @@
+.order{
+    width: 100%;
+    padding: 1rem;
+    background-color: #c026d3;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+
+.order_content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+}
+
+.order_date{
+    font-size: .85rem;
+}
+
+.order_support{
+    background-color: #2e1065;
+    padding:.5rem ;
+    font-size: .8rem;
+    border-radius: 10px;
+}

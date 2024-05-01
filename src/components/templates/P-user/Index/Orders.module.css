@@ -1,0 +1,30 @@
+.orders{
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 12px 1px rgba(123, 122, 122, 0.228);
+  width: 50%;
+}
+
+.orders_titleBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #dadada;
+}
+
+.orders_link {
+  font-size: 0.97rem;
+  color: #c026d3;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.orders_wrapper {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}

@@ -14,8 +14,8 @@ export default function Index() {
           <Box />
         </div>
         <div className={styles.user_details}>
-          <Tickets/>
           <Orders/>
+          <Tickets/>
         </div>
       </div>
     </UserPanelLayout>
