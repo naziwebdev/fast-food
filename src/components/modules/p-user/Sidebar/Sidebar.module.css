@@ -2,18 +2,16 @@
   flex: 1;
   height: 100dvh;
   background-color: #2e1065;
-
 }
 
-
-.sidebar_title{
-  padding:2rem;
-  border-bottom: .5px solid #777;
+.sidebar_title {
+  padding: 2rem;
+  border-bottom: 0.5px solid #777;
   color: #fff;
   text-align: center;
 }
 
-.sidebar_nav{
+.sidebar_nav {
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -22,12 +20,28 @@
   font-size: 1.1rem;
 }
 
-.sidebar_link{
+.sidebar_link {
   display: flex;
   gap: 15px;
- align-items: center;
+  align-items: center;
 }
 
-.sidebar_icon{
-font-size: 1.2rem;
+.sidebar_icon {
+  font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 530px) {
+  .sidebar_title {
+    display: none;
+  }
+
+  .list_text {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .sidebar_nav {
+    padding:2rem 1rem;
+  }
 }

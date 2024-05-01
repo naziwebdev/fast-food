@@ -5,3 +5,26 @@
 .uPanel_wrapper{
    width: 82%;
 }
+
+
+@media only screen and (max-width:1300px) {
+    .uPanel_wrapper{
+        width: 77%;
+     }
+}
+
+@media only screen and (max-width:950px) {
+    .uPanel_wrapper{
+        width: 70%;
+     }
+}
+@media only screen and (max-width:660px) {
+    .uPanel_wrapper{
+        width: 62%;
+     }
+}
+@media only screen and (max-width:530px) {
+    .uPanel_wrapper{
+        width: 95%;
+     }
+}

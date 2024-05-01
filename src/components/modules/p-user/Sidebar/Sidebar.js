@@ -7,7 +7,6 @@ import { MdInsertComment } from "react-icons/md";
 import { BiSolidCalendarHeart } from "react-icons/bi";
 import { RiAccountPinBoxFill } from "react-icons/ri";
 
-
 export default function Sidebar() {
   return (
     <div className={styles.sidebar}>
@@ -16,37 +15,37 @@ export default function Sidebar() {
         <li className={styles.sidebar_item}>
           <Link href="/" className={styles.sidebar_link}>
             <HiHome className={styles.sidebar_icon} />
-            پیشخوان
+            <p className={styles.list_text}>پیشخوان</p>
           </Link>
         </li>
         <li className={styles.sidebar_item}>
           <Link href="/" className={styles.sidebar_link}>
             <IoBagHandle className={styles.sidebar_icon} />
-            سفارش ها
+            <p className={styles.list_text}>سفارش ها</p>
           </Link>
         </li>
         <li className={styles.sidebar_item}>
           <Link href="/" className={styles.sidebar_link}>
             <HiTicket className={styles.sidebar_icon} />
-            تیکت ها
+            <p className={styles.list_text}>تیکت ها</p>{" "}
           </Link>
         </li>
         <li className={styles.sidebar_item}>
           <Link href="/" className={styles.sidebar_link}>
             <MdInsertComment className={styles.sidebar_icon} />
-            کامنت ها
+            <p className={styles.list_text}>کامنت ها</p>
           </Link>
         </li>
         <li className={styles.sidebar_item}>
           <Link href="/" className={styles.sidebar_link}>
             <BiSolidCalendarHeart className={styles.sidebar_icon} />
-            علاقه مندی ها
+            <p className={styles.list_text}>علاقه مندی ها</p>
           </Link>
         </li>
         <li className={styles.sidebar_item}>
           <Link href="/" className={styles.sidebar_link}>
             <RiAccountPinBoxFill className={styles.sidebar_icon} />
-            جزییات اکانت
+            <p className={styles.list_text}>جزییات اکانت</p>
           </Link>
         </li>
       </ul>
