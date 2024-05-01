@@ -1,0 +1,28 @@
+.ticket{
+    width: 100%;
+    padding: 1rem;
+    background-color: #2e1065;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+
+.ticket_content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+}
+
+.ticket_date{
+    font-size: .85rem;
+}
+
+.ticket_support{
+    background-color: #c026d3;
+    padding:.5rem ;
+    font-size: .8rem;
+    border-radius: 10px;
+}

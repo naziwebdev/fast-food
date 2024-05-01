@@ -2,7 +2,7 @@
     background-color: #fafafa;
     width: 100%;
     height:calc(100vh - 88px); 
-    padding: 4rem;
+    padding: 2rem;
 }
 
 .box_container{
@@ -13,15 +13,23 @@
     gap: 1rem;
 }
 
+.user_details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:2rem;
+    margin-top: 3rem;
+}
+
 
 
 @media only screen and (max-width:480px) {
     .index_wrapper{
-        padding:2.5rem 1.5rem;
+        padding:2rem 1.5rem;
     }
  }
 @media only screen and (max-width:380px) {
     .index_wrapper{
-        padding:2.5rem 1rem;
+        padding:2rem 1rem;
     }
  }

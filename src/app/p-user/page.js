@@ -1,7 +1,8 @@
 import styles from "@/styles/p-user/Index.module.css";
 import UserPanelLayout from "@/components/layouts/UserPanelLayout";
 import Box from "@/components/templates/P-user/Index/Box";
-
+import Tickets from "@/components/templates/P-user/Index/Tickets";
+import Orders from "@/components/templates/P-user/Index/Orders";
 export default function Index() {
   return (
     <UserPanelLayout>
@@ -11,6 +12,10 @@ export default function Index() {
           <Box />
           <Box />
           <Box />
+        </div>
+        <div className={styles.user_details}>
+          <Tickets/>
+          <Orders/>
         </div>
       </div>
     </UserPanelLayout>
