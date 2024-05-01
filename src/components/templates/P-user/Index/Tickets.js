@@ -18,6 +18,9 @@ export default function Tickets() {
         <TicketCard/>
         <TicketCard/>
         <TicketCard/>
+        {/* <h2 className={styles.empty_title}>
+          تیکتی ثبت نشده
+        </h2> */}
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ export default function Sidebar() {
       <h4 className={styles.sidebar_title}>کاربر عزیز به پنل خوش آمدید</h4>
       <ul className={styles.sidebar_nav}>
         <li className={styles.sidebar_item}>
-          <Link href="/" className={styles.sidebar_link}>
+          <Link href="/p-user" className={styles.sidebar_link}>
             <HiHome className={styles.sidebar_icon} />
             <p className={styles.list_text}>پیشخوان</p>
           </Link>
@@ -37,7 +37,7 @@ export default function Sidebar() {
           </Link>
         </li>
         <li className={styles.sidebar_item}>
-          <Link href="/" className={styles.sidebar_link}>
+          <Link href="/p-user/wishlist" className={styles.sidebar_link}>
             <BiSolidCalendarHeart className={styles.sidebar_icon} />
             <p className={styles.list_text}>علاقه مندی ها</p>
           </Link>

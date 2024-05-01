@@ -1,8 +1,6 @@
 import { hash, compare } from "bcrypt";
 import { sign, verify } from "jsonwebtoken";
-import connectTodb from "@/configs/db";
-import Usermodel from "@/models/user";
-import { cookies } from "next/headers";
+
 
 export const hashPassword = async (password) => {
   const hashedPassword = await hash(password, 12);
@@ -38,19 +36,3 @@ export const verifyAccessToken = (token) => {
   }
 };
 
-export const authUser = async () => {
-  connectTodb();
-
-  const token = cookies().get("token");
-  let user = null;
-
-  if (token) {
-    const tokenPayload = verifyAccessToken(token.value);
-
-    if (tokenPayload) {
-      user = await Usermodel.findOne({ name: tokenPayload.userName });
-    }
-  }
-
-  return user;
-};

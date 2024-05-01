@@ -19,6 +19,9 @@ export default function Orders() {
        <OrderCard/>
        <OrderCard/>
        <OrderCard/>
+         {/* <h2 className={styles.empty_title}>
+          سفارشی ثبت نشده
+        </h2> */}
       </div>
     </div>
   );

@@ -8,10 +8,10 @@ export default function Index() {
     <UserPanelLayout>
       <div className={styles.index_wrapper}>
         <div className={styles.box_container}>
-          <Box />
-          <Box />
-          <Box />
-          <Box />
+          <Box  title={'مجموع تیکت ها'} count={10}/>
+          <Box  title={'مجموع کامنت ها'} count={0}/>
+          <Box title={'مجموع سفارش ها'} count={20}/>
+          <Box title={'مجموع علاقه مندی ها'} count={5}/>
         </div>
         <div className={styles.user_details}>
           <Orders/>

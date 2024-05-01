@@ -31,6 +31,12 @@
   gap: 0.8rem;
 }
 
+.empty_title{
+  color:#c026d3 ;
+  text-align: center;
+  padding: 8rem 0;
+}
+
 @media only screen and (max-width:1010px) {
   .orders{
     width: 100%;

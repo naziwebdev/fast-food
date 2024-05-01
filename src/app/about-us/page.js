@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "@/components/modules/Navbar/Navbar";
-import { authUser } from "@/utils/auth";
+import { authUser } from "@/utils/serverHelper";
 import styles from "@/styles/About-us.module.css";
 import BreadCrumb from "@/components/modules/BreadCrumb/BreadCrumb";
 import Image from "next/image";

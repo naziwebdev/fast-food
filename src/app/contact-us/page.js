@@ -6,7 +6,7 @@ import ContactForm from "@/components/templates/Contact-us/ContactForm/ContactFo
 import Information from "@/components/templates/Contact-us/Information/Information";
 import Map from "@/components/templates/Contact-us/Map/Map";
 import Link from "next/link";
-import { authUser } from "@/utils/auth";
+import { authUser } from "@/utils/serverHelper";
 
 export default async function page() {
   const user = await authUser();

@@ -4,7 +4,7 @@ import Latest from "@/components/templates/Index/Latest/Latest";
 import Promote from "@/components/templates/Index/Promote/Promote";
 import Footer from "@/components/modules/Footer/Footer";
 import Articles from "@/components/templates/Index/Articles/Articles";
-import { authUser } from "@/utils/auth";
+import { authUser } from "@/utils/serverHelper";
 
 export default async function Home() {
   let user = await authUser();

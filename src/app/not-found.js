@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "@/components/modules/Navbar/Navbar";
-import { authUser } from "@/utils/auth";
+import { authUser } from "@/utils/serverHelper";
 import Image from "next/image";
 import styles from "@/styles/Not-Found.module.css";
 import { BsSearchHeart } from "react-icons/bs";

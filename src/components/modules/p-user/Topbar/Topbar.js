@@ -36,7 +36,7 @@ export default function Topbar() {
             className={styles.topbar_img}
           />
           <div className={styles.topbar_user}>
-            <p>شیما رستگار</p>
+            <h5>شیما رستگار</h5>
             <span className={styles.user_phone}>09127645878</span>
           </div>
         </div>

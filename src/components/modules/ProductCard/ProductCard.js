@@ -7,7 +7,7 @@ import FavoriteBtn from "@/components/modules/FavoriteBtn/FavoriteBtn";
 import RemoveFavoriteBtn from "../RemoveFavoriteBtn/RemoveFavoriteBtn";
 
 
-export default function ProductCard({ remove ,isfull, product }) {
+export default function ProductCard({ remove ,isfull, product}) {
 
   return (
     <div className={`${styles.card} ${isfull && styles.full_card} `}>

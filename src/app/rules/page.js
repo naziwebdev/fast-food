@@ -2,7 +2,7 @@ import styles from "@/styles/Rules.module.css";
 import Navbar from "@/components/modules/Navbar/Navbar";
 import Footer from "@/components/modules/Footer/Footer";
 import BreadCrumb from "@/components/modules/BreadCrumb/BreadCrumb";
-import { authUser } from "@/utils/auth";
+import { authUser } from "@/utils/serverHelper";
 export default async function page() {
   const user = await authUser();
   const route = [{ id: 1, title: "شرایط و قوانین", href: "/rules" }];

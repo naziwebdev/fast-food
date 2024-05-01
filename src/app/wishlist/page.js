@@ -5,7 +5,7 @@ import BreadCrumb from "@/components/modules/BreadCrumb/BreadCrumb";
 import ProductCard from "@/components/modules/ProductCard/ProductCard";
 import connectTodb from "@/configs/db";
 import wishlistModel from "@/models/wishlist";
-import { authUser } from "@/utils/auth";
+import { authUser } from "@/utils/serverHelper";
 import { FaRegHeart } from "react-icons/fa";
 import Link from "next/link";
 import { RiDeleteBin5Fill } from "react-icons/ri";

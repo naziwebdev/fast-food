@@ -1,7 +1,7 @@
 import styles from "@/styles/Product.module.css";
 import Navbar from "@/components/modules/Navbar/Navbar";
 import Footer from "@/components/modules/Footer/Footer";
-import { authUser } from "@/utils/auth";
+import { authUser } from "@/utils/serverHelper";
 import Gallery from "@/components/templates/Product/Gallery/Gallery";
 import Details from "@/components/templates/Product/Details/Details";
 import BreadCrumb from "@/components/modules/BreadCrumb/BreadCrumb";
