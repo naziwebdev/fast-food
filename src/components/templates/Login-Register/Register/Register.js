@@ -1,3 +1,5 @@
+"use client"
+
 import styles from "./Register.module.css";
 import Sms from "../Sms/Sms";
 import Link from "next/link";
@@ -8,7 +10,6 @@ import registerValidator from "@/validations/register";
 export default function Register({ show }) {
   const [isRegisterWithPass, setIsRegisterWithPass] = useState(false);
   const [isRegisterWithOtp, setIsRegisterWithOtp] = useState(false);
-  
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -24,7 +25,7 @@ export default function Register({ show }) {
     };
 
     try {
-     await registerValidator.validate(user);
+      await registerValidator.validate(user);
     } catch (err) {
       return swal({
         title: err,
@@ -47,15 +48,16 @@ export default function Register({ show }) {
       swal({
         title: "ثبت نام با موفقیت انجام شد",
         icon: "success",
-        buttons: "بستن",
+        buttons: "ورود",
       }).then((value) => {
         if (value) {
           setName("");
           setEmail("");
           setPhone("");
           setPassword("");
+          location.replace("/login-register");
         }
-      })
+      });
     } else {
       swal({
         title: "ثبت نام با شکست مواجه شد",

@@ -1,3 +1,4 @@
+"use client";
 import styles from "./Sidebar.module.css";
 import Link from "next/link";
 import { HiHome } from "react-icons/hi";
@@ -7,8 +8,34 @@ import { MdInsertComment } from "react-icons/md";
 import { BiSolidCalendarHeart } from "react-icons/bi";
 import { RiAccountPinBoxFill } from "react-icons/ri";
 import { IoMdLogOut } from "react-icons/io";
+import swal from "sweetalert";
 
 export default function Sidebar() {
+  const logoutHandler = async () => {
+    swal({
+      title: "آیا از خروج اطمینان دارید؟",
+      icon: "warning",
+      buttons: ["نه", "آره"],
+    }).then(async (result) => {
+      if (result) {
+        const res = await fetch("/api/auth/logout", {
+          method: "POST",
+        });
+
+        if (res.status === 200) {
+          await res.json();
+          location.replace('/login-register')
+        } else {
+          swal({
+            title: "مشکلی پیش اومده",
+            icon: "error",
+            buttons: "تلاش دوباره",
+          });
+        }
+      }
+    });
+  };
+
   return (
     <div className={styles.sidebar}>
       <h4 className={styles.sidebar_title}>کاربر عزیز به پنل خوش آمدید</h4>
@@ -50,7 +77,7 @@ export default function Sidebar() {
           </Link>
         </li>
       </ul>
-      <button className={styles.logout}>
+      <button onClick={logoutHandler} className={styles.logout}>
         <IoMdLogOut className={styles.logout_icon} />
         <span className={styles.logout_text}> خروج</span>
       </button>

@@ -45,11 +45,12 @@ const Login = ({ show }) => {
       swal({
         title: " لاگین با موفقیت انجام شد",
         icon: "success",
-        buttons: "بستن",
+        buttons: "صفحه اصلی",
       }).then((value) => {
         if (value) {
           setIdentifier("");
           setPassword("");
+          location.replace('/')
         }
       });
     } else {
