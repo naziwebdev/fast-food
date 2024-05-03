@@ -4,6 +4,7 @@ import wishlistValidation from "@/validations/wishlist";
 
 export async function POST(req) {
   try {
+
     connectTodb();
     const { user, product } = await req.json();
 
@@ -28,3 +29,4 @@ export async function POST(req) {
     return Response.json({ message: error }, { status:error.statusCode || 500 });
   }
 }
+

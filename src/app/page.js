@@ -9,7 +9,6 @@ import { authUser } from "@/utils/serverHelper";
 export default async function Home() {
   let user = await authUser();
 
- 
   return (
     <div className="">
       <Navbar isLogin={user ? true : false} />
