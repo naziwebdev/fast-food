@@ -71,7 +71,7 @@ export default function Sidebar() {
           </Link>
         </li>
         <li className={styles.sidebar_item}>
-          <Link href="/" className={styles.sidebar_link}>
+          <Link href="/p-user/account-details" className={styles.sidebar_link}>
             <RiAccountPinBoxFill className={styles.sidebar_icon} />
             <p className={styles.list_text}>جزییات اکانت</p>
           </Link>

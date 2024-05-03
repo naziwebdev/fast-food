@@ -17,10 +17,10 @@ export default function DataTable({ comments }) {
           </tr>
         </thead>
         <tbody>
-          {comments ? (
+          {comments.length != 0 ? (
             comments.map((item, index) => (
               <tr key={item.id} className={styles.table_row}>
-                <td className={styles.table_col}>{index+1}</td>
+                <td className={styles.table_col}>{index + 1}</td>
                 <td>{new Date(item.date).toLocaleDateString("fa-IR")}</td>
                 <td>pizaa</td>
                 <td>
@@ -41,7 +41,9 @@ export default function DataTable({ comments }) {
               </tr>
             ))
           ) : (
-            <div className={styles.empty_comment}>هنوز کامنتی ثبت نکردید</div>
+            <tr>
+              <td className={styles.empty_comment}>هنوز کامنتی ثبت نکردید</td>
+            </tr>
           )}
         </tbody>
       </table>
