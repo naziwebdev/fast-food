@@ -31,7 +31,7 @@ export default function Sidebar() {
           </Link>
         </li>
         <li className={styles.sidebar_item}>
-          <Link href="/" className={styles.sidebar_link}>
+          <Link href="/p-user/comments" className={styles.sidebar_link}>
             <MdInsertComment className={styles.sidebar_icon} />
             <p className={styles.list_text}>کامنت ها</p>
           </Link>
