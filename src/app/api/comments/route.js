@@ -7,7 +7,7 @@ export async function POST(req) {
   try {
     connectTodb();
 
-    const { username, email, title, body, productID, score } = await req.json();
+    const {user,username, email, title, body, productID, score } = await req.json();
 
 
 
@@ -37,6 +37,7 @@ export async function POST(req) {
       });
 
     const comment = await commentsModel.create({
+      user,
       username,
       email,
       title,

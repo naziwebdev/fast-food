@@ -33,7 +33,7 @@ export default async function Product({ params }) {
           <Gallery />
           <Details product={JSON.parse(JSON.stringify(product))} />
         </div>
-        <Tabs product={JSON.parse(JSON.stringify(product))} />
+        <Tabs product={JSON.parse(JSON.stringify(product))} userID={user?.id}/>
         <MoreProducts product={JSON.parse(JSON.stringify(relatedProduct))} />
       </div>
       <Footer />

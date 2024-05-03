@@ -9,7 +9,7 @@ import Comments from "./Comments/Comments";
 import Description from "./Description/Description/Description";
 import Infos from "./Infos/Infos";
 
-export default function Tabs({ product }) {
+export default function Tabs({ product, userID }) {
   const [btnActive, setBtnActive] = useState("btn1");
   return (
     <div data-aos="zoom-in-down">
@@ -46,7 +46,11 @@ export default function Tabs({ product }) {
                 btnActive === "btn3" && styles.btn_icon2
               }`}
             />
-            کامنت ها ({product.comments.filter(item => item.isAccept !=0).length.toLocaleString("fa")})
+            کامنت ها (
+            {product.comments
+              .filter((item) => item.isAccept != 0)
+              .length.toLocaleString("fa")}
+            )
           </button>
         </div>
         <div className={styles.tabs_content}>
@@ -56,8 +60,11 @@ export default function Tabs({ product }) {
             <Description product={JSON.parse(JSON.stringify(product))} />
           ) : (
             btnActive === "btn3" && (
-              <Comments productID={JSON.parse(JSON.stringify(product._id))}
-              comments={JSON.parse(JSON.stringify(product.comments))} />
+              <Comments
+                productID={JSON.parse(JSON.stringify(product._id))}
+                comments={JSON.parse(JSON.stringify(product.comments))}
+                userID={userID}
+              />
             )
           )}
         </div>

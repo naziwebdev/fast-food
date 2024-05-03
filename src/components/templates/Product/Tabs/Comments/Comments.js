@@ -6,13 +6,18 @@ import { FaStar, FaRegStar } from "react-icons/fa";
 import { useState } from "react";
 import commentValidation from "@/validations/comment";
 import swal from "sweetalert";
+import Link from "next/link";
 
-export default function Comments({ productID, comments }) {
+
+export default function Comments({ productID, comments, userID }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [body, setBody] = useState("");
   const [title, setTitle] = useState("");
   const [score, setScore] = useState(0);
+
+  console.log(userID)
+
 
   const starRatingHandler = (rate) => {
     setScore(rate);
@@ -22,6 +27,7 @@ export default function Comments({ productID, comments }) {
     event.preventDefault();
 
     const comment = {
+      user:userID,
       username,
       email,
       title,
@@ -74,15 +80,22 @@ export default function Comments({ productID, comments }) {
     }
   };
 
+
+ 
+
   return (
     <div className={styles.comments}>
       <div className={styles.comment_container}>
-        {comments.map(
+        {comments.length != 0 ? comments.map(
           (comment) =>
             comment.isAccept != 0 && (
               <CommentCard key={comment._id} comment={comment} />
             )
-        )}
+        ):
+        <div className={styles.empty_comment}>
+          هنوز کامنتی ثبت نشده
+          </div>
+      }
       </div>
       <form className={styles.comment_form}>
         <input
@@ -155,9 +168,15 @@ export default function Comments({ productID, comments }) {
           className={styles.comment_textarea}
           placeholder="نظر خود را بنویسید ..."
         ></textarea>
-        <button onClick={addCommentHandler} className={styles.addBtn}>
-          ثبت{" "}
-        </button>
+        {userID ? (
+          <button onClick={addCommentHandler} className={styles.addBtn}>
+            ثبت{" "}
+          </button>
+        ) : (
+          <Link href='/login-register' className={styles.addBtn}>
+            ابتدا لاگین کنید
+          </Link>
+        )}
       </form>
     </div>
   );

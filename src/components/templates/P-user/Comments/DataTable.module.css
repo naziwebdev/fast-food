@@ -53,6 +53,15 @@
     outline: none;
 }
 
+.empty_comment{
+    text-align: center;
+    font-size: 1.5rem;
+    color: #555;
+    padding: 1rem;
+    background-color:#fae8ff;
+    border-radius: 10px;
+  }
+
 @media only screen and (max-width:500px) {
     .table{
         padding: 1rem;
