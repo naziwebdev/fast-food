@@ -33,25 +33,52 @@
 .sidebar_icon {
   font-size: 1.2rem;
 }
+
+.logout {
+  background-color: unset;
+  border: none;
+  outline: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 2rem;
+}
+
+.logout_icon {
+  font-size: 1.7rem;
+  color: #fff;
+}
+
 @media only screen and (max-width: 715px) {
   .sidebar_title,
   .sidebar_nav {
     padding: 2rem 1rem;
   }
+
+  .logout {
+    padding: 2rem 1rem;
+  }
 }
 
-@media only screen and (max-width:666px) {
-
-  .sidebar{
+@media only screen and (max-width: 666px) {
+  .sidebar {
     width: 100px;
   }
 
-  .sidebar_nav{
+  .sidebar_nav {
     align-items: center;
     font-size: 1.5rem;
   }
 
-  .sidebar_title {
+  .logout{
+    margin: 0 auto;
+  }
+
+  .sidebar_title,
+  .logout_text {
     display: none;
   }
 

@@ -6,6 +6,7 @@ import { HiTicket } from "react-icons/hi2";
 import { MdInsertComment } from "react-icons/md";
 import { BiSolidCalendarHeart } from "react-icons/bi";
 import { RiAccountPinBoxFill } from "react-icons/ri";
+import { IoMdLogOut } from "react-icons/io";
 
 export default function Sidebar() {
   return (
@@ -49,6 +50,10 @@ export default function Sidebar() {
           </Link>
         </li>
       </ul>
+      <button className={styles.logout}>
+        <IoMdLogOut className={styles.logout_icon} />
+        <span className={styles.logout_text}> خروج</span>
+      </button>
     </div>
   );
 }
