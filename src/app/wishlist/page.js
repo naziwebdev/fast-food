@@ -8,7 +8,6 @@ import wishlistModel from "@/models/wishlist";
 import { authUser } from "@/utils/serverHelper";
 import { FaRegHeart } from "react-icons/fa";
 import Link from "next/link";
-import { RiDeleteBin5Fill } from "react-icons/ri";
 
 
 export default async function page() {

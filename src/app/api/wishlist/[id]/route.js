@@ -16,7 +16,10 @@ export async function DELETE(req, { params }) {
       product: params.id,
     });
 
-    Response.json({ message: "user removed successfully" }, { status: 200 });
+    return Response.json(
+      { message: "wishlist item removed successfully" },
+      { status: 200 }
+    );
   } catch (error) {
     return Response.json({ message: error }, { status: 500 });
   }

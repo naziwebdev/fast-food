@@ -21,7 +21,7 @@ export default function ProductCard({ remove ,isfull, product}) {
         />
         <div className={styles.card_actions}>
           <div className={styles.card_actions_icons}>
-            {remove ? <RemoveFavoriteBtn/> :
+            {remove ? <RemoveFavoriteBtn product={product._id} /> :
             <FavoriteBtn product={product._id} />
   }
           </div>
