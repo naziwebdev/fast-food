@@ -53,7 +53,7 @@ export default function Sidebar() {
           </Link>
         </li>
         <li className={styles.sidebar_item}>
-          <Link href="/" className={styles.sidebar_link}>
+          <Link href="/p-user/tickets" className={styles.sidebar_link}>
             <HiTicket className={styles.sidebar_icon} />
             <p className={styles.list_text}>تیکت ها</p>{" "}
           </Link>
