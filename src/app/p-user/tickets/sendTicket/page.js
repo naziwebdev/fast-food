@@ -3,7 +3,10 @@ import UserPanelLayout from "@/components/layouts/UserPanelLayout"
 import SendTicket from '@/components/templates/P-user/Tickets/SendTicket'
 import Link from 'next/link'
 
+
+
 export default function page() {
+
   return (
     <UserPanelLayout>
        <div className={styles.sendTicket}>

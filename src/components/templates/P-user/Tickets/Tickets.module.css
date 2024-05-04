@@ -1,0 +1,68 @@
+.tickets{
+    padding-top:2rem;
+}
+
+.btns {
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    width: 50%;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 1px 16px 1px rgba(131, 130, 130, 0.157);
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+
+.btn {
+    border: none;
+    outline: none;
+    background-color: unset;
+    color: #333;
+    font-size: 1.08rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .btn_icon {
+    color: #555;
+    font-size: 1.2rem;
+  }
+  
+  .btn2 {
+    color: #c026d3;
+  }
+  
+  .tickets_wrapper{
+    margin-top: 2rem;
+    display: flex;
+     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+  }
+
+  @media only screen and (max-width:1000px) {
+    .btns {
+      width: 100%;
+    }
+    
+
+  }
+  
+
+  
+  @media only screen and (max-width: 550px) {
+    .btns {
+      flex-direction: column;
+      gap: 15px;
+      justify-content: center;
+    }
+  
+
+  }
+  

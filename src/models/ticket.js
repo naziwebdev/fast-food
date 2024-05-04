@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 require('./user')
+require('./department')
+require('./subDepartment')
 
 const schema = new mongoose.Schema({
     title:{
