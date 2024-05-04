@@ -22,11 +22,16 @@
     outline: none;
   }
 
-.select {
+.select{
   padding: 10px ;
   border: 1px solid #999;
   border-radius: 10px;
   outline: none;
+}
+
+.select option {
+  background-color: #c026d3;
+  color: #fff;
 }
 
 .textarea_wrapper{

@@ -32,7 +32,7 @@ export async function GET(req) {
   try {
     connectTodb();
     const departments = await departmentModel.find({}).lean();
-    return Response.json(departments);
+    return Response.json(departments , {status:200});
   } catch (error) {
     return Response.json({ message: error }, { status: 500 });
   }
