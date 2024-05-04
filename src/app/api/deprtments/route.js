@@ -28,6 +28,12 @@ export async function POST(req) {
   }
 }
 
-
-
-
+export async function GET(req) {
+  try {
+    connectTodb();
+    const departments = await departmentModel.find({}).lean();
+    return Response.json(departments);
+  } catch (error) {
+    return Response.json({ message: error }, { status: 500 });
+  }
+}
