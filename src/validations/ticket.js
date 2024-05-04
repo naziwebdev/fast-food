@@ -22,13 +22,24 @@ const ticketValidation = yup.object().shape({
 
 export default ticketValidation;
 
-
 const departmentValidation = yup.object().shape({
   title: yup
     .string()
     .required("این فیلد الزامی است")
     .min(3, "  باید حداقل 3 کارکتر باشد"),
-
 });
 
-export {departmentValidation}
+export { departmentValidation };
+
+const subDepartmentValidation = yup.object().shape({
+  title: yup
+    .string()
+    .required("این فیلد الزامی است")
+    .min(3, "  باید حداقل 3 کارکتر باشد"),
+    department: yup
+    .string()
+    .required("این فیلد  را وارد کنید")
+    .matches(/^[0-9a-fA-F]{24}$/),
+});
+
+export { subDepartmentValidation };
