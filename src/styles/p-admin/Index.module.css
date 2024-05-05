@@ -20,9 +20,18 @@
     gap: 2rem;
     margin-top: 3rem;
   }
+
+  .chart{
+    width: 100%;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 15px;
+    box-shadow: 0 1px 15px 1px rgba(146, 146, 146, 0.208);
+    box-sizing: border-box;
+  }
   
   @media only screen and (max-width: 1010px) {
-    .user_details {
+    .charts_wrapper  {
       flex-wrap: wrap;
       flex-direction: column-reverse;
     }
