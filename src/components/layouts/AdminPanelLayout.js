@@ -1,5 +1,5 @@
 import styles from "./UserPanelLayout.module.css";
-import Sidebar from "../modules/p-user/Sidebar/Sidebar";
+import Sidebar from "../modules/p-admin/Sidebar/Sidebar";
 import Topbar from "../modules/p-user/Topbar/Topbar";
 import { authUser } from "@/utils/serverHelper";
 import { redirect } from "next/navigation";
