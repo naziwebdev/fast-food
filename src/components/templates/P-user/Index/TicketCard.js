@@ -1,15 +1,21 @@
 import styles from "./TicketCard.module.css";
-export default function TicketCard() {
+import Link from "next/link";
+
+export default function TicketCard({ticket}) {
   return (
+    <Link href={`/p-user/tickets/answer/${ticket._id}`}>
     <div className={styles.ticket}>
       <div className={styles.ticket_content}>
-        <p className={styles.ticket_msg}>سلام سفارش ارسال نشده</p>
-        <span className={styles.ticket_date}>1403/2/12</span>
+        <p className={styles.ticket_msg}>{ticket?.body}</p>
+        <span className={styles.ticket_date}>{
+          new Date(ticket?.createdAt).toLocaleString("fa-IR")
+        }</span>
       </div>
       <div className={styles.ticket_content}>
-        <div className={styles.ticket_support}>واحد پشتیبانی</div>
-        <span className={styles.ticket_status}>پاسخ داده شده</span>
+        <div className={styles.ticket_support}>{ticket?.department.title}</div>
+        <span className={styles.ticket_status}> {ticket?.hasAnswer ? 'پاسخ داده شده' : 'پاسخ داده نشده'}</span>
       </div>
     </div>
+    </Link>
   );
 }
