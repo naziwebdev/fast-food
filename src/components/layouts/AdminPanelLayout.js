@@ -8,9 +8,11 @@ export default async function UserPanelLayout({ children }) {
 
   const user = await authUser()
 
-  if(!user){
+
+  if(user.role != 'ADMIN'){
     redirect('/login-register')
   }
+
   return (
     <div className={styles.aPanel_container}>
       <Sidebar />
