@@ -13,7 +13,7 @@ export default function TicketCard({ticket}) {
       </div>
       <div className={styles.ticket_content}>
         <div className={styles.ticket_support}>{ticket?.department.title}</div>
-        <span className={styles.ticket_status}> {ticket?.hasAnswer ? 'پاسخ داده شده' : 'پاسخ داده نشده'}</span>
+        <span className={`${ticket.hasAnswer === true ? styles.ticket_status : styles.ticket_status_yellow}`}> {ticket?.hasAnswer ? 'پاسخ داده شده' : 'پاسخ داده نشده'}</span>
       </div>
     </div>
     </Link>

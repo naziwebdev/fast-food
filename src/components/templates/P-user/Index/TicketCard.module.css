@@ -30,6 +30,14 @@
 }
 
 
+.ticket_status{
+    color: #84cc16;
+}
+
+.ticket_status_yellow{
+color: #fbbf24;
+}
+
 @media only screen and (max-width:500px) {
     .ticket_msg ,.ticket_status{
      font-size: .9rem;
