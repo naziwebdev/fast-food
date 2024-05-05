@@ -21,6 +21,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: .8rem;
+    flex-wrap: wrap;
 }
 
 .box_info{
@@ -68,4 +70,31 @@
     color: #fff;
     align-self: flex-end;
     direction: ltr;
+}
+
+
+@media only screen and (max-width:922px) {
+    .user_box,.admin_box{
+        width: 75%;
+    }
+    
+}
+
+@media only screen and (max-width:550px) {
+    .user_box,.admin_box{
+        width: 100%;
+    }
+    
+}
+
+@media only screen and (max-width:350px) {
+    .user_box,.admin_box{
+       border-radius: 15px;
+    }
+
+
+    .box_text{
+        font-size: .9rem;
+    }
+    
 }

@@ -26,7 +26,7 @@ export default async function page({ params }) {
       <div className={styles.answer}>
         <div className={styles.answer_titles}>
           <h2 className={styles.answer_title}> تیکت</h2>
-          <Link href="/p-user/sendTicket" className={styles.answer_link}>
+          <Link href="/p-user/tickets/sendTicket" className={styles.answer_link}>
             ارسال تیکت جدید
           </Link>
         </div>
