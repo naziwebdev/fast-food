@@ -3,7 +3,7 @@ import { BiSolidBell } from "react-icons/bi";
 import { FaSearch } from "react-icons/fa";
 import Image from "next/image";
 
-export default function Topbar() {
+export default function Topbar({user}) {
   return (
     <div className={styles.topbar}>
       <div className={styles.topbar_search}>
@@ -36,8 +36,8 @@ export default function Topbar() {
             className={styles.topbar_img}
           />
           <div className={styles.topbar_user}>
-            <h5>شیما رستگار</h5>
-            <span className={styles.user_phone}>09127645878</span>
+            <h5>{user?.name}</h5>
+            <span className={styles.user_phone}>{user?.phone}</span>
           </div>
         </div>
       

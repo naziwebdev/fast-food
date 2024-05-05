@@ -86,7 +86,7 @@
 .notif_list {
   position: absolute;
   width: 200px;
-  z-index: 99999;
+  z-index: 99999999999;
   bottom: -6rem;
   background-color: #2e1065;
   color: #fff;
@@ -101,6 +101,9 @@
   display: none;
 }
 
+.topbar_notif:hover .notif_list{
+  display:flex;
+}
 
 @media only screen and (max-width:1000px) {
  .topbar_search{
@@ -154,5 +157,11 @@ gap: .5rem;
     width: 100%;
     justify-content:center;
   }
- 
+
+  .notif_list {
+    width: 150px;
+    right: 0;
+    font-size: .7rem;
+    text-align: left;
+  }
  }

@@ -15,7 +15,7 @@ export default async function UserPanelLayout({ children }) {
     <div className={styles.uPanel_container}>
       <Sidebar />
       <div className={styles.uPanel_wrapper}>
-        <Topbar />
+        <Topbar user={user}/>
         {children}
       </div>
     </div>
