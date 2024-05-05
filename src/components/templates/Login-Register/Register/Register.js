@@ -6,8 +6,11 @@ import Link from "next/link";
 import { useState } from "react";
 import swal from "sweetalert";
 import registerValidator from "@/validations/register";
+import { useRouter } from "next/navigation";
 
 export default function Register({ show }) {
+ const router = useRouter()
+
   const [isRegisterWithPass, setIsRegisterWithPass] = useState(false);
   const [isRegisterWithOtp, setIsRegisterWithOtp] = useState(false);
 
@@ -55,7 +58,7 @@ export default function Register({ show }) {
           setEmail("");
           setPhone("");
           setPassword("");
-          location.replace("/login-register");
+          router.replace("/login-register")
         }
       });
     } else {

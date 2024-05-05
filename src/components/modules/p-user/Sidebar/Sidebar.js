@@ -9,8 +9,13 @@ import { BiSolidCalendarHeart } from "react-icons/bi";
 import { RiAccountPinBoxFill } from "react-icons/ri";
 import { IoMdLogOut } from "react-icons/io";
 import swal from "sweetalert";
+import { useRouter } from "next/navigation";
 
 export default function Sidebar() {
+
+  const router = useRouter()
+
+
   const logoutHandler = async () => {
     swal({
       title: "آیا از خروج اطمینان دارید؟",
@@ -24,7 +29,7 @@ export default function Sidebar() {
 
         if (res.status === 200) {
           await res.json();
-          location.replace('/login-register')
+          router.replace('/login-register')
         } else {
           swal({
             title: "مشکلی پیش اومده",

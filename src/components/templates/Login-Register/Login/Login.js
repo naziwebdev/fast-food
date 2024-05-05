@@ -5,9 +5,13 @@ import React, { useState } from "react";
 import Sms from "../Sms/Sms";
 import Link from "next/link";
 import loginValidation from "@/validations/login";
+import { useRouter } from "next/navigation";
 
 
 const Login = ({ show }) => {
+
+  const router = useRouter()
+
   const [isLoginWithOtp, setIsLoginWithOtp] = useState(false);
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
@@ -50,7 +54,7 @@ const Login = ({ show }) => {
         if (value) {
           setIdentifier("");
           setPassword("");
-          location.replace('/')
+          router.replace('/')
         }
       });
     } else {
