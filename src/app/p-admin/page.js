@@ -24,7 +24,7 @@ export default async function Index() {
           <Box title={"مجموع کاربر ها"} count={users.length} />
         </div>
         <div className={styles.charts_wrapper}>
-          <div className={styles.chart}>
+          <div className={`${styles.chart} ${styles.chart_padding} `}>
             <h5>آمار فروش</h5>
             <SaleChart />
           </div>

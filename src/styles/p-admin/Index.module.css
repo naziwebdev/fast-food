@@ -35,6 +35,10 @@
       flex-wrap: wrap;
       flex-direction: column-reverse;
     }
+
+    .chart_padding{
+      margin-bottom: 5rem;
+    }
   }
   
   @media only screen and (max-width: 480px) {
