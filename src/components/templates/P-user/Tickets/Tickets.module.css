@@ -46,6 +46,16 @@
     gap: .5rem;
   }
 
+
+  .tickets_empty{
+    text-align: center;
+    font-size: 1rem;
+    color: #555;
+    padding: 1rem;
+    background-color:#fae8ff;
+    border-radius: 10px;
+    margin-top: 1rem;
+  }
   @media only screen and (max-width:1000px) {
     .btns {
       width: 100%;

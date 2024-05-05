@@ -1,45 +1,54 @@
-const mongoose = require('mongoose')
-require('./user')
-require('./department')
-require('./subDepartment')
+const mongoose = require("mongoose");
+require("./user");
+require("./department");
+require("./subDepartment");
 
-const schema = new mongoose.Schema({
-    title:{
-        type:String,
-        required:true
+const schema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
     },
-    body:{
-        type:String,
-        required:true
+    body: {
+      type: String,
+      required: true,
     },
-    user:{
-        type:mongoose.Types.ObjectId,
-        ref:'User',
-        required: true,
+    user: {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
-    department:{
-        type:mongoose.Types.ObjectId,
-        ref:'Department',
-        required: true,
+    department: {
+      type: mongoose.Types.ObjectId,
+      ref: "Department",
+      required: true,
     },
-    subDepartment:{
-        type:mongoose.Types.ObjectId,
-        ref:'SubDepartment',
-        required: true,
+    subDepartment: {
+      type: mongoose.Types.ObjectId,
+      ref: "SubDepartment",
+      required: true,
     },
-    hasAnswer:{
-        type:Boolean,
-        default:false
+    hasAnswer: {
+      type: Boolean,
+      default: false,
     },
-    priority:{
-        type:Number,
-        required:true
+    priority: {
+      type: Number,
+      required: true,
     },
+    isAnswer: {
+      type: Boolean,
+      default: false,
+    },
+    mainTicketID: {
+      type: mongoose.Types.ObjectId,
+      ref: "Ticket",
+      required: false,
+    },
+  },
+  { timestamps: true }
+);
 
-},{timestamps:true})
+const model = mongoose.models.Ticket || mongoose.model("Ticket", schema);
 
-
-
-const model = mongoose.models.Ticket || mongoose.model('Ticket',schema)
-
-export default model
+export default model;
