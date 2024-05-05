@@ -1,0 +1,11 @@
+.aPanel_container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.aPanel_wrapper{
+   width:100%;
+
+}
+
+

@@ -1,6 +1,6 @@
 import styles from "@/styles/p-user/Index.module.css";
 import UserPanelLayout from "@/components/layouts/UserPanelLayout";
-import Box from "@/components/templates/P-user/Index/Box";
+import Box from "@/components/modules/BoxInfo/Box";
 import Tickets from "@/components/templates/P-user/Index/Tickets";
 import Orders from "@/components/templates/P-user/Index/Orders";
 import connectTodb from "@/configs/db";
@@ -10,6 +10,7 @@ import wishlistModel from "@/models/wishlist";
 import { authUser } from "@/utils/serverHelper";
 
 export default async function Index() {
+  connectTodb()
   const user = await authUser();
   const Allticket = await ticketModel.find({ user: user._id });
   const comments = await commentModel.find({ user: user._id });
