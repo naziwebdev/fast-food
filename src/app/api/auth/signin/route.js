@@ -6,6 +6,7 @@ import {
   generateRefreshToken,
 } from "@/utils/auth";
 import loginValidation from "@/validations/login";
+import banModel from "@/models/ban";
 
 export async function POST(req) {
   try {
@@ -27,6 +28,14 @@ export async function POST(req) {
         { message: "email |phone or password is incorrect " },
         { status: 422 }
       );
+    }
+
+    const isBaned = await banModel.findOne({
+      $or: [{ email: identifier }, { phone: identifier }],
+    });
+
+    if (isBaned) {
+      return Response.json({ message: "user is ban" }, { status: 401 });
     }
 
     const isVerifyPassword = await verifyPassword(password, existUser.password);

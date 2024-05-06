@@ -8,7 +8,7 @@ export default async function Index() {
   connectTodb();
   const tickets = await ticketModel
     .find({isAnswer:false})
-    .populate("user", "name phone")
+    .populate("user", "name phone email")
     .populate("department", "title")
     .lean();
 

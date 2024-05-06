@@ -76,7 +76,7 @@ export default function DataTable({ users }) {
     });
   };
 
-  const banUser = async (phone) => {
+  const banUser = async (phone,email) => {
     swal({
       title: "آیا از بن اطمینان دارید",
       icon: "warning",
@@ -88,7 +88,7 @@ export default function DataTable({ users }) {
           headers: {
             "content-type": "application/json",
           },
-          body: JSON.stringify({ phone }),
+          body: JSON.stringify({ phone ,email }),
         });
 
         if (res.status === 200) {
@@ -160,7 +160,7 @@ export default function DataTable({ users }) {
               </td>
               <td>
                 <button
-                  onClick={() => banUser(item.phone)}
+                  onClick={() => banUser(item.phone,item?.email)}
                   className={`${styles.btn} ${styles.ban_btn}`}
                 >
                   بن

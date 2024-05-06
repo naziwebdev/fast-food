@@ -2,6 +2,7 @@ import connectTodb from "@/configs/db";
 import registerValidator from "@/validations/register";
 import UserModel from "@/models/user";
 import { hashPassword, generateAccessToken } from "@/utils/auth";
+import banModel from '@/models/ban'
 
 export async function POST(req) {
   try {
@@ -29,6 +30,15 @@ export async function POST(req) {
         }
       );
     }
+
+    const isBaned = await banModel.findOne({
+      $or: [{ email }, { phone}],
+    });
+
+    if (isBaned) {
+      return Response.json({ message: "user is ban" }, { status: 401 });
+    }
+
 
     const hashedPassword = await hashPassword(password);
 

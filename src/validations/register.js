@@ -28,6 +28,7 @@ const banValidator = yup.object().shape({
     .string()
     .required("شماره تلفن خود را وارد نمایید")
     .matches(/^۰۹[۰-۹]{9}|09[0-9]{9}$/, "شماره تلفن معتبر نیست"),
+    email: yup.string().email("ایمیل را به درستی وارد کنید"),
 });
 
 export { banValidator };

@@ -5,20 +5,20 @@ import { banValidator } from "@/validations/register";
 export async function POST(req) {
   try {
     connectTodb();
-    const { phone } = await req.json();
+    const { phone, email} = await req.json();
 
     await banValidator.validate({ phone }).catch((error) => {
       error.statusCode = 400;
       throw error;
     });
 
-    const user = await banModel.findOne({ phone });
+    const user = await banModel.findOne({ phone , email});
 
     if (user) {
       return Response.json({ message: "user baned already" }, { status: 400 });
     }
 
-    await banModel.create({ phone });
+    await banModel.create({ phone,email });
 
     return Response.json(
       { message: "use baned successfully" },
