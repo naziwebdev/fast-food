@@ -1,0 +1,28 @@
+.tickets {
+  background-color: #fafafa;
+  width: 100%;
+  height: calc(100dvh - 100px);
+  padding: 2rem;
+}
+
+.tickets_title {
+  color: #333;
+}
+
+.tickets_empty {
+  margin-top: 2rem;
+  text-align: center;
+  width: 100%;
+  color: #555;
+}
+
+@media only screen and (max-width: 480px) {
+  .tickets {
+    padding: 2rem 1rem;
+  }
+}
+@media only screen and (max-width: 380px) {
+  .tickets {
+    padding: 2rem 0.5rem;
+  }
+}

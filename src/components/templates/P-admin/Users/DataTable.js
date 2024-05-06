@@ -18,7 +18,7 @@ export default function DataTable({ users }) {
           </tr>
         </thead>
         <tbody>
-          {users.map((item, index) => (
+          {users?.map((item, index) => (
             <tr key={item.id} className={styles.table_row}>
               <td className={styles.table_col}>{index + 1}</td>
               <td>{item.name}</td>

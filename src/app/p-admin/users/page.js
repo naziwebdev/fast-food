@@ -9,6 +9,7 @@ export default async function Index() {
 connectTodb()
 const users = await userModel.find({}).lean()
 
+
   return (
     <AdminPanelLayout>
       <div className={styles.users}>
