@@ -36,6 +36,44 @@ export default function DataTable({ users }) {
       }
     });
   };
+  const changeRole = async (id) => {
+    swal({
+      title: "آیا از تغییر اطمینان دارید",
+      icon: "warning",
+      buttons: ["خیر", "بله"],
+    }).then(async (value) => {
+      if (value) {
+        const res = await fetch(`/api/user/role`, {
+          method: "PUT",
+          headers:{
+            'content-type':'application/json'
+          },
+          body:JSON.stringify({id})
+        });
+
+        if (res.status === 200) {
+          await res.json();
+
+          swal({
+            title: "نقش کاربر با موفقیت تغییر یافت",
+            icon: "success",
+            buttons: "بستن",
+          }).then((value) => {
+            if (value) {
+              location.reload();
+            }
+          });
+        } else {
+          swal({
+            title: "عملیات با شکست روبرو شد ",
+            icon: "error",
+            buttons: "بستن",
+          });
+          console.log(await res.json())
+        }
+      }
+    });
+  };
 
   return (
     <div className={styles.table_wrapper}>
@@ -54,7 +92,7 @@ export default function DataTable({ users }) {
         </thead>
         <tbody>
           {users?.map((item, index) => (
-            <tr key={item.id} className={styles.table_row}>
+            <tr key={item._id} className={styles.table_row}>
               <td className={styles.table_col}>{index + 1}</td>
               <td>{item.name}</td>
               <td>{item.phone}</td>
@@ -73,7 +111,7 @@ export default function DataTable({ users }) {
                 </button>
               </td>
               <td>
-                <button className={`${styles.btn} ${styles.role_control_btn}`}>
+                <button onClick={() => changeRole(item._id)} className={`${styles.btn} ${styles.role_control_btn}`}>
                   تغییر سطح
                 </button>
               </td>

@@ -28,7 +28,7 @@ const showTicket = (message) => {
         </thead>
         <tbody>
           {tickets.map((item, index) => (
-            <tr key={item.id} className={styles.table_row}>
+            <tr key={item._id} className={styles.table_row}>
               <td className={styles.table_col}>{index + 1}</td>
               <td>{item.user.name}</td>
               <td>{item.title}</td>

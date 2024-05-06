@@ -27,7 +27,7 @@ export default function DataTable({ comments }) {
         <tbody>
           {comments.length != 0 ? (
             comments.map((item, index) => (
-              <tr key={item.id} className={styles.table_row}>
+              <tr key={item._id} className={styles.table_row}>
                 <td className={styles.table_col}>{index + 1}</td>
                 <td>{new Date(item.date).toLocaleDateString("fa-IR")}</td>
                 <td>{item.productID?.title}</td>

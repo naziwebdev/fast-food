@@ -32,6 +32,8 @@ export async function PUT(req, { params }) {
 
 export async function DELETE(req, { params }) {
   try {
+    connectTodb()
+    
     if (!isValidObjectId(params.id)) {
       return Response.json({ message: "id is not valid" }, { status: 422 });
     }
