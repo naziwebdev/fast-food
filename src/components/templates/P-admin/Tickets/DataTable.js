@@ -3,53 +3,96 @@ import styles from "./DataTable.module.css";
 import swal from "sweetalert";
 
 export default function DataTable({ tickets }) {
-
-const showTicket = (message) => {
+  const showTicket = (message) => {
     swal({
-        title:message,
-        buttons:'بستن'
-    })
-}
+      title: message,
+      buttons: "بستن",
+    });
+  };
 
-const banUser = async (phone) => {
-  swal({
-    title: "آیا از بن اطمینان دارید",
-    icon: "warning",
-    buttons: ["خیر", "بله"],
-  }).then(async (value) => {
-    if (value) {
-      const res = await fetch(`/api/user/ban`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({ phone }),
-      });
-
-      if (res.status === 200) {
-        await res.json();
-
-        swal({
-          title: " کاربر با موفقیت بن شد",
-          icon: "success",
-          buttons: "بستن",
-        }).then((value) => {
-          if (value) {
-            location.reload();
-          }
+  const banUser = async (phone) => {
+    swal({
+      title: "آیا از بن اطمینان دارید",
+      icon: "warning",
+      buttons: ["خیر", "بله"],
+    }).then(async (value) => {
+      if (value) {
+        const res = await fetch(`/api/user/ban`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ phone }),
         });
-      } else {
-        swal({
-          title: "عملیات با شکست روبرو شد ",
-          icon: "error",
-          buttons: "بستن",
-        });
-        console.log(await res.json());
+
+        if (res.status === 200) {
+          await res.json();
+
+          swal({
+            title: " کاربر با موفقیت بن شد",
+            icon: "success",
+            buttons: "بستن",
+          }).then((value) => {
+            if (value) {
+              location.reload();
+            }
+          });
+        } else {
+          swal({
+            title: "عملیات با شکست روبرو شد ",
+            icon: "error",
+            buttons: "بستن",
+          });
+          console.log(await res.json());
+        }
       }
-    }
-  });
-};
+    });
+  };
 
+  const answerTicket = async (ticket) => {
+    swal({
+      title: "پاسخ را وارد نمایید ",
+      content: "input",
+      buttons: "ارسال",
+    }).then(async (value) => {
+      if (value) {
+        const answer = {
+          ...ticket,
+          department:ticket.department._id,
+          body: value,
+          ticketID: ticket._id,
+        };
+        const res = await fetch(`/api/tickets/answer`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(answer),
+        });
+
+        if (res.status === 201) {
+          await res.json();
+
+          swal({
+            title: " پاسخ با موفقیت ارسال شد",
+            icon: "success",
+            buttons: "بستن",
+          }).then((value) => {
+            if (value) {
+              location.reload();
+            }
+          });
+        } else {
+          swal({
+            title: "عملیات با شکست روبرو شد ",
+            icon: "error",
+            buttons: "بستن",
+          });
+          console.log(await res.json());
+        }
+      }
+    });
+  };
 
   return (
     <div className={styles.table_wrapper}>
@@ -73,17 +116,26 @@ const banUser = async (phone) => {
               <td>{item.title}</td>
               <td>{item.department.title}</td>
               <td>
-                <button onClick={() => showTicket(item.body)} className={`${styles.btn} ${styles.seen_btn}`}>
+                <button
+                  onClick={() => showTicket(item.body)}
+                  className={`${styles.btn} ${styles.seen_btn}`}
+                >
                   مشاهده
                 </button>
               </td>
               <td>
-                <button className={`${styles.btn} ${styles.answer_btn}`}>
+                <button
+                  onClick={() => answerTicket(item)}
+                  className={`${styles.btn} ${styles.answer_btn}`}
+                >
                   پاسخ
                 </button>
               </td>
               <td>
-                <button onClick={() => banUser(item.user.phone)} className={`${styles.btn} ${styles.ban_btn}`}>
+                <button
+                  onClick={() => banUser(item.user.phone)}
+                  className={`${styles.btn} ${styles.ban_btn}`}
+                >
                   بن
                 </button>
               </td>
