@@ -1,8 +1,16 @@
 "use client";
 import styles from "./DataTable.module.css";
 import { FaStar, FaRegStar } from "react-icons/fa";
+import swal from "sweetalert";
 
 export default function DataTable({ comments }) {
+  const showCommentHandler = (message) => {
+    swal({
+      title: message,
+      buttons: "بستن",
+    });
+  };
+
   return (
     <div className={styles.table_wrapper}>
       <table className={styles.table}>
@@ -22,7 +30,7 @@ export default function DataTable({ comments }) {
               <tr key={item.id} className={styles.table_row}>
                 <td className={styles.table_col}>{index + 1}</td>
                 <td>{new Date(item.date).toLocaleDateString("fa-IR")}</td>
-                <td>pizaa</td>
+                <td>{item.productID?.title}</td>
                 <td>
                   {new Array(item.score).fill(0).map((rate) => (
                     <FaStar className={styles.table_icon} />
@@ -36,7 +44,12 @@ export default function DataTable({ comments }) {
                   <span className={styles.status}>تایید شده</span>
                 </td>
                 <td>
-                  <button className={styles.seen}>مشاهده</button>
+                  <button
+                    onClick={() => showCommentHandler(item.body)}
+                    className={styles.seen}
+                  >
+                    مشاهده
+                  </button>
                 </td>
               </tr>
             ))
