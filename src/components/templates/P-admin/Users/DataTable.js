@@ -36,6 +36,7 @@ export default function DataTable({ users }) {
       }
     });
   };
+
   const changeRole = async (id) => {
     swal({
       title: "آیا از تغییر اطمینان دارید",
@@ -45,10 +46,10 @@ export default function DataTable({ users }) {
       if (value) {
         const res = await fetch(`/api/user/role`, {
           method: "PUT",
-          headers:{
-            'content-type':'application/json'
+          headers: {
+            "content-type": "application/json",
           },
-          body:JSON.stringify({id})
+          body: JSON.stringify({ id }),
         });
 
         if (res.status === 200) {
@@ -69,7 +70,46 @@ export default function DataTable({ users }) {
             icon: "error",
             buttons: "بستن",
           });
-          console.log(await res.json())
+          console.log(await res.json());
+        }
+      }
+    });
+  };
+
+  const banUser = async (phone) => {
+    swal({
+      title: "آیا از بن اطمینان دارید",
+      icon: "warning",
+      buttons: ["خیر", "بله"],
+    }).then(async (value) => {
+      if (value) {
+        const res = await fetch(`/api/user/ban`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ phone }),
+        });
+
+        if (res.status === 200) {
+          await res.json();
+
+          swal({
+            title: " کاربر با موفقیت بن شد",
+            icon: "success",
+            buttons: "بستن",
+          }).then((value) => {
+            if (value) {
+              location.reload();
+            }
+          });
+        } else {
+          swal({
+            title: "عملیات با شکست روبرو شد ",
+            icon: "error",
+            buttons: "بستن",
+          });
+          console.log(await res.json());
         }
       }
     });
@@ -111,12 +151,18 @@ export default function DataTable({ users }) {
                 </button>
               </td>
               <td>
-                <button onClick={() => changeRole(item._id)} className={`${styles.btn} ${styles.role_control_btn}`}>
+                <button
+                  onClick={() => changeRole(item._id)}
+                  className={`${styles.btn} ${styles.role_control_btn}`}
+                >
                   تغییر سطح
                 </button>
               </td>
               <td>
-                <button className={`${styles.btn} ${styles.ban_btn}`}>
+                <button
+                  onClick={() => banUser(item.phone)}
+                  className={`${styles.btn} ${styles.ban_btn}`}
+                >
                   بن
                 </button>
               </td>
