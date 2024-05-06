@@ -5,8 +5,7 @@ const registerValidator = yup.object().shape({
     .string()
     .required("نام الزامی می‌باشد")
     .min(3, "نام حداقل باید ۳ کارکتر باشد"),
-  email: yup
-    .string().email('ایمیل را به درستی وارد کنید'),
+  email: yup.string().email("ایمیل را به درستی وارد کنید"),
   phone: yup
     .string()
     .required("شماره تلفن خود را وارد نمایید")
@@ -23,3 +22,12 @@ const registerValidator = yup.object().shape({
 });
 
 export default registerValidator;
+
+const banValidator = yup.object().shape({
+  phone: yup
+    .string()
+    .required("شماره تلفن خود را وارد نمایید")
+    .matches(/^۰۹[۰-۹]{9}|09[0-9]{9}$/, "شماره تلفن معتبر نیست"),
+});
+
+export { banValidator };
