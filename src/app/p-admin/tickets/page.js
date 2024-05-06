@@ -7,7 +7,7 @@ import ticketModel from "@/models/ticket";
 export default async function Index() {
   connectTodb();
   const tickets = await ticketModel
-    .find({})
+    .find({isAnswer:false})
     .populate("user", "name")
     .populate("department", "title")
     .lean();

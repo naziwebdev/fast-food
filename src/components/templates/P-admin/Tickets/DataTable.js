@@ -1,7 +1,17 @@
 "use client";
 import styles from "./DataTable.module.css";
+import swal from "sweetalert";
 
 export default function DataTable({ tickets }) {
+
+const showTicket = (message) => {
+    swal({
+        title:message,
+        buttons:'بستن'
+    })
+}
+
+
   return (
     <div className={styles.table_wrapper}>
       <table className={styles.table}>
@@ -24,7 +34,7 @@ export default function DataTable({ tickets }) {
               <td>{item.title}</td>
               <td>{item.department.title}</td>
               <td>
-                <button className={`${styles.btn} ${styles.seen_btn}`}>
+                <button onClick={() => showTicket(item.body)} className={`${styles.btn} ${styles.seen_btn}`}>
                   مشاهده
                 </button>
               </td>
