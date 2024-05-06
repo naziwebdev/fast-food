@@ -5,8 +5,8 @@ import { HiHome } from "react-icons/hi";
 import { IoBagHandle } from "react-icons/io5";
 import { HiTicket } from "react-icons/hi2";
 import { MdInsertComment } from "react-icons/md";
-import { BiSolidCalendarHeart } from "react-icons/bi";
-import { RiAccountPinBoxFill } from "react-icons/ri";
+import { FaUserFriends } from "react-icons/fa";
+import { PiTicketFill } from "react-icons/pi";
 import { IoMdLogOut } from "react-icons/io";
 import swal from "sweetalert";
 import { useRouter } from "next/navigation";
@@ -54,12 +54,12 @@ export default function Sidebar() {
         <li className={styles.sidebar_item}>
           <Link href="/p-admin/products" className={styles.sidebar_link}>
             <IoBagHandle className={styles.sidebar_icon} />
-            <p className={styles.list_text}>محصولات ها</p>
+            <p className={styles.list_text}>محصولات </p>
           </Link>
         </li>
         <li className={styles.sidebar_item}>
           <Link href="/p-admin/users" className={styles.sidebar_link}>
-            <HiTicket className={styles.sidebar_icon} />
+            <FaUserFriends  className={styles.sidebar_icon} />
             <p className={styles.list_text}>کاربران</p>{" "}
           </Link>
         </li>
@@ -71,13 +71,13 @@ export default function Sidebar() {
         </li>
         <li className={styles.sidebar_item}>
           <Link href="/p-admin/tickets" className={styles.sidebar_link}>
-            <BiSolidCalendarHeart className={styles.sidebar_icon} />
+          <HiTicket className={styles.sidebar_icon} />
             <p className={styles.list_text}>تیکت ها</p>
           </Link>
         </li>
         <li className={styles.sidebar_item}>
           <Link href="/p-admin/offs" className={styles.sidebar_link}>
-            <RiAccountPinBoxFill className={styles.sidebar_icon} />
+            <PiTicketFill className={styles.sidebar_icon} />
             <p className={styles.list_text}> تخفیف ها</p>
           </Link>
         </li>

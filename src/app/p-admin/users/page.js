@@ -13,7 +13,13 @@ const users = await userModel.find({}).lean()
     <AdminPanelLayout>
       <div className={styles.users}>
         <h2 className={styles.users_title}>کاربر ها</h2>
+        {users.length !=0 ? 
         <DataTable users={JSON.parse(JSON.stringify(users))} />
+        : <div className={styles.users_empty}>
+          کاربری یافت نشد
+          </div>
+
+}
       </div>
     </AdminPanelLayout>
   );
