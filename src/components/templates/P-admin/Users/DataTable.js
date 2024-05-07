@@ -1,8 +1,12 @@
 "use client";
 import styles from "./DataTable.module.css";
 import swal from "sweetalert";
+import { useRouter } from "next/navigation";
 
 export default function DataTable({ users }) {
+  
+  const router = useRouter();
+
   const removeUser = async (userID) => {
     swal({
       title: "آیا از حذف اطمینان دارید",
@@ -23,7 +27,7 @@ export default function DataTable({ users }) {
             buttons: "بستن",
           }).then((value) => {
             if (value) {
-              location.reload();
+             router.refresh()
             }
           });
         } else {
@@ -61,7 +65,7 @@ export default function DataTable({ users }) {
             buttons: "بستن",
           }).then((value) => {
             if (value) {
-              location.reload();
+              router.refresh()
             }
           });
         } else {
@@ -100,7 +104,7 @@ export default function DataTable({ users }) {
             buttons: "بستن",
           }).then((value) => {
             if (value) {
-              location.reload();
+              router.refresh()
             }
           });
         } else {

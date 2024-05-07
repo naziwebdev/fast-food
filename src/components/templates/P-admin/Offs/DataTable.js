@@ -1,9 +1,11 @@
 "use client";
 import styles from "./DataTable.module.css";
 import swal from "sweetalert";
+import { useRouter } from "next/navigation";
 
 export default function DataTable({ offs }) {
 
+  const router = useRouter();
 
   const removeOff = async (offID) => {
     swal({
@@ -25,7 +27,7 @@ export default function DataTable({ offs }) {
             buttons: "بستن",
           }).then((value) => {
             if (value) {
-              location.reload();
+             router.refresh()
             }
           });
         } else {

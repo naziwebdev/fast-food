@@ -4,8 +4,13 @@ import styles from "./AccountDetails.module.css";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import UserValidator from "@/validations/editUser";
+import { useRouter } from "next/navigation";
 
 export default function AccountDetails() {
+
+  
+  const router = useRouter();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -61,7 +66,7 @@ export default function AccountDetails() {
         icon: "success",
         buttons: "بستن",
       }).then((value) => {
-        location.reload();
+        router.refresh()
       });
     } else {
       swal({

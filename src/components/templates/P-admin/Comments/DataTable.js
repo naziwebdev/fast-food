@@ -1,8 +1,12 @@
 "use client";
 import styles from "./DataTable.module.css";
 import swal from "sweetalert";
+import { useRouter } from "next/navigation";
 
 export default function DataTable({ comments }) {
+  
+  const router = useRouter();
+
   const showComment = (message) => {
     swal({
       title: message,
@@ -40,7 +44,7 @@ export default function DataTable({ comments }) {
             buttons: "بستن",
           }).then((value) => {
             if (value) {
-              location.reload();
+             router.refresh()
             }
           });
         } else {
@@ -78,7 +82,7 @@ export default function DataTable({ comments }) {
             buttons: "بستن",
           }).then((value) => {
             if (value) {
-              location.reload();
+              router.refresh()
             }
           });
         } else {
@@ -116,7 +120,7 @@ export default function DataTable({ comments }) {
             buttons: "بستن",
           }).then((value) => {
             if (value) {
-              location.reload();
+              router.refresh()
             }
           });
         } else {
@@ -152,7 +156,7 @@ export default function DataTable({ comments }) {
             buttons: "بستن",
           }).then((value) => {
             if (value) {
-              location.reload();
+              router.refresh()
             }
           });
         } else {
