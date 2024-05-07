@@ -1,43 +1,42 @@
-.users{
+.comments {
     background-color: #fafafa;
     width: calc(100dvw - 280px);
-    height:calc(100dvh - 100px);
+    height: calc(100dvh - 100px);
     padding: 2rem;
-
+    overflow-x: hidden;
   }
-
-  .users_title {
+  
+  .comments_title {
     color: #333;
   }
-
-  .users_empty{
+  
+  .comments_empty {
     margin-top: 2rem;
     text-align: center;
     width: 100%;
     color: #555;
   }
-
+  
   @media only screen and (max-width:900px) {
-    .users {
+    .comments {
       width: calc(100dvw - 230px);
   }
  
 }
 
   @media only screen and (max-width: 666px) {
-    .users {
+    .comments {
       width: calc(100dvw - 70px);
   }
 }
   
-
   @media only screen and (max-width: 480px) {
-    .users {
+    .comments {
       padding: 2rem 1rem;
     }
   }
   @media only screen and (max-width: 380px) {
-    .users {
+    .comments {
       padding: 2rem 0.5rem;
     }
   }
