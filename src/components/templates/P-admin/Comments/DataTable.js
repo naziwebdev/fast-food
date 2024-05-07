@@ -93,6 +93,45 @@ export default function DataTable({ comments }) {
     });
   };
 
+
+  const rejectComment = async (commentID) => {
+    swal({
+      title: " از رد کامنت اطمینان دارید؟",
+      content: "warning",
+      buttons: ["خیر", "بله"],
+    }).then(async (value) => {
+      if (value) {
+        const res = await fetch(`/api/comments/reject/${commentID}`, {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+        });
+
+        if (res.status === 200) {
+          await res.json();
+
+          swal({
+            title: "  با موفقیت انجام شد",
+            icon: "success",
+            buttons: "بستن",
+          }).then((value) => {
+            if (value) {
+              location.reload();
+            }
+          });
+        } else {
+          swal({
+            title: "عملیات با شکست روبرو شد ",
+            icon: "error",
+            buttons: "بستن",
+          });
+          console.log(await res.json());
+        }
+      }
+    });
+  };
+
   return (
     <div className={styles.table_wrapper}>
       <table className={styles.table}>
@@ -141,7 +180,8 @@ export default function DataTable({ comments }) {
                     تایید
                   </button>
                 ) : (
-                  <button className={`${styles.btn} ${styles.accept_btn}`}>
+                  <button     onClick={() => rejectComment(item._id)}
+                  className={`${styles.btn} ${styles.accept_btn}`}>
                     رد
                   </button>
                 )}
