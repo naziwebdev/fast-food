@@ -93,7 +93,6 @@ export default function DataTable({ comments }) {
     });
   };
 
-
   const rejectComment = async (commentID) => {
     swal({
       title: " از رد کامنت اطمینان دارید؟",
@@ -106,6 +105,42 @@ export default function DataTable({ comments }) {
           headers: {
             "content-type": "application/json",
           },
+        });
+
+        if (res.status === 200) {
+          await res.json();
+
+          swal({
+            title: "  با موفقیت انجام شد",
+            icon: "success",
+            buttons: "بستن",
+          }).then((value) => {
+            if (value) {
+              location.reload();
+            }
+          });
+        } else {
+          swal({
+            title: "عملیات با شکست روبرو شد ",
+            icon: "error",
+            buttons: "بستن",
+          });
+          console.log(await res.json());
+        }
+      }
+    });
+  };
+
+
+  const removeComment = async (commentID) => {
+    swal({
+      title: " از حذف کامنت اطمینان دارید؟",
+      content: "warning",
+      buttons: ["خیر", "بله"],
+    }).then(async (value) => {
+      if (value) {
+        const res = await fetch(`/api/comments/${commentID}`, {
+          method: "DELETE",
         });
 
         if (res.status === 200) {
@@ -167,7 +202,8 @@ export default function DataTable({ comments }) {
                 </button>
               </td>
               <td>
-                <button className={`${styles.btn} ${styles.remove_btn}`}>
+                <button onClick={() => removeComment(item._id)}
+                className={`${styles.btn} ${styles.remove_btn}`}>
                   حذف
                 </button>
               </td>
@@ -180,8 +216,10 @@ export default function DataTable({ comments }) {
                     تایید
                   </button>
                 ) : (
-                  <button     onClick={() => rejectComment(item._id)}
-                  className={`${styles.btn} ${styles.accept_btn}`}>
+                  <button
+                    onClick={() => rejectComment(item._id)}
+                    className={`${styles.btn} ${styles.accept_btn}`}
+                  >
                     رد
                   </button>
                 )}
