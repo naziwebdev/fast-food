@@ -41,6 +41,11 @@ const schema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    hasAnswer:{
+      type: Boolean,
+      required: true,
+      default: false,
+    },
     isAnswer: {
       type: Boolean,
       required: true,

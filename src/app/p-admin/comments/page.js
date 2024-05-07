@@ -7,7 +7,7 @@ import commentModel from "@/models/comment";
 export default async function Page() {
   connectTodb();
   const comments = await commentModel
-    .find({})
+    .find({isAnswer:false})
     .populate("user", "name phone email")
     .populate("productID", "title")
     .lean();

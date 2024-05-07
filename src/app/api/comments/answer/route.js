@@ -37,13 +37,12 @@ export async function POST(req) {
       productID,
       score,
       mainCommentID,
+      isAnswer:true
     });
 
     await commentModel.findOneAndUpdate(
       { _id: mainCommentID },
-      {
-        isAnswer: true,
-      }
+      { hasAnswer: true }
     );
 
     return Response.json(
