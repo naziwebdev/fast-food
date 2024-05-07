@@ -19,7 +19,7 @@ export async function POST(req) {
         throw err;
       });
 
-    const comment = await offModel.create({
+     await offModel.create({
       code,
       percent,
       maxUsage,

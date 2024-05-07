@@ -2,7 +2,7 @@
 import styles from "./DataTable.module.css";
 import swal from "sweetalert";
 
-export default function DataTable({ comments }) {
+export default function DataTable({ offs }) {
   const showComment = (message) => {
     swal({
       title: message,
@@ -131,7 +131,6 @@ export default function DataTable({ comments }) {
     });
   };
 
-
   const removeComment = async (commentID) => {
     swal({
       title: " از حذف کامنت اطمینان دارید؟",
@@ -173,32 +172,28 @@ export default function DataTable({ comments }) {
         <thead>
           <tr className={styles.table_head}>
             <th className={styles.table_title}>شناسه</th>
-            <th className={styles.table_title}>کاربر </th>
-            <th className={styles.table_title}>شماره همراه</th>
-            <th className={styles.table_title}>امتیاز</th>
-            <th className={styles.table_title}>محصول</th>
-            <th className={styles.table_title}>تاریخ ثبت</th>
-            <th className={styles.table_title}>مشاهده</th>
+            <th className={styles.table_title}>کد </th>
+            <th className={styles.table_title}>درصد</th>
+            <th className={styles.table_title}>حداکثر استفاده</th>
+            <th className={styles.table_title}>استفاده شده</th>
+            <th className={styles.table_title}>ویرایش</th>
             <th className={styles.table_title}>حذف</th>
-            <th className={styles.table_title}>تایید/رد</th>
-            <th className={styles.table_title}>پاسخ</th>
           </tr>
         </thead>
         <tbody>
-          {/* {comments.map((item, index) => (
+          {offs.map((item, index) => (
             <tr key={item._id} className={styles.table_row}>
               <td className={styles.table_col}>{index + 1}</td>
-              <td>{item.user.name}</td>
-              <td>{item.user.phone}</td>
-              <td>{item.score}</td>
-              <td>{item.productID.title}</td>
-              <td>{new Date(item.date).toLocaleDateString("fa-IR")}</td>
+              <td>{item.code}</td>
+              <td>{item.percent}</td>
+              <td>{item.maxUsage}</td>
+              <td>{item.usage}</td>
               <td>
                 <button
                   onClick={() => showComment(item.body)}
-                  className={`${styles.btn} ${styles.seen_btn}`}
+                  className={`${styles.btn} ${styles.edit_btn}`}
                 >
-                  مشاهده
+                  ویرایش
                 </button>
               </td>
               <td>
@@ -207,33 +202,10 @@ export default function DataTable({ comments }) {
                   حذف
                 </button>
               </td>
-              <td>
-                {item.isAccept === 0 ? (
-                  <button
-                    onClick={() => acceptComment(item._id)}
-                    className={`${styles.btn} ${styles.accept_btn}`}
-                  >
-                    تایید
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => rejectComment(item._id)}
-                    className={`${styles.btn} ${styles.accept_btn}`}
-                  >
-                    رد
-                  </button>
-                )}
-              </td>
-              <td>
-                <button
-                  onClick={() => answerComment(item)}
-                  className={`${styles.btn} ${styles.answer_btn}`}
-                >
-                  پاسخ
-                </button>
-              </td>
+              
+          
             </tr>
-          ))} */}
+          ))}
         </tbody>
       </table>
     </div>
