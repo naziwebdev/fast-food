@@ -41,6 +41,16 @@ const schema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    isAnswer: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    mainCommentID: {
+      type: mongoose.Types.ObjectId,
+      ref: "Comment",
+      required: false,
+    },
   },
   { timestamps: true }
 );

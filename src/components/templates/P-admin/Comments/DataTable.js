@@ -3,53 +3,14 @@ import styles from "./DataTable.module.css";
 import swal from "sweetalert";
 
 export default function DataTable({ comments }) {
-  const showTicket = (message) => {
+  const showComment = (message) => {
     swal({
       title: message,
       buttons: "بستن",
     });
   };
 
-  const banUser = async (phone , email) => {
-    swal({
-      title: "آیا از بن اطمینان دارید",
-      icon: "warning",
-      buttons: ["خیر", "بله"],
-    }).then(async (value) => {
-      if (value) {
-        const res = await fetch(`/api/user/ban`, {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({ phone , email }),
-        });
-
-        if (res.status === 200) {
-          await res.json();
-
-          swal({
-            title: " کاربر با موفقیت بن شد",
-            icon: "success",
-            buttons: "بستن",
-          }).then((value) => {
-            if (value) {
-              location.reload();
-            }
-          });
-        } else {
-          swal({
-            title: "عملیات با شکست روبرو شد ",
-            icon: "error",
-            buttons: "بستن",
-          });
-          console.log(await res.json());
-        }
-      }
-    });
-  };
-
-  const answerTicket = async (ticket) => {
+  const answerComment = async (comment) => {
     swal({
       title: "پاسخ را وارد نمایید ",
       content: "input",
@@ -57,12 +18,12 @@ export default function DataTable({ comments }) {
     }).then(async (value) => {
       if (value) {
         const answer = {
-          ...ticket,
-          department:ticket.department._id,
+          ...comment,
+          productID: comment.productID._id,
           body: value,
-          ticketID: ticket._id,
+          mainCommentID: comment._id,
         };
-        const res = await fetch(`/api/tickets/answer`, {
+        const res = await fetch(`/api/comments/answer`, {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -119,33 +80,28 @@ export default function DataTable({ comments }) {
               <td>{item.user.phone}</td>
               <td>{item.score}</td>
               <td>{item.productID.title}</td>
-              <td>{new Date(item.date).toLocaleDateString('fa-IR')}</td>
+              <td>{new Date(item.date).toLocaleDateString("fa-IR")}</td>
               <td>
                 <button
-                  onClick={() => showTicket(item.body)}
+                  onClick={() => showComment(item.body)}
                   className={`${styles.btn} ${styles.seen_btn}`}
                 >
                   مشاهده
                 </button>
               </td>
               <td>
-                <button
-                  className={`${styles.btn} ${styles.remove_btn}`}
-                >
+                <button className={`${styles.btn} ${styles.remove_btn}`}>
                   حذف
                 </button>
               </td>
               <td>
-                <button
-                  onClick={() => showTicket(item.body)}
-                  className={`${styles.btn} ${styles.accept_btn}`}
-                >
-                  {item.isAccept === 0 ? 'تایید' : 'رد'}
+                <button className={`${styles.btn} ${styles.accept_btn}`}>
+                  {item.isAccept === 0 ? "تایید" : "رد"}
                 </button>
               </td>
               <td>
                 <button
-                  onClick={() => answerTicket(item)}
+                  onClick={() => answerComment(item)}
                   className={`${styles.btn} ${styles.answer_btn}`}
                 >
                   پاسخ

@@ -45,6 +45,7 @@ export async function POST(req) {
       productID,
       isAccept:0,
       score,
+      isAnswer:false
     });
 
     const updatedProduct = await productModel.findOneAndUpdate(
