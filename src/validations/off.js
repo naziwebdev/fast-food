@@ -10,4 +10,15 @@ const offValidation = yup.object().shape({
 
 });
 
+
+const offCodeValidation = yup.object().shape({
+  code: yup
+    .string()
+    .required("این فیلد الزامی است")
+    .min(3, "  باید حداقل 3 کارکتر باشد"),
+
+});
+
+export {offCodeValidation}
+
 export default offValidation;
