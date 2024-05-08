@@ -7,17 +7,15 @@ import { useState, useEffect } from "react";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import swal from "sweetalert";
 
-
 const stateOptions = stateData();
 
 export default function DataTable() {
   const [changeAddress, setChangeAddress] = useState(false);
   const [stateSelectedOption, setStateSelectedOption] = useState(null);
   const [products, setProducts] = useState([]);
-  const [totalPrice,setTotalPrice]=useState(0)
-  const [finalTotalPrice,setFinalTotalPrice] = useState(0)
-  const [discount,setDiscount] = useState('')
-  
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [finalTotalPrice, setFinalTotalPrice] = useState(0);
+  const [discount, setDiscount] = useState("");
 
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -25,63 +23,77 @@ export default function DataTable() {
     setProducts(cart);
   }, []);
 
+  const removeProduct = (productID) => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const indexToRemove = cart.findIndex(item => item.id == productID);
+    cart.splice(indexToRemove, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    setProducts(cart);
+    swal({
+      title:'با موفقیت حذف شد',
+       icon:'success',
+       buttons:'بستن'
+    }).then((value) => {
+      if(value){
+        location.reload()
+      }
+
+    })
+  };
 
   useEffect(() => {
-    calculateTotalPrice()
-  },[products])
+    calculateTotalPrice();
+  }, [products]);
 
   const calculateTotalPrice = () => {
-    let price = 0
+    let price = 0;
 
-    if(products.length){
-       price = products.reduce((prev,current) => prev+current.price*current.count,0)
-        setTotalPrice(price)
-        setFinalTotalPrice(price+50000)
-
+    if (products.length) {
+      price = products.reduce(
+        (prev, current) => prev + current.price * current.count,
+        0
+      );
+      setTotalPrice(price);
+      setFinalTotalPrice(price + 50000);
     }
 
-    setTotalPrice(price)
-  }
+    setTotalPrice(price);
+  };
 
- 
   const ckeckDiscount = async () => {
+    const res = await fetch("/api/offs/use", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ code: discount }),
+    });
 
-    const res = await fetch('/api/offs/use',{
-        method:'PUT',
-        headers:{
-            'content-type':'application/json'
-        },
-        body:JSON.stringify({code:discount})
-    })
-
-    if(res.status === 404){
-        return swal({
-            title:'کد تخفیف یافت نشد',
-            icon:'warning',
-            buttons:'بستن'
-        })
-    }else if(res.status === 422){
-        return swal({
-            title:'کد تخفیف  منقضی شده',
-            icon:'warning',
-            buttons:'بستن'
-        })
-    }else if(res.status === 200){
-        const data = await res.json()
-        const finalPrice = totalPrice - (totalPrice*data.percent)/100
-        setTotalPrice(finalPrice)
-        setFinalTotalPrice(finalPrice+50000)
-        setDiscount("")
-        return swal({
-            title:'کد تخفیف با وفقیت اعمال شد',
-            icon:'success',
-            buttons:'بستن'
-        })
+    if (res.status === 404) {
+      return swal({
+        title: "کد تخفیف یافت نشد",
+        icon: "warning",
+        buttons: "بستن",
+      });
+    } else if (res.status === 422) {
+      return swal({
+        title: "کد تخفیف  منقضی شده",
+        icon: "warning",
+        buttons: "بستن",
+      });
+    } else if (res.status === 200) {
+      const data = await res.json();
+      const finalPrice = totalPrice - (totalPrice * data.percent) / 100;
+      setTotalPrice(finalPrice);
+      setFinalTotalPrice(finalPrice + 50000);
+      setDiscount("");
+      return swal({
+        title: "کد تخفیف با وفقیت اعمال شد",
+        icon: "success",
+        buttons: "بستن",
+      });
     }
-
-  }
-
- 
+  };
 
   return (
     <div className={styles.container}>
@@ -99,8 +111,11 @@ export default function DataTable() {
             {products.map((item) => (
               <tr key={item._id} className={styles.table_row}>
                 <td className={`${styles.table_col} ${styles.product_wrapper}`}>
-                  <button className={styles.remove_product}>
-                    <RiDeleteBin6Fill/>
+                  <button
+                    onClick={() => removeProduct(item.id)}
+                    className={styles.remove_product}
+                  >
+                    <RiDeleteBin6Fill />
                   </button>
                   <Image
                     src="/images/p-7.jpg"
@@ -126,7 +141,6 @@ export default function DataTable() {
                   >
                     -
                   </button> */}
-
                   {item.count.toLocaleString("fa-IR")} ✕
                 </td>
                 <td>{(item.price * item.count).toLocaleString("fa-IR")}</td>
@@ -136,21 +150,24 @@ export default function DataTable() {
         </table>
         <div className={styles.discount_wrapper}>
           <input
-          value={discount}
-          onChange={(event) => setDiscount(event.target.value)}
+            value={discount}
+            onChange={(event) => setDiscount(event.target.value)}
             type="text"
             placeholder="کد تخفیف را وارد کنید"
             className={styles.discount_input}
           />
-          <button onClick={ckeckDiscount}
-           className={styles.discount_btn}>اعمال کوپن</button>
+          <button onClick={ckeckDiscount} className={styles.discount_btn}>
+            اعمال کوپن
+          </button>
         </div>
       </div>
       <div className={styles.factor}>
         <h3 className={styles.factor_title}>جمع کل سبد خرید</h3>
         <div className={styles.factor_part}>
           <h5 className={styles.factor_text}>جمع جز</h5>
-          <p className={styles.factor_text2}>{totalPrice.toLocaleString("fa-IR")}  تومان</p>
+          <p className={styles.factor_text2}>
+            {totalPrice.toLocaleString("fa-IR")} تومان
+          </p>
         </div>
         <div className={`${styles.factor_part} ${styles.factor_part5}`}>
           <h5 className={styles.factor_text}>حمل و نقل </h5>
@@ -196,7 +213,9 @@ export default function DataTable() {
         </div>
         <div className={`${styles.factor_part} ${styles.factor_part3} `}>
           <h3 className={styles.factor_total}>مجموع</h3>
-          <h3 className={styles.factor_total}>{finalTotalPrice.toLocaleString("fa-IR")} تومان</h3>
+          <h3 className={styles.factor_total}>
+            {finalTotalPrice.toLocaleString("fa-IR")} تومان
+          </h3>
         </div>
         <button className={styles.pay_btn}>ادامه جهت تسویه حساب</button>
       </div>
