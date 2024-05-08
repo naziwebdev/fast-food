@@ -1,7 +1,15 @@
+"use client"
 import styles from "./DataTable.module.css";
 import Image from "next/image";
+import Select from "react-select";
+import stateData from "@/utils/StateData";
+import { useState, useEffect } from "react";
+
+const stateOptions = stateData();
 
 export default function DataTable() {
+  const [changeAddress, setChangeAddress] = useState(false);
+  const [stateSelectedOption, setStateSelectedOption] = useState(null);
   return (
     <div className={styles.container}>
       <div className={styles.table_wrapper}>
@@ -52,12 +60,34 @@ export default function DataTable() {
           <h5 className={styles.factor_text}>جمع جز</h5>
           <p className={styles.factor_text2}>۱۲۰۰۰۰ تومان</p>
         </div>
-        <div className={styles.factor_part}>
+        <div className={`${styles.factor_part} ${styles.factor_part5}`}>
           <h5 className={styles.factor_text}>حمل و نقل </h5>
           <div className={styles.factor_part2}>
             <p className={styles.factor_text}>پیک موتوری : ۵۰۰۰۰ تومان</p>
             <p className={styles.factor_text2}>حمل و نقل به تهران</p>
-            <h5 className={`${styles.factor_text} ${styles.factor_address}`}>تغییر آدرس</h5>
+            <h5 onClick={() => setChangeAddress(prev => !prev)}
+            className={`${styles.factor_text} ${styles.factor_address}`}>
+              تغییر آدرس
+            </h5>
+            {changeAddress && (
+              <div className={styles.address_details}>
+                <Select
+                  defaultValue={stateSelectedOption}
+                  onChange={setStateSelectedOption}
+                  isClearable={true}
+                  placeholder={"استان"}
+                  isRtl={true}
+                  isSearchable={true}
+                  options={stateOptions}
+                />
+                <input className={styles.address_input} type="text" placeholder="شهر" />
+                <input className={styles.address_input} type="text" placeholder="کد پستی" />
+                <button className={styles.update_btn}
+                onClick={() => setChangeAddress(false)}>
+                  بروزرسانی
+                </button>
+              </div>
+            )}
           </div>
         </div>
         <div className={`${styles.factor_part} ${styles.factor_part3} `}>
