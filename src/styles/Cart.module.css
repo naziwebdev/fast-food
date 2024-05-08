@@ -1,0 +1,11 @@
+.cart_wrapper {
+    padding: 4rem;
+  }
+
+   
+  @media only screen and (max-width: 500px) {
+    .cart_wrapper {
+      padding: 2rem;
+    }
+  }
+  
