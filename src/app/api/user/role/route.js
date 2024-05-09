@@ -1,9 +1,15 @@
 import connectTodb from "@/configs/db";
 import userModel from "@/models/user";
 import { isValidObjectId } from "mongoose";
+import { authAdmin } from "@/utils/serverHelper";
 
 export async function PUT(req) {
   try {
+    const isAdmin = await authAdmin();
+
+    if (!isAdmin) {
+      return Response.json({message:'this api is protected'},{status:401})
+    }
     connectTodb();
 
     const { id } = await req.json();

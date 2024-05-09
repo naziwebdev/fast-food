@@ -1,9 +1,16 @@
 import offModel from "@/models/off";
 import connectTodb from "@/configs/db";
 import offValidation from "@/validations/off";
+import { authAdmin } from "@/utils/serverHelper";
 
 export async function POST(req) {
   try {
+    const isAdmin = await authAdmin();
+
+    if (!isAdmin) {
+      return Response.json({message:'this api is protected'},{status:401})
+    }
+
     connectTodb();
 
     const { code, percent, maxUsage } = await req.json();
@@ -19,7 +26,7 @@ export async function POST(req) {
         throw err;
       });
 
-     await offModel.create({
+    await offModel.create({
       code,
       percent,
       maxUsage,

@@ -1,9 +1,15 @@
 import productModel from "@/models/product";
 import connectTodb from "@/configs/db";
 import productValidation from "@/validations/detailsProduct";
+import { authAdmin } from "@/utils/serverHelper";
 
 export async function POST(req) {
   try {
+    const isAdmin = await authAdmin();
+
+    if (!isAdmin) {
+      return Response.json({message:'this api is protected'},{status:401})
+    }
     connectTodb();
 
     const {

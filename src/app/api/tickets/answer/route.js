@@ -2,9 +2,15 @@ import connectTodb from "@/configs/db";
 import ticketModel from "@/models/ticket";
 import { answerTicketValidation } from "@/validations/ticket";
 import { authUser } from "@/utils/serverHelper";
+import { authAdmin } from "@/utils/serverHelper";
 
 export async function POST(req) {
   try {
+    const isAdmin = await authAdmin();
+
+    if (!isAdmin) {
+      return Response.json({message:'this api is protected'},{status:401})
+    }
     connectTodb();
 
     const { title, body, department, subDepartment, priority, ticketID } =

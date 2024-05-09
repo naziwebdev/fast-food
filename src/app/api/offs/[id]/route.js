@@ -1,9 +1,15 @@
 import connectTodb from "@/configs/db";
 import offModel from "@/models/off";
 import { isValidObjectId } from "mongoose";
+import { authAdmin } from "@/utils/serverHelper";
 
 export async function DELETE(req, { params }) {
   try {
+    const isAdmin = await authAdmin();
+
+    if (!isAdmin) {
+      return Response.json({message:'this api is protected'},{status:401})
+    }
     connectTodb();
 
     if (!isValidObjectId(params.id)) {
