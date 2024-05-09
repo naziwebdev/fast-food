@@ -3,7 +3,6 @@ import * as yup from "yup";
 const registerValidator = yup.object().shape({
   name: yup
     .string()
-    .required("نام الزامی می‌باشد")
     .min(3, "نام حداقل باید ۳ کارکتر باشد"),
   email: yup.string().email("ایمیل را به درستی وارد کنید"),
   phone: yup
