@@ -2,9 +2,17 @@
 import styles from "./DataTable.module.css";
 import swal from "sweetalert";
 import { useRouter } from "next/navigation";
+import Modal from "@/components/modules/Modal/Modal";
+import { useState } from "react";
 
 export default function DataTable({ products }) {
   const router = useRouter();
+
+  const [showModal, setShowModal] = useState(false);
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   const removeProduct = async (productID) => {
     swal({
@@ -64,7 +72,10 @@ export default function DataTable({ products }) {
               <td>{item.countAvailable}</td>
               <td>{item.score}</td>
               <td>
-                <button className={`${styles.btn} ${styles.seen_btn}`}>
+                <button
+                  onClick={() => setShowModal(true)}
+                  className={`${styles.btn} ${styles.seen_btn}`}
+                >
                   ویرایش
                 </button>
               </td>
@@ -80,6 +91,7 @@ export default function DataTable({ products }) {
           ))}
         </tbody>
       </table>
+      {showModal && <Modal onClose={closeModal}>hi</Modal>}
     </div>
   );
 }
