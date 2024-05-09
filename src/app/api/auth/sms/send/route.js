@@ -2,7 +2,7 @@ const request = require("request");
 import connectTodb from "@/configs/db";
 import otpModel from "@/models/otp";
 import otpValidation from "@/validations/otp";
-// import userModel from "@/models/user";
+import userModel from "@/models/user";
 import banModel from "@/models/ban";
 
 export async function POST(req) {
