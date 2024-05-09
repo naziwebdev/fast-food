@@ -4,6 +4,7 @@ import styles from "./AccountDetails.module.css";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import UserValidator from "@/validations/editUser";
+import { UserPasswordValidator } from "@/validations/editUser";
 import { useRouter } from "next/navigation";
 
 export default function AccountDetails() {
@@ -23,10 +24,10 @@ export default function AccountDetails() {
 
       if (res.status === 200) {
         const data = await res.json();
-        setName(data.name);
-        setEmail(data.email);
-        setPhone(data.phone);
-        setUserID(data._id);
+        setName(data?.name);
+        setEmail(data?.email);
+        setPhone(data?.phone);
+        setUserID(data?._id);
       }
     };
 
@@ -67,6 +68,50 @@ export default function AccountDetails() {
         buttons: "بستن",
       }).then((value) => {
         router.refresh()
+      });
+    } else {
+      swal({
+        title: "  با شکست مواجه شد",
+        icon: "error",
+        buttons: "تلاش دوباره",
+      });
+      console.log(await res);
+    }
+  };
+
+  const updatePassword = async (event) => {
+    event.preventDefault();
+
+    try {
+      await UserPasswordValidator.validate({
+       password
+      });
+    } catch (err) {
+      return swal({
+        title: err,
+        icon: "error",
+        buttons: "تلاش دوباره",
+      });
+    }
+
+    const res = await fetch(`/api/user/${userID}/password`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ password }),
+    });
+
+    if (res.status === 200) {
+      (await res).json();
+
+      swal({
+        title: " با موفقیت  تغییر کرد",
+        icon: "success",
+        buttons: "بستن",
+      }).then((value) => {
+        router.refresh()
+        setPassword("")
       });
     } else {
       swal({
@@ -135,7 +180,8 @@ export default function AccountDetails() {
             className={styles.input}
           />
         </div>
-        <button className={styles.form_btn}>تغییر پسورد</button>
+        <button onClick={updatePassword}
+        className={styles.form_btn}>تغییر پسورد</button>
       </form>
     </>
   );
