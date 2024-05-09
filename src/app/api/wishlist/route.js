@@ -30,3 +30,20 @@ export async function POST(req) {
   }
 }
 
+
+export async function GET(req){
+  try{
+
+    connectTodb()
+
+    const wishlist = await wishlistModel.find({}).lean()
+
+    return Response.json(
+        wishlist ,
+      { status: 200}
+    );
+
+  }catch (error) {
+    return Response.json({ message: error }, { status:500 });
+  }
+}

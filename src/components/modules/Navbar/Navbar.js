@@ -10,7 +10,14 @@ import { useState, useEffect } from "react";
 
 export default function Navbar({ isLogin }) {
   const [fixNavbar, setFixNavbar] = useState(false);
+  const [carts,setCarts] = useState([])
+  // const [wishlist,setWishlist] = useState([])
 
+  useEffect(() => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    setCarts(cart);
+  }, []);
 
   useEffect(() => {
     const fixNavbarToTop = (event) => {
@@ -28,6 +35,18 @@ export default function Navbar({ isLogin }) {
 
     return () => window.removeEventListener("scroll", fixNavbarToTop);
   }, []);
+
+  // useEffect(() => {
+  //   const getWishlist = async () => {
+  //     const res = await fetch('/api/wishlist')
+  //     if(res.status === 200){
+  //       const data = await res.json()
+  //       setWishlist(data)
+  //     }
+  //   }
+
+  //   getWishlist()
+  // })
 
   return (
     <nav className={`${fixNavbar ? styles.nav_fixed : styles.nav}`}>
@@ -87,7 +106,7 @@ export default function Navbar({ isLogin }) {
         <div className={styles.nav_icons}>
           <Link href="/cart" className={styles.nav_basket}>
             <SlBasket className={styles.nav_icon} />
-            <span className={styles.nav_badge}>1</span>
+            <span className={styles.nav_badge}>{carts.length}</span>
           </Link>
           <Link href="/wishlist" className={styles.nav_wishlist}>
             <FaRegHeart className={styles.nav_icon} />
