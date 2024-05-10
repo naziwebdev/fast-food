@@ -37,6 +37,10 @@ const productValidation = yup.object().shape({
     .number()
     .required("این فیلد الزامی است")
     .min(0, "  باید حداقل 0 کارکتر باشد"),
+  img: yup
+    .object()
+    .required("این فیلد الزامی است")
+    .min(3, "  باید حداقل 3 کارکتر باشد"),
 });
 
 export default productValidation;

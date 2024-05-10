@@ -2,6 +2,9 @@ import productModel from "@/models/product";
 import connectTodb from "@/configs/db";
 import productValidation from "@/validations/detailsProduct";
 import { authAdmin } from "@/utils/serverHelper";
+import { writeFile } from "fs/promises";
+import path from "path";
+
 
 export async function POST(req) {
   try {
@@ -12,17 +15,19 @@ export async function POST(req) {
     }
     connectTodb();
 
-    const {
-      title,
-      price,
-      tags,
-      description,
-      countAvailable,
-      weight,
-      materials,
-      tast,
-      size,
-    } = await req.json();
+ 
+    const formData = await req.formData()
+    const title = formData.get('title')
+    const price = formData.get('price')
+    const tags = formData.get('tags')
+    const description = formData.get('description')
+    const  countAvailable = formData.get(' countAvailable')
+    const  weight = formData.get(' weight')
+    const  materials = formData.get(' materials')
+    const tast = formData.get('tast')
+    const size = formData.get('size')
+    const img = formData.get('img')
+     
 
 
 
@@ -37,13 +42,24 @@ export async function POST(req) {
         materials,
         tast,
         size,
+        img
       })
       .catch((err) => {
         err.statusCode = 400;
         throw err;
       });
 
-    const product = await productModel.create({
+      const buffer = Buffer.from(await img.arrayBuffer())
+
+      const filename = new Date() + img.name
+
+      const pathFile = path.join(process.cwd(),'public/uploads/'+ filename)
+
+      await writeFile (pathFile,buffer)
+
+
+
+    await productModel.create({
       title,
       price,
       tags,
@@ -53,6 +69,7 @@ export async function POST(req) {
       materials,
       tast,
       size,
+      img:`http://localhost:3000/uploads/${filename}`
     });
 
     // {
@@ -69,7 +86,7 @@ export async function POST(req) {
     // }
 
     return Response.json(
-      { message: "product created successfully", product: product },
+      { message: "product created successfully"},
       { status: 201 }
     );
   } catch (error) {

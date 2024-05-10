@@ -3,6 +3,14 @@ import productModel from "@/models/product";
 import { isValidObjectId } from "mongoose";
 import { authAdmin } from "@/utils/serverHelper";
 
+
+// export async function PUT (req,{params}){
+
+// }
+
+
+
+
 export async function DELETE(req, { params }) {
   try {
     const isAdmin = await authAdmin();
