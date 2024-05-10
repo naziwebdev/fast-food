@@ -62,6 +62,10 @@
   .ban_btn {
     background-color: #ef4444;
   }
+
+  .table_img{
+    border-radius: 20px;
+  }
   
   @media only screen and (max-width: 500px) {
     .table {

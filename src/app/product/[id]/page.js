@@ -30,7 +30,7 @@ export default async function Product({ params }) {
       <BreadCrumb route={route} />
       <div data-aos="fade-up" className={styles.product_container}>
         <div className={styles.Product_main}>
-          <Gallery />
+          <Gallery product={JSON.parse(JSON.stringify(product.img))}/>
           <Details product={JSON.parse(JSON.stringify(product))} />
         </div>
         <Tabs product={JSON.parse(JSON.stringify(product))} userID={user?.id}/>

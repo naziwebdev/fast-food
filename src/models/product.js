@@ -44,6 +44,10 @@ const schema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    img:{
+      type:String,
+      required:true
+    },
     comments: {
       type: [{ type: mongoose.Types.ObjectId, ref: "Comment" }],
     },

@@ -5,6 +5,7 @@ const nextConfig = {
     serverComponentsExternalPackages: ["mongoose"],
       
   },
+
 }
 
 module.exports = nextConfig

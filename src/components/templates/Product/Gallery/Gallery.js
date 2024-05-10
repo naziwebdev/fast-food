@@ -14,8 +14,9 @@ import "swiper/css/zoom";
 // import required modules
 import { FreeMode, Navigation, Thumbs, Zoom } from "swiper/modules";
 
-export default function Gallery() {
+export default function Gallery({product}) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
 
   return (
     <div data-aos="zoom-in-left"  className={styles.gallery}>
@@ -33,8 +34,8 @@ export default function Gallery() {
       >
         <SwiperSlide>
           <div className="swiper-zoom-container">
-            <Image
-              src="/images/p-1.jpg"
+            <img
+              src={product}
               width={400}
               height={400}
               alt="product"
@@ -44,8 +45,8 @@ export default function Gallery() {
         </SwiperSlide>
         <SwiperSlide>
           <div className="swiper-zoom-container">
-            <Image
-              src="/images/p-3.jpg"
+            <img
+              src={product}
               width={400}
               height={400}
               alt="product"
@@ -73,8 +74,8 @@ export default function Gallery() {
         }}
       >
         <SwiperSlide className={styles.slide}>
-          <Image
-            src="/images/p-1.jpg"
+          <img
+            src={product}
             width={150}
             height={150}
             alt="product"
@@ -82,8 +83,8 @@ export default function Gallery() {
           />
         </SwiperSlide>
         <SwiperSlide className={styles.slide}>
-          <Image
-            src="/images/p-3.jpg"
+          <img
+            src={product}
             width={150}
             height={150}
             alt="product"

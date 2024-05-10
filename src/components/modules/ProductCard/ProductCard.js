@@ -12,8 +12,8 @@ export default function ProductCard({ remove ,isfull, product}) {
   return (
     <div className={`${styles.card} ${isfull && styles.full_card} `}>
       <div className={styles.card_head}>
-        <Image
-          src="/images/p-4.jpg"
+        <img
+          src={product.img}
           alt="product"
           className={styles.card_img}
           width={320}
