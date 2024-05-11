@@ -14,8 +14,8 @@
 
 .modal_wrapper{
     position: relative;
-    width: 60%;
-    height: 60dvh;
+    width: 70%;
+    height:auto;
     background-color: #fff;
     border-radius: 20px;
     padding: 2rem;
