@@ -4,7 +4,6 @@ import swal from "sweetalert";
 import { useRouter } from "next/navigation";
 
 export default function DataTable({ comments }) {
-  
   const router = useRouter();
 
   const showComment = (message) => {
@@ -44,7 +43,7 @@ export default function DataTable({ comments }) {
             buttons: "بستن",
           }).then((value) => {
             if (value) {
-             router.refresh()
+              router.refresh();
             }
           });
         } else {
@@ -82,7 +81,7 @@ export default function DataTable({ comments }) {
             buttons: "بستن",
           }).then((value) => {
             if (value) {
-              router.refresh()
+              router.refresh();
             }
           });
         } else {
@@ -120,7 +119,7 @@ export default function DataTable({ comments }) {
             buttons: "بستن",
           }).then((value) => {
             if (value) {
-              router.refresh()
+              router.refresh();
             }
           });
         } else {
@@ -134,7 +133,6 @@ export default function DataTable({ comments }) {
       }
     });
   };
-
 
   const removeComment = async (commentID) => {
     swal({
@@ -156,7 +154,7 @@ export default function DataTable({ comments }) {
             buttons: "بستن",
           }).then((value) => {
             if (value) {
-              router.refresh()
+              router.refresh();
             }
           });
         } else {
@@ -206,8 +204,10 @@ export default function DataTable({ comments }) {
                 </button>
               </td>
               <td>
-                <button onClick={() => removeComment(item._id)}
-                className={`${styles.btn} ${styles.remove_btn}`}>
+                <button
+                  onClick={() => removeComment(item._id)}
+                  className={`${styles.btn} ${styles.remove_btn}`}
+                >
                   حذف
                 </button>
               </td>
@@ -229,12 +229,21 @@ export default function DataTable({ comments }) {
                 )}
               </td>
               <td>
-                <button
-                  onClick={() => answerComment(item)}
-                  className={`${styles.btn} ${styles.answer_btn}`}
-                >
-                  پاسخ
-                </button>
+                {item.hasAnswer === false ? (
+                  <button
+                    onClick={() => answerComment(item)}
+                    className={`${styles.btn} ${styles.answer_btn}`}
+                  >
+                    پاسخ
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => answerComment(item)}
+                    className={`${styles.btn} ${styles.answer_btn2}`}
+                  >
+                    پاسخ
+                  </button>
+                )}
               </td>
             </tr>
           ))}

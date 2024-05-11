@@ -63,6 +63,10 @@
   background-color: #ef4444;
 }
 
+.answer_btn2{
+  background-color: #65a30d;
+}
+
 @media only screen and (max-width: 500px) {
   .table {
     padding: 1rem;
