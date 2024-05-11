@@ -14,7 +14,7 @@ export default function Comments({ productID, comments, userID }) {
   const [email, setEmail] = useState("");
   const [body, setBody] = useState("");
   const [title, setTitle] = useState("");
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(5);
 
   console.log(userID)
 

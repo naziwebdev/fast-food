@@ -19,7 +19,12 @@ export default async function page() {
         <h2 className={styles.wishlist_title}>علاقه مندی ها</h2>
         <div className={styles.wishlist_wrapper}>
           {wishlists.map((item) => (
-            <ProductCard key={item._id} isfull={false} remove={true} product={JSON.parse(JSON.stringify(item.product))} />
+            <ProductCard
+              key={item._id}
+              isfull={false}
+              remove={true}
+              product={JSON.parse(JSON.stringify(item.product))}
+            />
           ))}
         </div>
       </div>

@@ -16,7 +16,7 @@ export async function GET(req) {
 
       if (payloadToken) {
         user = await userModel.findOne(
-          { name: payloadToken.userName },
+          { _id: payloadToken.userName },
           "-password -refreshToken -__v"
         );
       }

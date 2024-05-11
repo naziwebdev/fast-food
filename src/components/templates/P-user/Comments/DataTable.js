@@ -41,7 +41,11 @@ export default function DataTable({ comments }) {
                   ))}
                 </td>
                 <td>
-                  <span className={styles.status}>تایید شده</span>
+                  {item.isAccept ? (
+                    <span className={styles.status_accept}>تایید شده</span>
+                  ) : (
+                    <span className={styles.status}>تایید نشده</span>
+                  )}
                 </td>
                 <td>
                   <button
