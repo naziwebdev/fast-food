@@ -124,6 +124,9 @@ modal /////
   .input_wrapper {
     width: 100%;
   }
+  .form {
+    gap:.2rem;
+}
 }
 
 /*modal//////*/
