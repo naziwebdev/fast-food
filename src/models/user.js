@@ -24,7 +24,7 @@ const schema = new mongoose.Schema(
       type: String,
       required: false,
     },
-    refteshToken: String,
+    refreshToken: String,
   },
   { timestamps: true }
 );

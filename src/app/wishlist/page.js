@@ -26,7 +26,7 @@ export default async function page() {
 
   return (
     <div>
-      <Navbar isLogin={user ? true : false} />
+      <Navbar  />
       <BreadCrumb route={route} />
       <h3 className={styles.wishlist_title}>محصولات مورد علاقه شما :</h3>
       <div data-aos="fade-up" className={styles.wishlist_container}>

@@ -42,7 +42,8 @@ export async function POST(req) {
 
     const hashedPassword = await hashPassword(password);
 
-    const accessToken = generateAccessToken({ name });
+    const userName = existUser._id;
+    const accessToken = generateAccessToken({ userName});
 
     const users = await UserModel.find({}).lean();
 

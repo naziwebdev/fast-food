@@ -6,14 +6,12 @@ import ContactForm from "@/components/templates/Contact-us/ContactForm/ContactFo
 import Information from "@/components/templates/Contact-us/Information/Information";
 import Map from "@/components/templates/Contact-us/Map/Map";
 import Link from "next/link";
-import { authUser } from "@/utils/serverHelper";
 
 export default async function page() {
-  const user = await authUser();
   const route = [{ id: 1, title: " تماس با ما", href: "/contact-us" }];
   return (
     <div>
-      <Navbar isLogin={user ? true : false} />
+      <Navbar />
       <BreadCrumb route={route} />
       <main className={styles.contact_wrapper}>
         <div className={styles.contact_container2}>

@@ -1,18 +1,17 @@
 import React from "react";
 import Navbar from "@/components/modules/Navbar/Navbar";
-import { authUser } from "@/utils/serverHelper";
 import styles from "@/styles/About-us.module.css";
 import BreadCrumb from "@/components/modules/BreadCrumb/BreadCrumb";
 import Image from "next/image";
 import Footer from "@/components/modules/Footer/Footer";
 
 export default async function AboutUs() {
-  const user = await authUser();
+
 
   let route = [{ id: 1, title: "درباره ما", href: "/about-us" }];
   return (
     <>
-      <Navbar isLogin={user ? true : false} />
+      <Navbar />
       <BreadCrumb route={route} />
       <div className={styles.about_wrapper}>
         <div className={styles.about_content}>

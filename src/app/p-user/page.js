@@ -11,7 +11,9 @@ import { authUser } from "@/utils/serverHelper";
 
 export default async function Index() {
   connectTodb()
+
   const user = await authUser();
+ 
   const Allticket = await ticketModel.find({ user: user._id });
   const comments = await commentModel.find({ user: user._id });
   const wishlists = await wishlistModel.find({ user: user._id });

@@ -1,7 +1,6 @@
 import { hash, compare } from "bcrypt";
 import { sign, verify } from "jsonwebtoken";
 
-
 export const hashPassword = async (password) => {
   const hashedPassword = await hash(password, 12);
   return hashedPassword;
@@ -21,7 +20,7 @@ export const generateAccessToken = (data) => {
 
 export const generateRefreshToken = (data) => {
   const token = sign({ ...data }, process.env.REFRESH_TOKEN_SECRET_KEY, {
-    expiresIn: "15d",
+    expiresIn: "30d",
   });
 
   return token;
@@ -35,4 +34,5 @@ export const verifyAccessToken = (token) => {
     return false;
   }
 };
+
 

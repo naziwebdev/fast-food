@@ -7,14 +7,17 @@ export const authUser = async () => {
   connectTodb();
 
   const token = cookies().get("token");
+  
 
   let user = null;
 
   if (token) {
+   
     const tokenPayload = verifyAccessToken(token.value);
-
+ 
     if (tokenPayload) {
-      user = await Usermodel.findOne({ name: tokenPayload.userName });
+
+      user = await Usermodel.findOne({_id: tokenPayload.userName });
     }
   }
 
@@ -32,7 +35,7 @@ export const authAdmin = async () => {
     const tokenPayload = verifyAccessToken(token.value);
 
     if (tokenPayload) {
-      admin = await Usermodel.findOne({ name: tokenPayload.userName });
+      admin = await Usermodel.findOne({ _id: tokenPayload.userName });
       if (admin.role === "ADMIN") {
         return admin;
       } else {

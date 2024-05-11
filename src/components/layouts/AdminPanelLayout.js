@@ -5,6 +5,7 @@ import { authUser } from "@/utils/serverHelper";
 import { redirect } from "next/navigation";
 
 export default async function AdminPanelLayout({ children }) {
+  
   const user = await authUser();
 
   if (user) {

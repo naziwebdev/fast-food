@@ -18,7 +18,7 @@ export default function Tickets({ tickets }) {
           <TicketCard key={item._id} ticket={item} />
         ))}
 
-        {tickets.length === 0 && (
+        {tickets?.length === 0 && (
           <h2 className={styles.empty_title}>تیکتی ثبت نشده</h2>
         )}
       </div>

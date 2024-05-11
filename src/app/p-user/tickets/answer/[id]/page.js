@@ -31,7 +31,7 @@ export default async function page({ params }) {
           </Link>
         </div>
         <Answer type="user" ticket={JSON.parse(JSON.stringify(ticket))} />
-        {answerTicket.length != 0 ? (
+        {answerTicket?.length != 0 ? (
           <Answer
             type="admin"
             answer={JSON.parse(JSON.stringify(answerTicket))}

@@ -26,7 +26,7 @@ export default async function Product({ params }) {
   let route = [{ id: 1, title: "جزییات محصول", href: `/product/${params.id}` }];
   return (
     <div>
-      <Navbar isLogin={user ? true : false} />
+      <Navbar />
       <BreadCrumb route={route} />
       <div data-aos="fade-up" className={styles.product_container}>
         <div className={styles.Product_main}>

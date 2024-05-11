@@ -7,17 +7,40 @@ import { FaRegHeart } from "react-icons/fa";
 import { SlBasket } from "react-icons/sl";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import swal from "sweetalert";
 
-export default function Navbar({ isLogin }) {
+export default function Navbar() {
   const [fixNavbar, setFixNavbar] = useState(false);
-  const [carts,setCarts] = useState([])
+  const [carts, setCarts] = useState([]);
   // const [wishlist,setWishlist] = useState([])
+  const [isLogin, setIsLogin] = useState(false);
+
+  const router = useRouter();
 
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     setCarts(cart);
   }, []);
+
+  useEffect(() => {
+    const isLoginHandler = async () => {
+      const res = await fetch(`http://localhost:3000/api/auth/refresh`, {
+        method: "POST",
+      });
+
+      if (res.status === 200) {
+        setIsLogin(true);
+      } else if (res.status === 401) {
+        router.replace("/login-register");
+      } else {
+        console.log(await res);
+      }
+    };
+
+    isLoginHandler();
+  }, [isLogin]);
 
   useEffect(() => {
     const fixNavbarToTop = (event) => {
@@ -35,6 +58,31 @@ export default function Navbar({ isLogin }) {
 
     return () => window.removeEventListener("scroll", fixNavbarToTop);
   }, []);
+
+  const logoutHandler = async () => {
+    swal({
+      title: "آیا از خروج اطمینان دارید؟",
+      icon: "warning",
+      buttons: ["نه", "آره"],
+    }).then(async (result) => {
+      if (result) {
+        const res = await fetch("/api/auth/logout", {
+          method: "POST",
+        });
+
+        if (res.status === 200) {
+          await res.json();
+          router.replace("/login-register");
+        } else {
+          swal({
+            title: "مشکلی پیش اومده",
+            icon: "error",
+            buttons: "تلاش دوباره",
+          });
+        }
+      }
+    });
+  };
 
   // useEffect(() => {
   //   const getWishlist = async () => {
@@ -67,9 +115,6 @@ export default function Navbar({ isLogin }) {
             <Link href="/">صفحه اصلی</Link>
           </li>
           <li>
-            <Link href="/category">فروشگاه</Link>
-          </li>
-          <li>
             <Link href="/blog">وبلاگ</Link>
           </li>
           <li>
@@ -98,6 +143,9 @@ export default function Navbar({ isLogin }) {
                 <Link href="/p-user/comments">کامنت ها </Link>
                 <Link href="/p-user/wishlist"> علاقه مندی ها</Link>
                 <Link href="/p-user/account-details"> جزییات اکانت</Link>
+                <button onClick={logoutHandler} className={styles.logout}>
+                  خروج
+                </button>
               </div>
             </div>
           )}

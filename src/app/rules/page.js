@@ -2,13 +2,12 @@ import styles from "@/styles/Rules.module.css";
 import Navbar from "@/components/modules/Navbar/Navbar";
 import Footer from "@/components/modules/Footer/Footer";
 import BreadCrumb from "@/components/modules/BreadCrumb/BreadCrumb";
-import { authUser } from "@/utils/serverHelper";
+
 export default async function page() {
-  const user = await authUser();
   const route = [{ id: 1, title: "شرایط و قوانین", href: "/rules" }];
   return (
     <div>
-      <Navbar isLogin={user ? true : false} />
+      <Navbar/>
       <BreadCrumb route={route} />
       <main className={styles.rules_wrapper}>
         <h2 className={styles.rules_title}>شرایط و قوانین استفاده</h2>

@@ -47,9 +47,10 @@ export async function POST(req) {
       );
     }
 
-    const userName = existUser.name;
+    const userName = existUser._id;
 
     const accessToken = generateAccessToken({ userName });
+
 
     const refreshToken = generateRefreshToken({ userName });
 
@@ -60,11 +61,18 @@ export async function POST(req) {
       }
     );
 
+    const headers = new Headers();
+    headers.append("Set-Cookie",`token=${accessToken};path=/;httpOnly=true;max-age=172800;`);
+    headers.append(
+      "Set-Cookie",
+      `refresh-token=${refreshToken};path=/;httpOnly=true;max-age=1296000;`
+    );
+
     return Response.json(
       { message: "user login successfully" },
       {
         status: 200,
-        headers: { "Set-Cookie": `token=${accessToken};path=/;httpOnly=true;` },
+        headers,
       }
     );
   } catch (err) {
