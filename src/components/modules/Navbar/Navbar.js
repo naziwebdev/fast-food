@@ -9,12 +9,16 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import swal from "sweetalert";
+import Sidebar from "../Sidebar/Sidebar";
+
 
 export default function Navbar() {
   const [fixNavbar, setFixNavbar] = useState(false);
   const [carts, setCarts] = useState([]);
   // const [wishlist,setWishlist] = useState([])
   const [isLogin, setIsLogin] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
+
 
   const router = useRouter();
 
@@ -23,6 +27,8 @@ export default function Navbar() {
 
     setCarts(cart);
   }, []);
+
+  const onClose = () => setShowSidebar(false);
 
   useEffect(() => {
     const isLoginHandler = async () => {
@@ -58,6 +64,8 @@ export default function Navbar() {
 
     return () => window.removeEventListener("scroll", fixNavbarToTop);
   }, []);
+
+
 
   const logoutHandler = async () => {
     swal({
@@ -98,6 +106,7 @@ export default function Navbar() {
 
   return (
     <nav className={`${fixNavbar ? styles.nav_fixed : styles.nav}`}>
+      {showSidebar && <Sidebar onClose={onClose} />}
       <main>
         <div>
           <Link href="/">
@@ -150,7 +159,10 @@ export default function Navbar() {
             </div>
           )}
         </ul>
-        <GiHamburgerMenu className={styles.hamberger_menu} />
+        <GiHamburgerMenu
+          onClick={() => setShowSidebar((prev) => !prev)}
+          className={styles.hamberger_menu}
+        />
         <div className={styles.nav_icons}>
           <Link href="/cart" className={styles.nav_basket}>
             <SlBasket className={styles.nav_icon} />
