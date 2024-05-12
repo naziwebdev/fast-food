@@ -1,7 +1,7 @@
 "use client"
 
 import styles from "./Articles.module.css";
-import ArticleCard from "./ArticleCard";
+import ArticleCard from "../../../modules/ArticleCard/ArticleCard";
 import { FaChevronLeft } from "react-icons/fa6";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from 'swiper/react';

@@ -1,0 +1,24 @@
+.article_container {
+    padding: 4rem;
+  }
+  
+  .article_main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    flex-wrap: wrap;
+  }
+  
+  
+  @media only screen and (max-width:480px) {
+      .article_container{
+          padding:2.5rem 1.5rem;
+      }
+   }
+  @media only screen and (max-width:380px) {
+      .article_container{
+          padding:2.5rem 1rem;
+      }
+   }

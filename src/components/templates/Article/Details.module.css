@@ -1,0 +1,45 @@
+.details_wrapper{
+    padding: 4rem;
+}
+
+
+.details_content{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+   
+}
+
+.details_text{
+    line-height:36px;
+    text-align: justify;
+    color:#333;
+}
+
+.details_img{
+    align-self: center;
+    margin: 0 auto;
+    width: 70%;
+    height: 500px;
+}
+
+
+@media only screen and (max-width:800px) {
+
+    .details_img{
+        width: 100%;
+    }
+    
+}
+
+@media only screen and (max-width:500px) {
+
+    .details_wrapper{
+        padding:2rem;
+    }
+
+    .details_img{
+        height: 400px;
+    }
+    
+}
