@@ -64,11 +64,7 @@ export default function ProductCard({ remove ,isfull, product}) {
         title: "محصول با موفقیت به سبد خرید افزوده شد",
         icon: "success",
         buttons: "بستن",
-      }).then((value) => {
-        if(value){
-            location.reload()
-        }
-      });
+      })
     }
   };
   return (

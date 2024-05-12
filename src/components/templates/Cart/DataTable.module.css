@@ -193,6 +193,24 @@
   width: 100px;
 }
 
+.empety_cart{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-top: 4rem;
+  color: #555;
+  text-align: center;
+}
+
+.cart_icon{
+  font-size: 8rem;
+  color:#f0abfc ;
+
+  
+}
+
 @media only screen and (max-width: 1250px) {
   .table_wrapper {
     width: 60%;

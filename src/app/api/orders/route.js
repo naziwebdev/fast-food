@@ -5,10 +5,10 @@ import orderValidation from "@/validations/order";
 export async function POST(req) {
   try {
     connectTodb();
-    const { userID, products, price, address } = await req.json();
+    const { userID, products, price,city, address } = await req.json();
 
     await orderValidation
-      .validate({ userID, products, price, address })
+      .validate({ userID, products, price,city, address })
       .catch((error) => {
         error.statusCode = 400;
         throw error;
@@ -21,6 +21,7 @@ export async function POST(req) {
       products,
       price,
       code,
+      city,
       address,
     });
 
