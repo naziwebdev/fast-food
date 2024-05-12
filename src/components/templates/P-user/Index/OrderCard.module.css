@@ -29,6 +29,13 @@
     border-radius: 10px;
 }
 
+
+.order_status{
+    color: #fbbf24;
+}
+
+
+
 @media only screen and (max-width:500px) {
    .order_msg{
     font-size: .9rem;

@@ -18,7 +18,8 @@ export default async function Index() {
   const Allticket = await ticketModel.find({ user: user._id });
   const comments = await commentModel.find({ user: user._id });
   const wishlists = await wishlistModel.find({ user: user._id });
-  const orders = await orderModel.find({userID:user._id});
+  const orders = await orderModel.find({userID:user._id}).lean().populate("products","title") .limit(3)
+  .sort({ _id: -1 });
 
   const tickets = await ticketModel.find({ user: user._id })
     .lean()
@@ -37,7 +38,7 @@ export default async function Index() {
           <Box title={"مجموع علاقه مندی ها"} count={wishlists.length} />
         </div>
         <div className={styles.user_details}>
-          <Orders />
+          <Orders orders={JSON.parse(JSON.stringify(orders))}/>
           <Tickets tickets={JSON.parse(JSON.stringify(tickets))}/>
         </div>
       </div>
