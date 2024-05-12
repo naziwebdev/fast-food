@@ -1,0 +1,24 @@
+.orders{
+    background-color: #fafafa;
+    width: 100%;
+    height: calc(100dvh - 100px);
+    padding: 2rem;
+
+  }
+
+  .orders_title {
+    color: #333;
+  }
+
+
+  @media only screen and (max-width: 480px) {
+    .orders {
+      padding: 2rem 1rem;
+    }
+  }
+  @media only screen and (max-width: 380px) {
+    .orders {
+      padding: 2rem 0.5rem;
+    }
+  }
+  

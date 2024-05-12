@@ -52,7 +52,7 @@ export default function Sidebar() {
           </Link>
         </li>
         <li className={styles.sidebar_item}>
-          <Link href="/" className={styles.sidebar_link}>
+          <Link href="/p-user/orders" className={styles.sidebar_link}>
             <IoBagHandle className={styles.sidebar_icon} />
             <p className={styles.list_text}>سفارش ها</p>
           </Link>
