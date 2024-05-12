@@ -9,11 +9,11 @@ import FavoriteBtn from "@/components/modules/FavoriteBtn/FavoriteBtn";
 import RemoveFavoriteBtn from "../RemoveFavoriteBtn/RemoveFavoriteBtn";
 import swal from "sweetalert";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+
 
 export default function ProductCard({ remove ,isfull, product}) {
   const [counter, setCounter] = useState(1);
-  const router = useRouter()
+ 
   const addBasket = () => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -66,7 +66,7 @@ export default function ProductCard({ remove ,isfull, product}) {
         buttons: "بستن",
       }).then((value) => {
         if(value){
-            router.refresh()
+            location.reload()
         }
       });
     }
