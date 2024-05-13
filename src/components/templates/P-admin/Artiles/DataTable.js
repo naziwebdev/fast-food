@@ -6,6 +6,7 @@ import Modal from "@/components/modules/Modal/Modal";
 import { useState } from "react";
 import productValidation from "@/validations/detailsProduct";
 import Image from "next/image";
+import articleValidation from "@/validations/article";
 
 export default function DataTable({ articles }) {
   const router = useRouter();
@@ -27,7 +28,7 @@ export default function DataTable({ articles }) {
     setArticleID(article._id);
   };
 
-  const editProduct = async (event) => {
+  const editArticle = async (event) => {
     event.preventDefault();
     setShowModal(false);
     const formData = new FormData();
@@ -37,16 +38,9 @@ export default function DataTable({ articles }) {
     formData.append("img", img);
 
     try {
-      await productValidation.validate({
+      await articleValidation.validate({
         title,
-        price,
-        tags,
         description,
-        countAvailable,
-        weight,
-        materials,
-        tast,
-        size,
         img,
       });
     } catch (err) {
@@ -57,7 +51,7 @@ export default function DataTable({ articles }) {
       });
     }
 
-    const res = await fetch(`/api/products/${productID}`, {
+    const res = await fetch(`/api/articles/${articleID}`, {
       method: "PUT",
       body: formData,
     });
@@ -82,14 +76,14 @@ export default function DataTable({ articles }) {
     }
   };
 
-  const removeArticle = async (productID) => {
+  const removeArticle = async (articleID) => {
     swal({
       title: " از حذف محصول اطمینان دارید؟",
       content: "warning",
       buttons: ["خیر", "بله"],
     }).then(async (value) => {
       if (value) {
-        const res = await fetch(`/api/products/${productID}`, {
+        const res = await fetch(`/api/articles/${articleID}`, {
           method: "DELETE",
         });
 
@@ -208,7 +202,7 @@ export default function DataTable({ articles }) {
               />
             </div>
 
-            <button onClick={editProduct} className={styles.form_btn}>
+            <button onClick={editArticle} className={styles.form_btn}>
               آپدیت
             </button>
           </form>
