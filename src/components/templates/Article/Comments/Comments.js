@@ -4,48 +4,47 @@ import styles from "./Comments.module.css";
 import CommentCard from "@/components/modules/CommentCard/CommentCard";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { useState } from "react";
-import commentValidation from "@/validations/comment";
+import articleCommentValidation from "@/validations/articleComment";
 import swal from "sweetalert";
 import Link from "next/link";
 
-
-export default function Comments() {
+export default function Comments({articleID, user,comments }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [body, setBody] = useState("");
   const [title, setTitle] = useState("");
-  const [score, setScore] = useState(5);
-
-
+  const [score, setScore] = useState(0);
 
   const starRatingHandler = (rate) => {
     setScore(rate);
   };
 
+  
+
   const addCommentHandler = async (event) => {
     event.preventDefault();
 
-    // const comment = {
-    //   user:userID,
-    //   username,
-    //   email,
-    //   title,
-    //   body,
-    //   productID,
-    //   score,
-    // };
+    const comment = {
+      user,
+      username,
+      email,
+      title,
+      body,
+      articleID,
+      score,
+    };
 
-    // try {
-    //   await commentValidation.validate(comment);
-    // } catch (err) {
-    //   return swal({
-    //     title: err,
-    //     icon: "error",
-    //     buttons: "تلاش دوباره",
-    //   });
-    // }
+    try {
+      await articleCommentValidation.validate(comment);
+    } catch (err) {
+      return swal({
+        title: err,
+        icon: "error",
+        buttons: "تلاش دوباره",
+      });
+    }
 
-    const res = await fetch("/api/comments", {
+    const res = await fetch("/api/article-comments", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -79,12 +78,9 @@ export default function Comments() {
     }
   };
 
-
- 
-
   return (
     <div className={styles.comments}>
-      {/* <div className={styles.comment_container}>
+      <div className={styles.comment_container}>
         {comments.length != 0 ? comments.map(
           (comment) =>
             comment.isAccept != 0 && (
@@ -95,7 +91,7 @@ export default function Comments() {
           هنوز کامنتی ثبت نشده
           </div>
       }
-      </div> */}
+      </div>
       <form className={styles.comment_form}>
         <input
           value={username}
@@ -167,15 +163,15 @@ export default function Comments() {
           className={styles.comment_textarea}
           placeholder="نظر خود را بنویسید ..."
         ></textarea>
-        {/* {userID ? (
+        {user ? (
           <button onClick={addCommentHandler} className={styles.addBtn}>
             ثبت{" "}
           </button>
         ) : (
-          <Link href='/login-register' className={styles.addBtn}>
+          <Link href="/login-register" className={styles.addBtn}>
             ابتدا لاگین کنید
           </Link>
-        )} */}
+        )}
       </form>
     </div>
   );

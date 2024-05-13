@@ -18,11 +18,7 @@ export default async function page({ params }) {
     .populate("comments")
     .populate("author", "name");
 
-  // const word = product.title.slice(0, 5);
-
-  // const relatedProduct = await productModel.find({
-  //   title: { $regex: word, $options: "i" },
-  // });
+  const articleID = params.id;
 
   let route = [{ id: 1, title: "مقاله", href: `/article/${params.id}` }];
   return (
@@ -33,7 +29,11 @@ export default async function page({ params }) {
         <div className={styles.article_main}>
           <Details article={JSON.parse(JSON.stringify(article))} />
         </div>
-        <Comments  />
+        <Comments
+          articleID={articleID}
+          user={JSON.parse(JSON.stringify(user._id))}
+          comments={JSON.parse(JSON.stringify(article.comments))}
+        />
         <MoreArticle />
       </div>
       <Footer />

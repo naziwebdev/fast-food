@@ -10,17 +10,10 @@ export async function POST(req) {
     const { user, username, email, title, body, articleID, score } =
       await req.json();
 
-    // {
-    //     "username":"arman",
-    //     "email":"arman@gmail.com",
-    //     "title":"خوب بود",
-    //     "body":"نسبتا خوب بود ممنونم",
-    //     "productID":"662e9f418e6cf83f047faeab",
-    //     "score":4
-    // }
 
     await articleCommentValidation
       .validate({
+        user,
         username,
         email,
         title,
@@ -33,7 +26,7 @@ export async function POST(req) {
         throw err;
       });
 
-    const comment = await commentsModel.create({
+    const comment = await articleCommentModel.create({
       user,
       username,
       email,
