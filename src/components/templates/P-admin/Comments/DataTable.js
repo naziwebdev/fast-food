@@ -3,7 +3,7 @@ import styles from "./DataTable.module.css";
 import swal from "sweetalert";
 import { useRouter } from "next/navigation";
 
-export default function DataTable({ comments }) {
+export default function DataTable({ comments , articleComments }) {
   const router = useRouter();
 
   const showComment = (message) => {
@@ -168,6 +168,161 @@ export default function DataTable({ comments }) {
       }
     });
   };
+  const answerArticleComment = async (comment) => {
+    swal({
+      title: "پاسخ را وارد نمایید ",
+      content: "input",
+      buttons: "ارسال",
+    }).then(async (value) => {
+      if (value) {
+        const answer = {
+          ...comment,
+          articleID: comment.articleID._id,
+          body: value,
+          mainCommentID: comment._id,
+        };
+        const res = await fetch(`/api/article-comments/answer`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(answer),
+        });
+
+        if (res.status === 201) {
+          await res.json();
+
+          swal({
+            title: " پاسخ با موفقیت ارسال شد",
+            icon: "success",
+            buttons: "بستن",
+          }).then((value) => {
+            if (value) {
+              router.refresh();
+            }
+          });
+        } else {
+          swal({
+            title: "عملیات با شکست روبرو شد ",
+            icon: "error",
+            buttons: "بستن",
+          });
+          console.log(await res.json());
+        }
+      }
+    });
+  };
+
+  const acceptArticleComment = async (commentID) => {
+    swal({
+      title: " از تایید کامنت اطمینان دارید؟",
+      content: "warning",
+      buttons: ["خیر", "بله"],
+    }).then(async (value) => {
+      if (value) {
+        const res = await fetch(`/api/article-comments/accespt/${commentID}`, {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+        });
+
+        if (res.status === 200) {
+          await res.json();
+
+          swal({
+            title: "  با موفقیت انجام شد",
+            icon: "success",
+            buttons: "بستن",
+          }).then((value) => {
+            if (value) {
+              router.refresh();
+            }
+          });
+        } else {
+          swal({
+            title: "عملیات با شکست روبرو شد ",
+            icon: "error",
+            buttons: "بستن",
+          });
+          console.log(await res.json());
+        }
+      }
+    });
+  };
+
+  const rejectArticleComment = async (commentID) => {
+    swal({
+      title: " از رد کامنت اطمینان دارید؟",
+      content: "warning",
+      buttons: ["خیر", "بله"],
+    }).then(async (value) => {
+      if (value) {
+        const res = await fetch(`/api/article-comments/reject/${commentID}`, {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+        });
+
+        if (res.status === 200) {
+          await res.json();
+
+          swal({
+            title: "  با موفقیت انجام شد",
+            icon: "success",
+            buttons: "بستن",
+          }).then((value) => {
+            if (value) {
+              router.refresh();
+            }
+          });
+        } else {
+          swal({
+            title: "عملیات با شکست روبرو شد ",
+            icon: "error",
+            buttons: "بستن",
+          });
+          console.log(await res.json());
+        }
+      }
+    });
+  };
+
+  const removeArticleComment = async (commentID) => {
+    swal({
+      title: " از حذف کامنت اطمینان دارید؟",
+      content: "warning",
+      buttons: ["خیر", "بله"],
+    }).then(async (value) => {
+      if (value) {
+        const res = await fetch(`/api/article-comments/${commentID}`, {
+          method: "DELETE",
+        });
+
+        if (res.status === 200) {
+          await res.json();
+
+          swal({
+            title: "  با موفقیت انجام شد",
+            icon: "success",
+            buttons: "بستن",
+          }).then((value) => {
+            if (value) {
+              router.refresh();
+            }
+          });
+        } else {
+          swal({
+            title: "عملیات با شکست روبرو شد ",
+            icon: "error",
+            buttons: "بستن",
+          });
+          console.log(await res.json());
+        }
+      }
+    });
+  };
 
   return (
     <div className={styles.table_wrapper}>
@@ -178,7 +333,7 @@ export default function DataTable({ comments }) {
             <th className={styles.table_title}>کاربر </th>
             <th className={styles.table_title}>شماره همراه</th>
             <th className={styles.table_title}>امتیاز</th>
-            <th className={styles.table_title}>محصول</th>
+            <th className={styles.table_title}>مقاله/محصول</th>
             <th className={styles.table_title}>تاریخ ثبت</th>
             <th className={styles.table_title}>مشاهده</th>
             <th className={styles.table_title}>حذف</th>
@@ -239,6 +394,66 @@ export default function DataTable({ comments }) {
                 ) : (
                   <button
                     onClick={() => answerComment(item)}
+                    className={`${styles.btn} ${styles.answer_btn2}`}
+                  >
+                    پاسخ
+                  </button>
+                )}
+              </td>
+            </tr>
+          ))}
+          {articleComments.map((item, index) => (
+            <tr key={item._id} className={styles.table_row}>
+              <td className={styles.table_col}>{index + 1}</td>
+              <td>{item.user.name}</td>
+              <td>{item.user.phone}</td>
+              <td>{item.score}</td>
+              <td>{item.articleID.title}</td>
+              <td>{new Date(item.date).toLocaleDateString("fa-IR")}</td>
+              <td>
+                <button
+                  onClick={() => showComment(item.body)}
+                  className={`${styles.btn} ${styles.seen_btn}`}
+                >
+                  مشاهده
+                </button>
+              </td>
+              <td>
+                <button
+                  onClick={() => removeArticleComment(item._id)}
+                  className={`${styles.btn} ${styles.remove_btn}`}
+                >
+                  حذف
+                </button>
+              </td>
+              <td>
+                {item.isAccept === 0 ? (
+                  <button
+                    onClick={() => acceptArticleComment(item._id)}
+                    className={`${styles.btn} ${styles.accept_btn}`}
+                  >
+                    تایید
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => rejectArticleComment(item._id)}
+                    className={`${styles.btn} ${styles.accept_btn}`}
+                  >
+                    رد
+                  </button>
+                )}
+              </td>
+              <td>
+                {item.hasAnswer === false ? (
+                  <button
+                    onClick={() => answerArticleComment(item)}
+                    className={`${styles.btn} ${styles.answer_btn}`}
+                  >
+                    پاسخ
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => answerArticleComment(item)}
                     className={`${styles.btn} ${styles.answer_btn2}`}
                   >
                     پاسخ
