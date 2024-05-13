@@ -30,7 +30,7 @@ const schema = new mongoose.Schema(
     },
     articleID: {
       type: mongoose.Types.ObjectId,
-      ref: "Articlet",
+      ref: "Article",
     },
     isAccept: {
       type: Number,
@@ -63,4 +63,4 @@ const schema = new mongoose.Schema(
 
 const model = mongoose.models.ArticleComment || mongoose.model("ArticleComment", schema);
 
-module.exports = model;
+export default model
