@@ -12,7 +12,6 @@ const articleValidation = yup.object().shape({
   img: yup.mixed().required("این فیلد الزامی است"),
   author: yup
     .string()
-    .required("این فیلد الزامی است")
     .min(3, "  باید حداقل 3 کارکتر باشد"),
 });
 
