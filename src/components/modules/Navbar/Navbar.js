@@ -15,7 +15,7 @@ import Sidebar from "../Sidebar/Sidebar";
 export default function Navbar() {
   const [fixNavbar, setFixNavbar] = useState(false);
   const [carts, setCarts] = useState([]);
-  // const [wishlist,setWishlist] = useState([])
+  const [wishlist,setWishlist] = useState([])
   const [isLogin, setIsLogin] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
 
@@ -92,17 +92,17 @@ export default function Navbar() {
     });
   };
 
-  // useEffect(() => {
-  //   const getWishlist = async () => {
-  //     const res = await fetch('/api/wishlist')
-  //     if(res.status === 200){
-  //       const data = await res.json()
-  //       setWishlist(data)
-  //     }
-  //   }
+  useEffect(() => {
+    const getWishlist = async () => {
+      const res = await fetch('/api/wishlist')
+      if(res.status === 200){
+        const data = await res.json()
+        setWishlist(data)
+      }
+    }
 
-  //   getWishlist()
-  // })
+    getWishlist()
+  })
 
   return (
     <nav className={`${fixNavbar ? styles.nav_fixed : styles.nav}`}>
@@ -170,7 +170,7 @@ export default function Navbar() {
           </Link>
           <Link href="/wishlist" className={styles.nav_wishlist}>
             <FaRegHeart className={styles.nav_icon} />
-            <span className={styles.nav_badge}>0</span>
+            <span className={styles.nav_badge}>{wishlist.length}</span>
           </Link>
         </div>
       </main>

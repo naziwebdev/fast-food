@@ -18,7 +18,7 @@ export default async function page() {
   if (user) {
     wishlist = await wishlistModel
       .find({ user: user._id })
-      .populate("product", "title price score")
+      .populate("product", "title price score img")
       .lean();
   }
 

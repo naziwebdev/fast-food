@@ -4,16 +4,21 @@ import styles from "./FavoriteBtn.module.css";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import swal from "sweetalert";
+import { useRouter } from "next/navigation";
 
 export default function FavoriteBtn({ product }) {
   const [user, setUser] = useState(null);
-
+  const router = useRouter()
   const addWishlish = async () => {
-    if (!user._id) {
+    if (!user?._id) {
       return swal({
         title: "برای افزودن علاقه مندی ابتدا لاگین کنید",
         icon: "error",
-        buttons: "تلاش دوباره",
+        buttons:"لاگین",
+      }).then(value => {
+        if(value){
+         router.replace('/login-register')
+        }
       });
     }
 
