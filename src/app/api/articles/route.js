@@ -43,7 +43,7 @@ export async function POST(req) {
 
     await writeFile(pathFile, buffer);
 
-    await productModel.create({
+    await articleModel.create({
       title,
       description,
       author,

@@ -8,6 +8,7 @@ import { MdInsertComment } from "react-icons/md";
 import { FaUserFriends } from "react-icons/fa";
 import { PiTicketFill } from "react-icons/pi";
 import { IoMdLogOut } from "react-icons/io";
+import { PiArticleNyTimesFill } from "react-icons/pi";
 import swal from "sweetalert";
 import { useRouter } from "next/navigation";
 
@@ -79,6 +80,12 @@ export default function Sidebar() {
           <Link href="/p-admin/offs" className={styles.sidebar_link}>
             <PiTicketFill className={styles.sidebar_icon} />
             <p className={styles.list_text}> تخفیف ها</p>
+          </Link>
+        </li>
+        <li className={styles.sidebar_item}>
+          <Link href="/p-admin/articles" className={styles.sidebar_link}>
+            <PiArticleNyTimesFill className={styles.sidebar_icon} />
+            <p className={styles.list_text}> مقاله ها</p>
           </Link>
         </li>
       </ul>
