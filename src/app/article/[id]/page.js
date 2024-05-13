@@ -6,15 +6,17 @@ import Details from "@/components/templates/Article/Details";
 import BreadCrumb from "@/components/modules/BreadCrumb/BreadCrumb";
 import MoreArticle from "@/components/templates/Article/MoreArticle/MoreArticle";
 import connectTodb from "@/configs/db";
-import productModel from "@/models/product";
+import articleModel from "@/models/article";
+import articleComment from "@/models/articleComment";
 import Comments from "@/components/templates/Article/Comments/Comments";
 
 export default async function page({ params }) {
-  // const user = await authUser();
-  // connectTodb();
-  // const product = await productModel
-  //   .findOne({ _id: params.id })
-  //   .populate("comments");
+  const user = await authUser();
+  connectTodb();
+  const article = await articleModel
+    .findOne({ _id: params.id })
+    .populate("comments")
+    .populate("author", "name");
 
   // const word = product.title.slice(0, 5);
 
@@ -29,10 +31,9 @@ export default async function page({ params }) {
       <BreadCrumb route={route} />
       <div data-aos="fade-up" className={styles.article_container}>
         <div className={styles.article_main}>
-
-          <Details />
+          <Details article={JSON.parse(JSON.stringify(article))} />
         </div>
-       <Comments/>
+        <Comments  />
         <MoreArticle />
       </div>
       <Footer />

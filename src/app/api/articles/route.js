@@ -66,9 +66,10 @@ export async function GET(req) {
   try {
     const articles = await articleModel
       .find({}, "-__v")
-      .populate("comments", "-__v");
+      .populate("comments", "-__v")
+      .populate("author", "name");
 
-    return Response.json({ articles }, { status: 200 });
+    return Response.json(articles, { status: 200 });
   } catch (error) {
     return Response.json({ messsage: error.message }, { status: 500 });
   }

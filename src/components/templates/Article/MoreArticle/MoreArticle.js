@@ -1,13 +1,27 @@
 "use client";
 
 import styles from "./MoreArticle.module.css";
-import ArticleCard from '@/components/modules/ArticleCard/ArticleCard'
+import ArticleCard from "@/components/modules/ArticleCard/ArticleCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
+import { useState, useEffect } from "react";
 
-export default function MoreProducts() {
+export default function MoreArticles() {
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    const getArticles = async () => {
+      const res = await fetch("/api/articles");
+      if (res.status === 200) {
+        const data = await res.json();
+        setArticles(data);
+      }
+    };
+
+    getArticles();
+  }, []);
 
   return (
     <div className={styles.related_wrapper}>
@@ -40,14 +54,11 @@ export default function MoreProducts() {
           }}
           className={styles.related_slider}
         >
- <SwiperSlide ><ArticleCard/></SwiperSlide>
- <SwiperSlide ><ArticleCard/></SwiperSlide>
- <SwiperSlide ><ArticleCard/></SwiperSlide>
-          {/* {product?.map(item => (
+          {articles?.map((item) => (
             <SwiperSlide key={item._id}>
-            <ProductCard remove={false} isfull={true} product={item}/>
-          </SwiperSlide>
-          ))} */}
+              <ArticleCard article={item} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </div>

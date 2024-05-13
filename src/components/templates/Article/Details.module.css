@@ -18,9 +18,10 @@
 
 .details_img{
     align-self: center;
-    margin: 0 auto;
+    margin: 4rem auto;
     width: 70%;
     height: 500px;
+    border-radius: 40px;
 }
 
 
