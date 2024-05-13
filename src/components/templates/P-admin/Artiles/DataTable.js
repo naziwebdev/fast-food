@@ -21,6 +21,13 @@ export default function DataTable({ articles }) {
     setShowModal(false);
   };
 
+  const showText = (text) => {
+    swal({
+      text: text,
+      buttons: "بستن",
+    });
+  };
+
   const editHandler = (article) => {
     setShowModal(true);
     setTitle(article.title);
@@ -160,6 +167,7 @@ export default function DataTable({ articles }) {
               </td>
               <td>
                 <button
+                  onClick={() => showText(item.description)}
                   className={`${styles.btn} ${styles.answer_btn}`}
                 >
                   مشاهده
