@@ -10,8 +10,7 @@ export async function POST(req) {
 
     
     const refreshToken = cookies().get("refresh-token").value;
- 
-      
+ console.log(refreshToken)
     if (!refreshToken) {
       return Response.json({ message: "user unathorized" }, { status: 401 });
     }
@@ -37,7 +36,7 @@ export async function POST(req) {
       { message: "new access token generate successfully" },
       {
         status: 200,
-        headers: { "Set-Cookie": `token=${accessToken};path=/;httpOnly=true;max-age=172800;` },
+        headers: { "Set-Cookie": `token=${accessToken};path=/;httpOnly=true;max-age=60;` },
       }
     );
   } catch (error) {

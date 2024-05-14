@@ -61,7 +61,7 @@ export async function POST(req) {
       },
       {
         status: 201,
-        headers: { "Set-Cookie": `token=${accessToken};path=/;httpOnly=true` },
+        headers: { "Set-Cookie": `token=${accessToken};path=/;httpOnly=true;max-age:60;` },
       }
     );
   } catch (err) {

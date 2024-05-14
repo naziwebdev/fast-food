@@ -32,7 +32,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const isLoginHandler = async () => {
-      const res = await fetch(`http://localhost:3000/api/auth/refresh`, {
+      const res = await fetch(`/api/auth/refresh`, {
         method: "POST",
       });
 

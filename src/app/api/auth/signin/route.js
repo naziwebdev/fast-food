@@ -62,7 +62,7 @@ export async function POST(req) {
     );
 
     const headers = new Headers();
-    headers.append("Set-Cookie",`token=${accessToken};path=/;httpOnly=true;max-age=172800;`);
+    headers.append("Set-Cookie",`token=${accessToken};path=/;httpOnly=true;max-age=60;`);
     headers.append(
       "Set-Cookie",
       `refresh-token=${refreshToken};path=/;httpOnly=true;max-age=1296000;`

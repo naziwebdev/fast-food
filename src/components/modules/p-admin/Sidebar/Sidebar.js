@@ -11,9 +11,10 @@ import { IoMdLogOut } from "react-icons/io";
 import { PiArticleNyTimesFill } from "react-icons/pi";
 import swal from "sweetalert";
 import { useRouter } from "next/navigation";
+import { useEffect , useState} from "react";
 
 export default function Sidebar() {
-
+  const [isLogin, setIsLogin] = useState(false);
   const router = useRouter()
 
 
@@ -41,6 +42,30 @@ export default function Sidebar() {
       }
     });
   };
+
+  useEffect(() => {
+
+    const isLoginHandler = async () => {
+      const res = await fetch(`/api/auth/refresh`, {
+        method: "POST",
+      });
+
+      if (res.status === 200) {
+        setIsLogin(true)
+      } else if (res.status === 401) {
+        router.replace("/login-register");
+      } else {
+       setIsLogin(false)
+      }
+    };
+
+    if(!isLogin){
+       isLoginHandler();
+    }
+    
+
+    setInterval(() => setIsLogin(false),50000)
+  },[isLogin]);
 
   return (
     <div className={styles.sidebar}>

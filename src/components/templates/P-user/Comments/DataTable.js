@@ -4,12 +4,15 @@ import { FaStar, FaRegStar } from "react-icons/fa";
 import swal from "sweetalert";
 
 export default function DataTable({ comments, articleComments }) {
+
   const showCommentHandler = (message) => {
     swal({
       title: message,
       buttons: "بستن",
     });
   };
+
+
 
   return (
     <div className={styles.table_wrapper}>
@@ -65,11 +68,11 @@ export default function DataTable({ comments, articleComments }) {
               <td>{item.articleID?.title}</td>
               <td>
                 {new Array(item.score).fill(0).map((rate) => (
-                  <FaStar className={styles.table_icon} />
+                  <FaStar key={crypto.randomUUID()} className={styles.table_icon} />
                 ))}
 
                 {new Array(5 - item.score).fill(0).map((rate) => (
-                  <FaRegStar className={styles.table_icon} />
+                  <FaRegStar key={crypto.randomUUID()}  className={styles.table_icon} />
                 ))}
               </td>
               <td>
