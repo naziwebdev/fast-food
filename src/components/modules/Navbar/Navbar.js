@@ -31,22 +31,28 @@ export default function Navbar() {
   const onClose = () => setShowSidebar(false);
 
   useEffect(() => {
+
     const isLoginHandler = async () => {
       const res = await fetch(`/api/auth/refresh`, {
         method: "POST",
       });
 
       if (res.status === 200) {
-        setIsLogin(true);
+        setIsLogin(true)
       } else if (res.status === 401) {
         router.replace("/login-register");
       } else {
-        console.log(await res);
+       setIsLogin(false)
       }
     };
 
-    isLoginHandler();
-  }, [isLogin]);
+    if(!isLogin){
+       isLoginHandler();
+    }
+    
+
+    setInterval(() => setIsLogin(false),50000)
+  },[isLogin]);
 
   useEffect(() => {
     const fixNavbarToTop = (event) => {

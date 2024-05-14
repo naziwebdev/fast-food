@@ -4,6 +4,7 @@ import Topbar from "../modules/p-user/Topbar/Topbar";
 import { authUser } from "@/utils/serverHelper";
 import { redirect } from "next/navigation";
 
+
 export default async function UserPanelLayout({ children }) {
 
   const user = await authUser()

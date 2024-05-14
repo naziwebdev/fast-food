@@ -10,7 +10,7 @@ export async function POST(req) {
 
     
     const refreshToken = cookies().get("refresh-token").value;
- console.log(refreshToken)
+ 
     if (!refreshToken) {
       return Response.json({ message: "user unathorized" }, { status: 401 });
     }

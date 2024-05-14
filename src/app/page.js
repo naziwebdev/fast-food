@@ -5,7 +5,6 @@ import Promote from "@/components/templates/Index/Promote/Promote";
 import Footer from "@/components/modules/Footer/Footer";
 import Articles from "@/components/templates/Index/Articles/Articles";
 
-
 export default async function Home() {
 
 
